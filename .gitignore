@@ -1,0 +1,5 @@
+# ignores all object files
+objs/
+
+# ignores built library
+libft.a

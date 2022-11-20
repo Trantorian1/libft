@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 14:26:34 by emcnab            #+#    #+#              #
-#    Updated: 2022/11/20 16:19:31 by emcnab           ###   ########.fr        #
+#    Updated: 2022/11/20 18:21:38 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,40 +55,90 @@ export EXITS_ALREADY
 # 									COMPILATION
 # ==============================================================================
 
-# paths to .c and .o files
+# character functions
+CHARDIR = character/
+define CHARFILES
+	ft_isalnum.c		ft_isalpha.c		ft_isascii.c	ft_isdigit.c
+	ft_islower.c		ft_isprint.c		ft_isspace.c	ft_isupper.c
+	ft_tochar.c			ft_todigit.c		ft_tolower.c	ft_tostr.c
+	ft_toupper.c
+endef
+
+# integer functions
+INTDIR = integer/
+define INTFILES
+	ft_itoa.c			ft_max.c			ft_min.c		ft_sign.c
+endef
+
+# meth functions
+MATHDIR = math/
+define MATHFILES
+	ft_abs.c			ft_pow.c
+endef
+
+# string functions
+STRINGDIR = string/
+define STRINGFILES
+	ft_atoi.c			ft_split.c			ft_stralloc.c	ft_strchr.c
+	ft_strchr.c			ft_strcmp.c			ft_strdup.c		ft_striteri.c
+	ft_strjoin.c		ft_strlcat.c		ft_strlcpy.c	ft_strlen.c
+	ft_strmapi.c		ft_strnjoin.c		ft_strnjoin.c	ft_strnsum.c
+	ft_strrchr.c		ft_strrev.c			ft_strsum.c		ft_strtrim.c
+	ft_substr.c
+endef
+
+# io functions
+IODIR = system_io/
+define IOFILES
+	ft_putchar_fd.c		ft_putendl_fd.c		ft_putnbr_fd.c	ft_putstr_fd.c
+endef
+
+# linked list functions
+LISTDIR = linked_lists/
+define LISTFILES
+	ft_lstadd_back.c	ft_lstadd_front.c	ft_lstclear.c	ft_lstdelone.c
+	ft_lstiter.c		ft_lstlast.c		ft_lstmap.c		ft_lstnew.c
+	ft_lstsize.c
+endef
+
+# type conversion functions
+CONVDIR = converter/
+define CONVFILES
+	ft_convcmp.c		ft_converter.c		ft_convtochar.c	ft_convtolong.c
+	ft_convtostr.c
+endef
+
+# all .c files
 define CFILES
-	ft_memcmp.c 		ft_min.c 			ft_max.c		ft_isspace.c
-	ft_memcpy.c			ft_calloc.c 		ft_putendl_fd.c ft_strnstr.c
-	ft_isalpha.c		ft_strtrim.c		ft_freeset.c	ft_memmove.c
-	ft_isalnum.c		ft_isdigit.c		ft_tochar.c		ft_tostr.c
-	ft_pow.c			ft_abs.c			ft_isprint.c	ft_tolower.c
-	ft_toupper.c		ft_strncmp.c		ft_todigit.c	ft_strlen.c
-	ft_putstr_fd.c		ft_bzero.c			ft_memset.c		ft_substr.c
-	ft_strmapi.c		ft_strchr.c			ft_atoi.c		ft_isascii.c
-	ft_putchar_fd.c		ft_itoa.c			ft_strjoin.c	ft_split.c
-	ft_strlcat.c		ft_pack.c			ft_islower.c	ft_isupper.c
-	ft_putnbr_fd.c		ft_memchr.c			ft_strrchr.c	ft_striteri.c
-	ft_strdup.c			ft_stralloc.c		ft_strlcpy.c	ft_strrev.c
-	ft_strnsum.c		ft_strsum.c			ft_strcmp.c		ft_strnjoin.c
-	ft_convcmp.c		ft_converter.c		ft_convtoint.c	ft_convtostr.c
-	ft_convtochar.c		ft_convtolong.c		ft_sign.c		ft_memstr.c	
+	$(foreach file, $(CHARFILES)  , $(CHARDIR)$(file)  )
+	$(foreach file, $(INTFILES)   , $(INTDIR)$(file)   )
+	$(foreach file, $(MATHFILES)  , $(MATHDIR)$(file)  )
+	$(foreach file, $(STRINGFILES), $(STRINGDIR)$(file))
+	$(foreach file, $(IOFILES)    , $(IODIR)$(file)    )
+	$(foreach file, $(LISTFILES)  , $(LISTDIR)$(file)  )
+	$(foreach file, $(CONVFILES)  , $(CONVDIR)$(file)  )
 endef
 
-define BONUS
-	ft_lstadd_front.c	ft_lstiter.c		ft_lstmap.c		ft_lstsize.c
-	ft_lstlast.c		ft_lstadd_back.c	ft_lstdelone.c	ft_lstclear.c
-	ft_lstnew.c
-endef
+# parent directory for all object files
+ODIR = objs/
+# object files sub-directories
+ODIRS = $(ODIR)				$(ODIR)$(CHARDIR)		$(ODIR)$(INTDIR)\
+		$(ODIR)$(MATHDIR)	$(ODIR)$(STRINGDIR)		$(ODIR)$(IODIR)\
+		$(ODIR)$(LISTDIR)	$(ODIR)$(CONVDIR)
 
-ODIR   = objs/
-OFILES = $(patsubst %.c, $(ODIR)%.o, $(CFILES)) 
-BOFILES = $(patsubst %.c, $(ODIR)%.o, $(BONUS))
+# all .o files
+OFILES  = $(patsubst %.c, $(ODIR)%.o, $(CFILES)) 
 
 # C compiler
 CC     = clang
-CMODE  = hard
+CMODE  = debug
 OPT    = -O0
 CFLAGS = -Wall -Wextra -Werror $(OPT)
+
+# compilation modes
+# debug    : debug mode
+# fsanitize: uses fsanitize option for compilation
+# hard     : stricter compilation rules and error checking
 ifeq ($(CMODE), debug)
 	CFLAGS += -g
 else ifeq ($(CMODE), fsanitize)
@@ -113,26 +163,15 @@ display:
 	@echo "$$SEPERATOR"
 
 # for the binary to be build, all object files must have been compiled
-$(BINARY): $(ODIR) $(OFILES)
+$(BINARY): $(ODIRS) $(OFILES)
 	@$(AR) $(AFLAGS) $@ $(OFILES)
 	@echo "$$SEPERATOR"
 	@echo "${LGREEN} ${WHITE}${BINARY} ${LGREEN}built successfully!${LGRAY}"
 
-# compiles bonus files into archive
-bonus: display $(ODIR) $(OFILES) $(BOFILES)
-	@$(AR) $(AFLAGS) $(BINARY) $(OFILES) $(BOFILES)
-	@echo "$$SEPERATOR"  
-	@echo "${LGREEN} ${WHITE}${BINARY} ${LGREEN}built successfully!${LGRAY}"  
-	@echo "${LRED}(bonus)${LGRAY}"
-
-# compiles dynamic library for libft unit tester
-so: display $(ODIR) $(OFILES) $(BOFILES)
-	gcc -shared -o libft.so $(OFILES) $(BOFILES)
-
-$(ODIR):
-	@mkdir $(ODIR)
-	@echo "${LGREEN} created directory ${ODIR}${LGRAY}"
-	@echo "$$SEPERATOR"
+# creates all directories necessary to building
+%/:
+	@mkdir $@
+	@echo "${LGREEN} created directory ${@}${LGRAY}"
 
 # for any object to be compiled, the associated .c file must exist
 $(ODIR)%.o:%.c
@@ -141,11 +180,16 @@ $(ODIR)%.o:%.c
 
 # removes all objects
 clean:
-	rm -f $(OFILES)
+	@rm -f $(OFILES)
+	@echo "$$SEPERATOR"
+	@echo "${RED} removed all object files${LGRAY}"
 
 # removes all objects and the binary
 fclean: clean
-	rm -f $(BINARY)
+	@rm -f $(BINARY)
+	@echo "${RED}|${LGRAY}"
+	@echo "${LRED} removed ${WHITE}${BINARY}${LGRAY}"
+	@echo "$$SEPERATOR"
 
 # removes all objecst, the binary qnd rebuilds the binary
 re: fclean all
