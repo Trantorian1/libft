@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:14:27 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:03:07 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/21 10:02:55 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,8 @@ t_list	*ft_lstnew(t_any content)
 {
 	t_list	*head;
 
-	head = malloc(sizeof(*head));
-	if (!head)
-	{
+	if (!(head = malloc(sizeof(*head))))
 		return (NULL);
-	}
 	head -> content = content;
 	head -> next = NULL;
 	return (head);

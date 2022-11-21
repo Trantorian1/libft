@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:04:15 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:06:03 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/21 10:18:35 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,8 @@ static bool	ft_is_trim(char c, t_str trim_set)
  */
 static size_t	ft_strtrim_size(t_str trim_str, t_str trim_set)
 {
-	size_t	trim_size;
+	size_t	trim_size = 0;
 
-	trim_size = 0;
 	while (*trim_str++)
 		trim_size++;
 	if (!trim_size)

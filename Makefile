@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 14:26:34 by emcnab            #+#    #+#              #
-#    Updated: 2022/11/20 18:21:38 by emcnab           ###   ########.fr        #
+#    Updated: 2022/11/20 18:26:00 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -200,4 +200,4 @@ debug:
 	@echo $(subst ./objs/,,$(OFILES))
 
 # avoids name collision with files
-.PHONY: all bonus so clean fclean re debug
+.PHONY: all display clean fclean re debug

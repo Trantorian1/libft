@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:24:34 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:05:47 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/21 10:09:35 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,14 @@
  */
 char	*ft_strrchr(t_str str, int c)
 {
-	int	i;
-	int	last_index;
+	int	i          = 0;
+	int	last_index = 0;
 
 	c = ft_tochar(c);
-	i = 0;
-	last_index = 0;
 	while (str[i])
 	{
 		if (str[i] == c)
-		{
 			last_index = i;
-		}
 		i++;
 	}
 	if (str[i] == c)

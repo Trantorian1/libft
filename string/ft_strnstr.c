@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:35:01 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:05:38 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/21 10:08:00 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@
  */
 char	*ft_strnstr(t_str source, t_str substr, size_t len)
 {
-	size_t	substr_len;
+	size_t	substr_len = ft_strlen(substr);
 
-	substr_len = ft_strlen(substr);
 	if (!substr_len)
 		return ((char *)source);
 	if (len == 0)
