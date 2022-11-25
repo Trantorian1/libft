@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 14:26:34 by emcnab            #+#    #+#              #
-#    Updated: 2022/11/20 18:26:00 by emcnab           ###   ########.fr        #
+#    Updated: 2022/11/25 17:36:25 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,6 +93,14 @@ define IOFILES
 	ft_putchar_fd.c		ft_putendl_fd.c		ft_putnbr_fd.c	ft_putstr_fd.c
 endef
 
+# memory functions
+MEMDIR = memory/
+define MEMFILES
+	ft_bzero.c			ft_calloc.c			ft_freeset.c	ft_memchr.c
+	ft_memcmp.c			ft_memcpy.c			ft_memmove.c	ft_memset.c
+	ft_memstr.c			ft_pack.c
+endef
+
 # linked list functions
 LISTDIR = linked_lists/
 define LISTFILES
@@ -115,6 +123,7 @@ define CFILES
 	$(foreach file, $(MATHFILES)  , $(MATHDIR)$(file)  )
 	$(foreach file, $(STRINGFILES), $(STRINGDIR)$(file))
 	$(foreach file, $(IOFILES)    , $(IODIR)$(file)    )
+	$(foreach file, $(MEMFILES)   , $(MEMDIR)$(file)   )
 	$(foreach file, $(LISTFILES)  , $(LISTDIR)$(file)  )
 	$(foreach file, $(CONVFILES)  , $(CONVDIR)$(file)  )
 endef
