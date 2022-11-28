@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:19:45 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/28 16:08:43 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/28 16:22:49 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @param list (t_list **): pointer to the head of the linked list.
  * @param node (t_list *): the node to preprend to [list].
  */
-void	ft_lstadd_front(t_list **list, t_list *node)
+void	ft_lst_add_front(t_list **list, t_list *node)
 {
 	if (!list)
 		return ;

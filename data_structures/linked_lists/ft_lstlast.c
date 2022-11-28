@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:45:14 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/28 16:08:43 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/28 16:16:04 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @param head (t_list *): the start of the linked list.
  * @param (t_list *): the last element of the linked list.
  */
-t_list	*ft_lstlast(t_list *head)
+t_list	*ft_lst_last(t_list *head)
 {
 	t_list	*node = head;
 

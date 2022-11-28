@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:17:40 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/28 16:08:43 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/28 16:16:19 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,28 @@
  * @return (t_list *): linked list mapping of [head] or NULL if allocation
  * 	fails.
  */
-t_list	*ft_lstmap(t_list *head, t_any (*f_map)(t_any), void (*f_free)(t_any))
+t_list	*ft_lst_map(t_list *head, t_any (*f_map)(t_any), void (*f_free)(t_any))
 {
 	t_list	*map;
 	t_list	*map_start;
 
 	if (!head || !f_map || !f_free)
 		return (NULL);
-	map = ft_lstnew(f_map(head -> content));
+	map = ft_lst_new(f_map(head -> content));
 	map_start = map;
 	if (!map)
 	{
-		ft_lstclear(&map_start, f_free);
+		ft_lst_clear(&map_start, f_free);
 		return (NULL);
 	}
 	head = head -> next;
 	while (head)
 	{
-		map -> next = ft_lstnew(f_map(head -> content));
+		map -> next = ft_lst_new(f_map(head -> content));
 		map = map -> next;
 		if (!map)
 		{
-			ft_lstclear(&map_start, f_free);
+			ft_lst_clear(&map_start, f_free);
 			return (NULL);
 		}
 		head = head -> next;

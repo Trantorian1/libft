@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:10:27 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/28 16:08:10 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/28 16:16:19 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  * @param f_free_content (void(t_any)): function used to free the content of 
  * 	individual nodes in the linked list pointed to by [head].
  */
-void	ft_lstclear(t_list **head, void (*f_free_content)(t_any))
+void	ft_lst_clear(t_list **head, void (*f_free_content)(t_any))
 {
 	t_list	*node_current;
 	t_list	*node_previous;
@@ -32,7 +32,7 @@ void	ft_lstclear(t_list **head, void (*f_free_content)(t_any))
 	{
 		node_previous = node_current;
 		node_current = node_current -> next;
-		ft_lstdelone(node_previous, f_free_content);
+		ft_lst_delone(node_previous, f_free_content);
 	}
 	*head = NULL;
 }

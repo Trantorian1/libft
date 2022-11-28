@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:47:51 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/18 10:08:24 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/28 16:22:49 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,14 @@ typedef struct s_conv
 	long	(*f_tolong)(t_any);
 	char	*(*f_tostr)(t_any);
 }	t_conv;
+
+typedef struct s_linkstr
+{
+	t_list	*strs_first;
+	t_list	*strs_last;
+	size_t	linksize;
+	size_t	i;
+}	t_linkstr;
 
 // character manipulation
 int		ft_islower(int c);
@@ -117,17 +125,6 @@ void	ft_putstr_fd(char *str, int file_desc);
 void	ft_putendl_fd(char *str, int file_desc);
 void	ft_putnbr_fd(int n, int file_desc);
 
-// linked lists
-t_list	*ft_lstnew(t_any content);
-t_list	*ft_lstlast(t_list *head);
-t_list	*ft_lstmap(t_list *head, t_any (*f_map)(t_any), void (*f_free)(t_any));
-int		ft_lstsize(t_list *head);
-void	ft_lstadd_front(t_list **list, t_list *node);
-void	ft_lstiter(t_list *head, void (*f)(t_any));
-void	ft_lstadd_back(t_list **head, t_list *node_new);
-void	ft_lstdelone(t_list *node, void (*f)(t_any));
-void	ft_lstclear(t_list **head, void (*f)(t_any));
-
 // type conversion
 t_conv	*ft_converter(void);
 void	ft_convtoint(t_conv *conv, int (*f_toint)(t_any));
@@ -135,5 +132,23 @@ void	ft_convtochar(t_conv *conv, char (*f_tochar)(t_any));
 void	ft_convtostr(t_conv *conv, char *(*f_tostr)(t_any));
 void	ft_convtolong(t_conv *conv, long (*f_tolong)(t_any));
 void	ft_convcmp(t_conv *conv, int (*f_cmp)(t_any, t_any));
+
+// linked lists
+t_list	*ft_lst_new(t_any content);
+t_list	*ft_lst_last(t_list *head);
+t_list	*ft_lst_map(t_list *head, t_any (*f_map)(t_any), void (*f_free)(t_any));
+int		ft_lst_size(t_list *head);
+void	ft_lst_add_front(t_list **list, t_list *node);
+void	ft_lst_iter(t_list *head, void (*f)(t_any));
+void	ft_lstadd_back(t_list **head, t_list *node_new);
+void	ft_lst_delone(t_list *node, void (*f)(t_any));
+void	ft_lst_clear(t_list **head, void (*f)(t_any));
+
+// linked strings
+t_linkstr	*ft_linkstr_new(size_t linksize);
+void		ft_linkstr_add(t_linkstr *linkstr, char *str);
+size_t		ft_linkstr_size(t_linkstr *linkstr);
+char		*ft_linkstr_collect(t_linkstr *linkstr);
+void		*ft_linkstr_delall(t_linkstr *linkstr, void (*f_free)(void *));
 
 #endif

@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 14:26:34 by emcnab            #+#    #+#              #
-#    Updated: 2022/11/28 16:06:47 by emcnab           ###   ########.fr        #
+#    Updated: 2022/11/28 16:32:15 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -123,6 +123,13 @@ define CONVFILES
 	ft_convtostr.c
 endef
 
+# linked strings functions
+LSTRDIR = linked_strings/
+define LSTRFILES
+	ft_linkstr_collect.c	ft_linkstr_delall.c		ft_linkstr_new.c
+	ft_linkstr_size.c		ft_linkstr_add.c
+endef
+
 # all .c files
 define CFILES
 	$(foreach file, $(CHARFILES)  , $(CHARDIR)$(file)        )
@@ -133,6 +140,7 @@ define CFILES
 	$(foreach file, $(MEMFILES)   , $(MEMDIR)$(file)         )
 	$(foreach file, $(LISTFILES)  , $(DSDIR)$(LISTDIR)$(file))
 	$(foreach file, $(CONVFILES)  , $(DSDIR)$(CONVDIR)$(file))
+	$(foreach file, $(LSTRFILES)  , $(DSDIR)$(LSTRDIR)$(file))
 endef
 
 # parent directory for all object files
@@ -142,6 +150,7 @@ ODIRS = $(ODIR)				$(ODIR)$(CHARDIR)		$(ODIR)$(INTDIR) \
 		$(ODIR)$(MATHDIR)	$(ODIR)$(STRINGDIR)		$(ODIR)$(IODIR)  \
 		$(ODIR)$(MEMDIR)	$(ODIR)$(DSDIR)                          \
 		$(ODIR)$(DSDIR)$(LISTDIR)			$(ODIR)$(DSDIR)$(CONVDIR)\
+		$(ODIR)$(DSDIR)$(LSTRDIR)
 
 # all .o files
 OFILES  = $(patsubst %.c, $(ODIR)%.o, $(CFILES)) 
