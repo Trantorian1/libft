@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 14:19:45 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:02:36 by emcnab           ###   ########.fr       */
+/*   Created: 2022/11/10 14:58:56 by emcnab            #+#    #+#             */
+/*   Updated: 2022/11/28 16:08:43 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../../libft.h"
 
 /*
- * @brief Prepends a new node at the front of a linked list.
+ * @brief Frees up memory taken by a node in a linked list.
  *
- * @param list (t_list **): pointer to the head of the linked list.
- * @param node (t_list *): the node to preprend to [list].
+ * @param node (t_list *): the node to free.
+ * @param f_free (void(t_any)): function used to free the content of [node].
  */
-void	ft_lstadd_front(t_list **list, t_list *node)
+void	ft_lstdelone(t_list *node, void (*f_free)(t_any))
 {
-	if (!list)
+	if (!node || !(node -> content) || !f_free)
 		return ;
-	if (node)
-		node -> next = *list;
-	*list = node;
+	f_free(node -> content);
+	node -> next = NULL;
+	free(node);
 }

@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_convtostr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 14:33:08 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:03:11 by emcnab           ###   ########.fr       */
+/*   Created: 2022/11/12 15:12:20 by emcnab            #+#    #+#             */
+/*   Updated: 2022/11/28 16:07:49 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../../libft.h"
 
 /*
- * @brief Determines the size of a linked lists.
+ * @brief Sets string conversion inside of a Converter.
  *
- * @param head (t_list *): the head of the linked list.
- *
- * @return (int): the size of the linked list.
+ * @param conv (t_conv *): value converter to update.
+ * @param f_tostr (char *(t_any)): conversion function to string value.
  */
-int	ft_lstsize(t_list *head)
+void	ft_convtostr(t_conv *conv, char *(*f_tostr)(t_any))
 {
-	t_list	*node = head;
-	size_t	size  = 1;
-
-	if (!node)
-		return (0);
-	while ((node = node -> next))
-		size++;
-	return (size);
+	conv -> f_tostr = f_tostr;
 }

@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 14:26:34 by emcnab            #+#    #+#              #
-#    Updated: 2022/11/28 15:41:45 by emcnab           ###   ########.fr        #
+#    Updated: 2022/11/28 16:06:47 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ export SEPERATOR
 export EXITS_ALREADY
 
 # ==============================================================================
-# 									COMPILATION
+#                                 COMPILATION
 # ==============================================================================
 
 # character functions
@@ -101,6 +101,13 @@ define MEMFILES
 	ft_memstr.c			ft_pack.c
 endef
 
+# ==============================================================================
+#                                 DATA STRUCTURES
+# ==============================================================================
+
+# data structure directory
+DSDIR = data_structures/
+
 # linked list functions
 LISTDIR = linked_lists/
 define LISTFILES
@@ -118,22 +125,23 @@ endef
 
 # all .c files
 define CFILES
-	$(foreach file, $(CHARFILES)  , $(CHARDIR)$(file)  )
-	$(foreach file, $(INTFILES)   , $(INTDIR)$(file)   )
-	$(foreach file, $(MATHFILES)  , $(MATHDIR)$(file)  )
-	$(foreach file, $(STRINGFILES), $(STRINGDIR)$(file))
-	$(foreach file, $(IOFILES)    , $(IODIR)$(file)    )
-	$(foreach file, $(MEMFILES)   , $(MEMDIR)$(file)   )
-	$(foreach file, $(LISTFILES)  , $(LISTDIR)$(file)  )
-	$(foreach file, $(CONVFILES)  , $(CONVDIR)$(file)  )
+	$(foreach file, $(CHARFILES)  , $(CHARDIR)$(file)        )
+	$(foreach file, $(INTFILES)   , $(INTDIR)$(file)         )
+	$(foreach file, $(MATHFILES)  , $(MATHDIR)$(file)        )
+	$(foreach file, $(STRINGFILES), $(STRINGDIR)$(file)      )
+	$(foreach file, $(IOFILES)    , $(IODIR)$(file)          )
+	$(foreach file, $(MEMFILES)   , $(MEMDIR)$(file)         )
+	$(foreach file, $(LISTFILES)  , $(DSDIR)$(LISTDIR)$(file))
+	$(foreach file, $(CONVFILES)  , $(DSDIR)$(CONVDIR)$(file))
 endef
 
 # parent directory for all object files
 ODIR = objs/
 # object files sub-directories
-ODIRS = $(ODIR)				$(ODIR)$(CHARDIR)		$(ODIR)$(INTDIR)\
-		$(ODIR)$(MATHDIR)	$(ODIR)$(STRINGDIR)		$(ODIR)$(IODIR)\
-		$(ODIR)$(LISTDIR)	$(ODIR)$(CONVDIR)
+ODIRS = $(ODIR)				$(ODIR)$(CHARDIR)		$(ODIR)$(INTDIR) \
+		$(ODIR)$(MATHDIR)	$(ODIR)$(STRINGDIR)		$(ODIR)$(IODIR)  \
+		$(ODIR)$(MEMDIR)	$(ODIR)$(DSDIR)                          \
+		$(ODIR)$(DSDIR)$(LISTDIR)			$(ODIR)$(DSDIR)$(CONVDIR)\
 
 # all .o files
 OFILES  = $(patsubst %.c, $(ODIR)%.o, $(CFILES)) 

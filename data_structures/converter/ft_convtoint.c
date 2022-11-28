@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_convtoint.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 14:53:31 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:06:10 by emcnab           ###   ########.fr       */
+/*   Created: 2022/11/12 15:06:57 by emcnab            #+#    #+#             */
+/*   Updated: 2022/11/28 16:07:52 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../../libft.h"
 
 /*
- * @brief Appends a new node at the end of a linked list.
+ * @brief Sets intiger conversion inside of a Converter.
  *
- * @param head (t_list **): the head of the linked list.
- * @param node_new (t_list *): the node to append to the linked list.
+ * @param conv (t_conv *): value converter to update.
+ * @param f_toint (int(t_any)): conversion function to int value.
  */
-void	ft_lstadd_back(t_list **head, t_list *node_new)
+void	ft_convtoint(t_conv *conv, int (*f_toint)(t_any))
 {
-	t_list	*node_last;
-
-	if (!head)
-		return ;
-	node_last = ft_lstlast(*head);
-	if (node_last)
-		node_last -> next = node_new;
-	else
-		*head = node_new;
+	conv -> f_toint = f_toint;
 }

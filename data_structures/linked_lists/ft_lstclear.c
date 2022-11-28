@@ -6,11 +6,11 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:10:27 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:02:41 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/28 16:08:10 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../../libft.h"
 
 /*
  * @brief Frees up memory taken up by all elements in a linked list and sets 

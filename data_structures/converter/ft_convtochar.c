@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_convtochar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 14:45:14 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:02:56 by emcnab           ###   ########.fr       */
+/*   Created: 2022/11/12 15:10:32 by emcnab            #+#    #+#             */
+/*   Updated: 2022/11/28 16:07:52 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../../libft.h"
 
 /*
- * @brief Gets the last element in a linked list.
+ * @brief Sets char conversion inside of a Converter.
  *
- * @param head (t_list *): the start of the linked list.
- * @param (t_list *): the last element of the linked list.
+ * @param conv (t_conv *): value converter to update.
+ * @param f_tochar (char(t_any)): conversion function to char value.
  */
-t_list	*ft_lstlast(t_list *head)
+void	ft_convtochar(t_conv *conv, char (*f_tochar)(t_any))
 {
-	t_list	*node = head;
-
-	if (!head)
-		return (head);
-	while (node -> next)
-		node = node -> next;
-	return (node);
+	conv -> f_tochar = f_tochar;
 }
