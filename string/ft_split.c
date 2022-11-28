@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:47:43 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 17:59:15 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/28 16:43:32 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	*ft_split_free(char **split, size_t allocated)
 
 	if (allocated)
 		while (i < allocated)
-			free(split[i]);
+			free(split[i++]);
 	free(split);
 	return (NULL);
 }
