@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:45:54 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:05:19 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/28 16:52:33 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,5 @@
  */
 size_t	ft_strlen(t_str str)
 {
-	size_t	i = 0;
-
-	if (!str)
-		return (0);
-	while (str[i])
-		i++;
-	return (i);
+	return ((size_t)(ft_quickfind((char *)str, '\0') - str));
 }

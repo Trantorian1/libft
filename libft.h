@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:47:51 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/28 16:22:49 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/28 16:50:16 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@
 #  define SIZE_MAX UINT_MAX
 # endif
 
-typedef const char*		t_str;
-typedef unsigned char	t_byte;
-typedef unsigned int	t_uint;
-typedef unsigned char	t_uchar;
-typedef size_t*			t_data;
-typedef void*			t_any;
+typedef const char*			t_str;
+typedef unsigned char		t_byte;
+typedef unsigned int		t_uint;
+typedef unsigned char		t_uchar;
+typedef size_t*				t_data;
+typedef void*				t_any;
+typedef unsigned long int	t_longword;
 
 typedef struct s_list
 {
@@ -58,6 +59,13 @@ typedef struct s_linkstr
 	size_t	linksize;
 	size_t	i;
 }	t_linkstr;
+
+typedef struct	s_magic
+{
+	unsigned long int	lomagic;
+	unsigned long int	himagic;
+	unsigned long int	crmagic;
+}	t_magic;
 
 // character manipulation
 int		ft_islower(int c);
@@ -89,6 +97,7 @@ int		ft_strcmp(t_str str_a, t_str str_b);
 int		ft_atoi(t_str str_int);
 char	*ft_strrev(char *str, size_t from, size_t until);
 char	*ft_strchr(t_str str, int c);
+char	*ft_quickfind(char *str, int c);
 char	*ft_strrchr(t_str str, int c);
 char	*ft_strnstr(t_str source, t_str substr, size_t n);
 char	*ft_strdup(t_str str_original);
