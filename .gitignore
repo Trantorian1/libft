@@ -3,3 +3,6 @@ objs/
 
 # ignores built library
 libft.a
+
+# ignores test files
+libfTester/

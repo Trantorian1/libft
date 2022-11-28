@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 14:26:34 by emcnab            #+#    #+#              #
-#    Updated: 2022/11/25 17:36:25 by emcnab           ###   ########.fr        #
+#    Updated: 2022/11/28 15:41:45 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -148,12 +148,16 @@ CFLAGS = -Wall -Wextra -Werror $(OPT)
 # debug    : debug mode
 # fsanitize: uses fsanitize option for compilation
 # hard     : stricter compilation rules and error checking
-ifeq ($(CMODE), debug)
+ifneq ($(filter debug, $(CMODE)),)
 	CFLAGS += -g
-else ifeq ($(CMODE), fsanitize)
+endif
+ifneq ($(filter fsanitize, $(CMODE)),)
 	CFLAGS += -fsanitize=address
-else ifeq ($(CMODE), hard)
-	CFLAGS += -Weverything -fsanitize=address,undefined #-Wno-cast-qual -Wno-missing-noreturn -Wno-disabled-macro-expansion -Wno-reserved-id-macro
+endif
+ifneq ($(filter hard, $(CMODE)),)
+	CFLAGS += -Weverything
+	# -Wno-cast-qual -Wno-missing-noreturn -Wno-disabled-macro-expansion
+	# -Wno-reserved-id-macro
 endif
 
 # archive compiler
