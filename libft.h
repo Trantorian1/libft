@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:47:51 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/28 16:50:16 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/28 17:51:04 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 
 # define STDOUT 1
 # define STDERR 2
+# define BUFFER_SIZE 256
+# define ARRAY_SIZE 32
 
 # ifdef _WIN64
 #  define SIZE_MAX _UI64_MAX
@@ -59,6 +61,17 @@ typedef struct s_linkstr
 	size_t	linksize;
 	size_t	i;
 }	t_linkstr;
+
+_Pragma("GCC diagnostic push")
+_Pragma("GCC diagnostic ignored \"-Wpadded\"")
+
+typedef struct	s_line
+{
+	size_t	i;
+	char	buffer[BUFFER_SIZE + 1];
+}	t_line;
+
+_Pragma("GCC diagnostic pop")
 
 typedef struct	s_magic
 {
@@ -133,6 +146,7 @@ void	ft_putchar_fd(char c, int file_desc);
 void	ft_putstr_fd(char *str, int file_desc);
 void	ft_putendl_fd(char *str, int file_desc);
 void	ft_putnbr_fd(int n, int file_desc);
+char	*ft_get_next_line(int fd);
 
 // type conversion
 t_conv	*ft_converter(void);
