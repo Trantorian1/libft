@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 14:17:02 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:05:34 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:24:17 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,13 @@ static size_t	ft_strlen_array(size_t n, t_str *strs)
  */
 static void	ft_strpaste_array(size_t n, char *dest, t_str *src)
 {
-	size_t	i = 0;
-	size_t	j = 0;
-	size_t	k = 0;
+	size_t	i;
+	size_t	j;
+	size_t	k;
 
+	i = 0;
+	j = 0;
+	k = 0;
 	while (i < n)
 	{
 		k = 0;

@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:26:30 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/21 10:09:53 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:26:05 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@
  */
 char	*ft_strrev(char *str, size_t from, size_t until)
 {
-	size_t	i = 0;
+	size_t	i;
 	char	tmp;
 
+	i = 0;
 	if (until < from || until > ft_strlen(str))
 		return (str);
 	while (i < from + (until - from + 1) / 2)

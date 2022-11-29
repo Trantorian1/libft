@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 11:30:20 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:06:10 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:22:31 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,18 @@
  */
 char	*ft_strjoin(t_str str_a, t_str str_b)
 {
-	size_t	len_a = ft_strlen(str_a);
-	size_t	len_b = ft_strlen(str_b);
-	size_t	i     = 0;
+	size_t	len_a;
+	size_t	len_b;
+	size_t	i;
 	char	*str_join;
 
+	len_a = ft_strlen(str_a);
+	len_b = ft_strlen(str_b);
+	i = 0;
 	if (!str_a || !str_b)
 		return (NULL);
-	if (!(str_join = ft_stralloc(len_a + len_b)))
+	str_join = ft_stralloc(len_a + len_b);
+	if (!str_join)
 		return (NULL);
 	while (str_a[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 12:06:09 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:06:10 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 12:17:12 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ char	*ft_stralloc(size_t n)
 {
 	char	*string;
 
-	if (!(string = malloc((n + 1) * sizeof(*string))))
+	string = malloc((n + 1) * sizeof(*string);
+	if (!string)
 		return (NULL);
 	string[n] = '\0';
 	return (string);

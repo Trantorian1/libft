@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:35:48 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:05:23 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:23:28 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@
 char	*ft_strmapi(t_str str, char (*mapping_f)(t_uint, char))
 {
 	char	*mapped;
-	t_uint	i = 0;
+	t_uint	i;
 
+	i = 0;
 	if (!str)
 		return (NULL);
-	if (!(mapped = ft_strdup(str)))
+	mapped = ft_strdup(str);
+	if (!str)
 		return (NULL);
 	while (mapped[i])
 	{

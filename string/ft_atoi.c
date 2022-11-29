@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 08:39:58 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:04:25 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 12:00:16 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,13 @@
  */
 int	ft_atoi(t_str str_int)
 {
-	size_t	i      = 0;
-	int		sign   = 1;
-	int		result = 0;
+	size_t	i;
+	int		sign;
+	int		result;
 
+	i = 0;
+	sign = 1;
+	result = 0;
 	while (ft_isspace(str_int[i]))
 		i++;
 	if (str_int[i] == '+')

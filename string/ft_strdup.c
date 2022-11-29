@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 09:44:20 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:06:10 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:19:29 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@
  */
 char	*ft_strdup(t_str str_src)
 {
-	int		str_size = ft_strlen(str_src);
+	int		str_size;
 	char	*str_dest;
 
-	if (!(str_dest = ft_stralloc(str_size)))
+	str_size = ft_strlen(str_src);
+	str_dest = ft_stralloc(str_size);
+	if (!str_dest)
 		return (NULL);
 	ft_memcpy(str_dest, str_src, str_size + 1);
 	return (str_dest);

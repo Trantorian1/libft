@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:02:56 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:05:28 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:23:49 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@
 int	ft_strncmp(t_str str_a, t_str str_b, size_t n)
 {
 	int		char_diff;
-	size_t	i = 0;
+	size_t	i;
 
+	i = 0;
 	while (n--)
 	{
 		char_diff = (t_uchar)str_a[i] - (t_uchar)str_b[i];

@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:29:22 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:06:10 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:18:30 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
  * 	- < 0 if [str_a] is before [str_b] in ascii order.
  * 	- > 0 if [str_a] is after [str_b] in ascii order.
  */
-int	ft_strcmp(t_str str_a, t_str str_b)
+/* int	ft_strcmp(t_str str_a, t_str str_b)
 {
-	size_t	i        = 0;
-	int		char_dif = 0;
+	size_t	i        = 0;  
+	int		char_dif = 0;  
 
 	do
 	{
@@ -36,4 +36,16 @@ int	ft_strcmp(t_str str_a, t_str str_b)
 	}
 	while (str_a[i] && str_b[i]);
 	return (char_dif);
+} */
+int	ft_strcmp(t_str str_a, t_str str_b)
+{
+	int	char_dif;
+
+	while (true)
+	{
+		char_dif = *((t_uchar *)str_a) - *((t_uchar *)str_b);
+		if (!*str_a++ || !*str_b++ || char_dif)
+			return (char_dif);
+	}
+	return (0);
 }

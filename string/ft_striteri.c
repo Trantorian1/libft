@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:45:43 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:06:10 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:19:43 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
  */
 void	ft_striteri(char *str, void (*f)(t_uint, char *))
 {
-	size_t	i = 0;
+	size_t	i;
 
+	i = 0;
 	if (!str || !f)
 		return ;
 	while (str[i])

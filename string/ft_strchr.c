@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 11:17:27 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:06:10 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 12:17:26 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
  */
 char	*ft_strchr(t_str str, int c)
 {
-	size_t	i = 0;
+	size_t	i;
 
+	i = 0;
 	c = ft_tochar(c);
 	while (str[i] && str[i] != c)
 		i++;
