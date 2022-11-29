@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 11:10:27 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/21 09:59:42 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 11:28:08 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@
 int	ft_tolower(int c)
 {
 	c = (unsigned char)c;
-	return (ft_isupper(c) ? c + UPPER : c);
+	if (ft_isupper(c))
+		return (c + UPPER);
+	return (c);
 }
