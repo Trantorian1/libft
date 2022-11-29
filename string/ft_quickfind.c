@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:47:49 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/28 16:48:22 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 16:50:00 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,8 +152,8 @@ static char	*ft_longword_search(t_longword *lword, t_magic magic,
 	}
 }
 
-_Pragma("GCC diagnostic push")
-_Pragma("GCC diagnostic ignored \"-Wcast-align\"")
+// _Pragma("GCC diagnostic push")
+// _Pragma("GCC diagnostic ignored \"-Wcast-align\"")
 
 /*
  * @brief Rapidly searches for a character [c] in a string [str]. Takes
@@ -191,4 +191,4 @@ char	*ft_quickfind(char *str, int c)
 	return (ft_longword_search(lword, magic, (unsigned char)c));
 }
 
-_Pragma("GCC diagnostic pop")
+// _Pragma("GCC diagnostic pop")
