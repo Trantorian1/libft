@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:33:51 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:04:05 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 11:35:51 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@
 char	*ft_memstr(t_any mem, size_t mem_size)
 {
 	char	*str_mem;
-	size_t	i = 0;
+	size_t	i;
 
-	if (!(str_mem = ft_stralloc(mem_size)))
+	i = 0;
+	str_mem = ft_stralloc(mem_size);
+	if (!str_mem)
 		return (NULL);
 	while (i < mem_size)
 	{

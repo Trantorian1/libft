@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 09:29:04 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:03:32 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 11:34:37 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	*ft_calloc(size_t elem_count, size_t elem_size)
 
 	if (elem_size && elem_count > SIZE_MAX / elem_size)
 		return (NULL);
-	if (!(memory = malloc(elem_count * elem_size)))
+	memory = malloc(elem_count * elem_size);
+	if (!memory)
 		return (NULL);
 	ft_bzero(memory, elem_count * elem_size);
 	return (memory);

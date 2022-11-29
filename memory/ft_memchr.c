@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 18:10:46 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:03:41 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 11:34:47 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
  */
 void	*ft_memchr(const void *src, int to_find, size_t n)
 {
-	size_t	i = 0;
+	size_t	i;
 
+	i = 0;
 	to_find = ft_tochar(to_find);
 	while (i < n)
 	{

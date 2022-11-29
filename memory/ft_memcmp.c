@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 18:23:54 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:03:46 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 11:35:00 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@
  */
 int	ft_memcmp(const void *mem_a, const void *mem_b, size_t n)
 {
-	size_t	i = 0;
+	size_t	i;
 
+	i = 0;
 	while (n--)
 	{
 		if (((const t_byte *)mem_a)[i] != ((const t_byte *)mem_b)[i])

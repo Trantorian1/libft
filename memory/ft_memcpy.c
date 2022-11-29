@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:14:58 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:03:51 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 11:35:10 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
  */
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t	i = 0;
+	size_t	i;
 
+	i = 0;
 	if (dest == src)
 		return (dest);
 	while (i < n)

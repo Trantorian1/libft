@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:56:29 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:04:00 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 11:35:20 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@
  */
 void	*ft_memset(void *memory, int byte, size_t n)
 {
-	size_t	i = 0;
+	size_t	i;
 
+	i = 0;
 	while (i < n)
 	{
 		((t_byte *)memory)[i] = byte;
