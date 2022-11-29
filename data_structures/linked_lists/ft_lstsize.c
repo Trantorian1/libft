@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:33:08 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/28 16:15:10 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:31:17 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,17 @@
  */
 int	ft_lst_size(t_list *head)
 {
-	t_list	*node = head;
-	size_t	size  = 1;
+	t_list	*node;
+	size_t	size;
 
+	node = head;
+	size = 1;
 	if (!node)
 		return (0);
-	while ((node = node -> next))
+	while (node -> next)
+	{
+		node = node -> next;
 		size++;
+	}
 	return (size);
 }
