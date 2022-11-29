@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:41:27 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:02:05 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 11:30:43 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@
  */
 static size_t	ft_num_len(int n_abs)
 {
-	size_t	digit_count = 1;
+	size_t	digit_count;
 
+	digit_count = 1;
 	while (n_abs >= 10)
 	{
 		digit_count++;
@@ -40,13 +41,16 @@ static size_t	ft_num_len(int n_abs)
  */
 char	*ft_itoa(int n)
 {
-	int		n_abs = ft_abs(n);
-	size_t	n_len = ft_num_len(n_abs) + (n < 0);
+	int		n_abs;
+	size_t	n_len;
 	char	*str;
 
+	n_abs = ft_abs(n);
+	n_len = ft_num_len(n_abs) + (n < 0);
 	if (n_abs < 0)
 		return (ft_strdup("-2147483648"));
-	if (!(str = ft_stralloc(n_len)))
+	str = ft_stralloc(n_len);
+	if (!str)
 		return (NULL);
 	if (n < 0)
 		str[0] = '-';

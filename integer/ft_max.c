@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:24:36 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:02:11 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 11:31:22 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@
  */
 size_t	ft_max(size_t a, size_t b)
 {
-	return (a >= b ? a : b);
+	if (a >= b)
+		return (a);
+	return (b);
 }
