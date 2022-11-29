@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:19:59 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/28 16:20:18 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:41:26 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  *
  * @return (size_t): the total size of [linkstr].
  */
-size_t	ft_linkstr_size(t_linkstr *linkstr)
+size_t	ft_linkstr_size(t_lstr *linkstr)
 {
 	t_list	*node_current;
 	char	**strs;

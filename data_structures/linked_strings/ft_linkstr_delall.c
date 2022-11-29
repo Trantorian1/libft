@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:21:53 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/28 16:22:04 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:41:26 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  *
  * @return (void *): NULL.
  */
-void	*ft_linkstr_delall(t_linkstr *linkstr, void (*f_free)(void *))
+void	*ft_linkstr_delall(t_lstr *linkstr, void (*f_free)(void *))
 {
 	t_list	*node_current;
 	t_list	*node_previous;

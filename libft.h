@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:47:51 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/28 17:51:04 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:41:26 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,20 @@ typedef struct s_linkstr
 	t_list	*strs_last;
 	size_t	linksize;
 	size_t	i;
-}	t_linkstr;
+}	t_lstr;
 
-_Pragma("GCC diagnostic push")
-_Pragma("GCC diagnostic ignored \"-Wpadded\"")
+// _Pragma("GCC diagnostic push")
+// _Pragma("GCC diagnostic ignored \"-Wpadded\"")
 
-typedef struct	s_line
+typedef struct s_line
 {
 	size_t	i;
 	char	buffer[BUFFER_SIZE + 1];
 }	t_line;
 
-_Pragma("GCC diagnostic pop")
+// _Pragma("GCC diagnostic pop")
 
-typedef struct	s_magic
+typedef struct s_magic
 {
 	unsigned long int	lomagic;
 	unsigned long int	himagic;
@@ -168,10 +168,10 @@ void	ft_lst_delone(t_list *node, void (*f)(t_any));
 void	ft_lst_clear(t_list **head, void (*f)(t_any));
 
 // linked strings
-t_linkstr	*ft_linkstr_new(size_t linksize);
-void		ft_linkstr_add(t_linkstr *linkstr, char *str);
-size_t		ft_linkstr_size(t_linkstr *linkstr);
-char		*ft_linkstr_collect(t_linkstr *linkstr);
-void		*ft_linkstr_delall(t_linkstr *linkstr, void (*f_free)(void *));
+t_lstr	*ft_linkstr_new(size_t linksize);
+void	ft_linkstr_add(t_lstr *linkstr, char *str);
+size_t	ft_linkstr_size(t_lstr *linkstr);
+char	*ft_linkstr_collect(t_lstr *linkstr);
+void	*ft_linkstr_delall(t_lstr *linkstr, void (*f_free)(void *));
 
 #endif

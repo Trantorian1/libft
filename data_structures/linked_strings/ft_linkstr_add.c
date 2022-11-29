@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:18:41 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/28 16:18:56 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 14:40:41 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * @param linkstr (t_linkstr *): the linked string to append [str] to.
  * @param str (char *): the string to append to [linkstr].
  */
-void	ft_linkstr_add(t_linkstr *linkstr, char *str)
+void	ft_linkstr_add(t_lstr *linkstr, char *str)
 {
 	char	**strs;
 	char	**strs_new;
