@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:51:59 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:03:20 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 11:33:45 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,13 @@
  */
 double	ft_pow(int a, int b)
 {
-	int	b_abs = ft_abs(b);
-	int	pow   = 1;
-	int	i     = 0;
+	int	b_abs;
+	int	pow;
+	int	i;
 
+	b_abs = ft_abs(b);
+	pow = 1;
+	i = 0;
 	while (i <= b_abs)
 	{
 		pow *= a;
