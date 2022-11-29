@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:42:24 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/28 17:49:06 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 11:56:07 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,43 @@ static ssize_t	saferead(int fd, char *buffer)
 }
 
 /*
+ * @brief Keeps reading the file described by [fd] until the current line has
+ * 	been read.
+ * 
+ * @warning: [fd] must point to file opened with read permissions.
+ *
+ * @param fd (int): file descriptor used to read file.
+ * @param linkstr (t_linkstr *): linked string in which to store the line
+ *
+ * @return (char *): current line in the file described by [fd] or NULL if read
+ * 	failed.
+ */
+static char	*ft_grab_line(int fd, t_line l, t_linkstr *linkstr)
+{
+	char			*l_end;
+	char			*l_current;
+
+	l_end = "";
+	l_current = NULL;
+	while (*l_end != '\n')
+	{
+		if (!l.i && !saferead(fd, l.buffer))
+			return (ft_linkstr_delall(linkstr, &free));
+		if (!l.buffer[l.i])
+			return (NULL);
+		l_end = ft_quickfind(l.buffer + l.i, '\n');
+		if (*l_end == '\n')
+			l_current = ft_substr(l.buffer + l.i, 0, l_end - l.buffer + 1);
+		else
+			l_current = ft_substr(l.buffer + l.i, 0, l_end - l.buffer);
+		l.i = (size_t)((l_end - l.buffer) % (BUFFER_SIZE));
+		ft_linkstr_add(linkstr, l_current);
+	}
+	l.i = l.i + (BUFFER_SIZE > 1);
+	return (ft_linkstr_collect(linkstr));
+}
+
+/*
  * @brief Gets the next line in the file corresponding to the given file 
  * 	directory [fd]. Starts at the beggining of the file and returns the 
  * 	following line on each successive function call. Currently only handles one
@@ -44,27 +81,13 @@ static ssize_t	saferead(int fd, char *buffer)
 char	*get_next_line(int fd)
 {
 	static t_line	line = {0, };
-	char			*line_end;
 	char			*line_current;
 	t_linkstr		*linkstr;
-	char			*substr;
 
-	line_end = "";
 	linkstr = ft_linkstr_new(ARRAY_SIZE);
-	line_current = NULL;
-	while (*line_end != '\n')
-	{
-		if (!line.i && !saferead(fd, line.buffer))
-			return (ft_linkstr_delall(linkstr, &free));
-		if (!line.buffer[line.i])
-			return (NULL);
-		line_end = ft_quickfind(line.buffer + line.i, '\n');
-		substr = ft_substr(line.buffer + line.i, 0, line_end - line.buffer);
-		line.i = (size_t)((line_end - line.buffer) % (BUFFER_SIZE));
-		ft_linkstr_add(linkstr, substr);
-	}
-	line_current = ft_linkstr_collect(linkstr);
+	line_current = ft_grab_line(fd, line, linkstr);
+	if (!line_current)
+		return (NULL);
 	ft_linkstr_delall(linkstr, &free);
-	line.i = line.i + (BUFFER_SIZE > 1);
 	return (line_current);
 }

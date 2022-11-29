@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:01:30 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:06:56 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/11/29 11:57:39 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@
  */
 void	ft_putnbr_fd(int n, int file_desc)
 {
-	char	str_n[12] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	int		n_cpy     = n;
-	size_t	i         = 0;
+	static char	str_n[12] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	int			n_cpy;
+	size_t		i;
 
+	n_cpy = n;
+	i = 0;
 	if (n < 0)
 	{
 		if (n == INT_MIN)
