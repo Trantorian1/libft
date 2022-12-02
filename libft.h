@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:47:51 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/29 14:41:26 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/02 14:10:07 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,13 @@ typedef struct s_magic
 	unsigned long int	crmagic;
 }	t_magic;
 
+typedef struct s_all_magic
+{
+	unsigned long int	lomagic;
+	unsigned long int	himagic;
+	unsigned long int	*crmagic;
+}	t_allmagic;
+
 // character manipulation
 int		ft_islower(int c);
 int		ft_isupper(int c);
@@ -111,6 +118,7 @@ int		ft_atoi(t_str str_int);
 char	*ft_strrev(char *str, size_t from, size_t until);
 char	*ft_strchr(t_str str, int c);
 char	*ft_quickfind(char *str, int c);
+char	*ft_quickfind_all(char *str, char *to_find);
 char	*ft_strrchr(t_str str, int c);
 char	*ft_strnstr(t_str source, t_str substr, size_t n);
 char	*ft_strdup(t_str str_original);

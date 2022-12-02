@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:47:49 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/29 16:50:00 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/02 13:57:22 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static t_magic	ft_magic(unsigned char c)
 
 /*
  * @brief Searches for a byte in a longword [lword] using bitwise operations
- * 	with the longwords stored in [magic].
+ * 	to speed up the search.
  * 
  * Let us suppose the current C implementation supports 32bit longwords, but
  * this algorithm will function for any longword size.
@@ -135,19 +135,19 @@ static char	*ft_longword_search(t_longword *lword, t_magic magic,
 	unsigned char c)
 {
 	char	*str;
-	size_t	j;
+	size_t	i;
 
 	while (true)
 	{	
 		if (!ft_bytesearch(*lword++, magic))
 			continue ;
 		str = (char *)(lword - 1);
-		j = 0;
-		while (j < sizeof(t_longword))
+		i = 0;
+		while (i < sizeof(t_longword))
 		{
-			if (!str[j] || str[j] == c)
-				return (str + j);
-			j++;
+			if (!str[i] || str[i] == c)
+				return (str + i);
+			i++;
 		}
 	}
 }
@@ -175,19 +175,19 @@ static char	*ft_longword_search(t_longword *lword, t_magic magic,
  */
 char	*ft_quickfind(char *str, int c)
 {
+	size_t		i;
 	t_magic		magic;
 	t_longword	*lword;
-	size_t		i;
 
 	i = 0;
-	while (((t_longword)(str + i) & (sizeof(t_longword) - 1)))
+	while ((t_longword)(str + i) & (sizeof(t_longword) - 1))
 	{
 		if (!str[i] || str[i] == c)
 			return (str + i);
 		i++;
 	}
 	magic = ft_magic((unsigned char)c);
-	lword = (t_longword *)(str + i * sizeof(*str));
+	lword = (t_longword *)(str + i);
 	return (ft_longword_search(lword, magic, (unsigned char)c));
 }
 
