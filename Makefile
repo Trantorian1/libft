@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 14:26:34 by emcnab            #+#    #+#              #
-#    Updated: 2022/11/28 17:23:50 by emcnab           ###   ########.fr        #
+#    Updated: 2022/12/02 10:01:59 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,7 @@ define STRINGFILES
 	ft_strjoin.c		ft_strlcat.c		ft_strlcpy.c	ft_strlen.c
 	ft_strmapi.c		ft_strnjoin.c		ft_strnjoin.c	ft_strnsum.c
 	ft_strrchr.c		ft_strrev.c			ft_strsum.c		ft_strtrim.c
-	ft_substr.c			ft_quickfind.c
+	ft_substr.c			ft_quickfind.c		ft_strncmp.c	ft_strnstr.c
 endef
 
 # io functions
