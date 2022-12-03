@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:17:17 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/29 14:25:03 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/03 17:04:30 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ size_t	ft_strnsum(t_str str, size_t n)
 	sum = 0;
 	while (str[i] && i < n)
 	{
-		sum += str[i];
+		sum += (size_t) str[i];
 		i++;
 	}
 	return (sum);

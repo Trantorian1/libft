@@ -6,9 +6,11 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:43:47 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 15:16:54 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/03 16:53:26 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../libft.h"
 
 /*
  * @brief Converts any numerical character back to its int value.

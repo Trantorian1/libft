@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:47:43 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/29 12:12:03 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/03 16:57:07 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static char	*ft_split_copy(t_str *to_split, char splitter)
 	to_split_cpy = *to_split;
 	while (**to_split && **to_split != splitter)
 		(*to_split)++;
-	return (ft_substr(to_split_cpy, 0, *to_split - to_split_cpy));
+	return (ft_substr(to_split_cpy, 0, (size_t)(*to_split - to_split_cpy)));
 }
 
 /*

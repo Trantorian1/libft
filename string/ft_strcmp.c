@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:29:22 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/29 14:18:30 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/03 16:59:19 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,8 @@ int	ft_strcmp(t_str str_a, t_str str_b)
 
 	while (true)
 	{
-		char_dif = *((t_uchar *)str_a) - *((t_uchar *)str_b);
+		char_dif = *((const t_uchar *)str_a) - *((const t_uchar *)str_b);
 		if (!*str_a++ || !*str_b++ || char_dif)
 			return (char_dif);
 	}
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 12:06:08 by emcnab            #+#    #+#             */
-/*   Updated: 2022/12/02 14:08:10 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/03 16:51:51 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ static t_allmagic	ft_allmagic(char *to_find)
 	i = 1;
 	j = -1;
 	while (to_find[++j])
-		allmagic.crmagic[j] = (t_longword) to_find[j];
-	while (i < sizeof(t_longword))
+		allmagic.crmagic[j] = (t_lword) to_find[j];
+	while (i < sizeof(t_lword))
 	{
 		allmagic.lomagic |= allmagic.lomagic << i * 8;
 		allmagic.himagic |= allmagic.himagic << i * 8;
@@ -75,11 +75,10 @@ static t_allmagic	ft_allmagic(char *to_find)
  * 	in [lword], false if there is no probability that the bytes we are loking
  * 	for is in [lword].
  */
-static bool	ft_bytesearch_all(t_longword lword, t_allmagic allmagic,
-		char *to_find)
+static bool	ft_bytesearch_all(t_lword lword, t_allmagic allmagic, char *to_find)
 {
-	size_t		i;
-	t_longword	lword_cpy;
+	size_t	i;
+	t_lword	lword_cpy;
 
 	i = 0;
 	while (to_find[i])
@@ -104,7 +103,7 @@ static bool	ft_bytesearch_all(t_longword lword, t_allmagic allmagic,
  * or the end of the string pointed to by [lword] if no character in [to_find
  * was found.
  */
-static char	*ft_longword_search_all(t_longword *lword, t_allmagic allmagic,
+static char	*ft_longword_search_all(t_lword *lword, t_allmagic allmagic,
 		char *to_find)
 {
 	char	*c;
@@ -116,7 +115,7 @@ static char	*ft_longword_search_all(t_longword *lword, t_allmagic allmagic,
 			continue ;
 		c = (char *)(lword - 1);
 		i = 0;
-		while (i < sizeof(t_longword))
+		while (i < sizeof(t_lword))
 		{
 			if (*ft_quickfind(to_find, c[i]) == c[i])
 				return (c + i);
@@ -149,16 +148,16 @@ char	*ft_quickfind_all(char *str, char *to_find)
 {
 	size_t		i;
 	t_allmagic	allmagic;
-	t_longword	*lword;
+	t_lword		*lword;
 
 	i = 0;
-	while ((t_longword)(str + i * sizeof(*str)) & (sizeof(t_longword) - 1))
+	while ((t_lword)(str + i * sizeof(*str)) & (sizeof(t_lword) - 1))
 	{
 		if (*ft_quickfind(to_find, str[i]) == str[i])
 			return (str + i);
 		i++;
 	}
 	allmagic = ft_allmagic(to_find);
-	lword = (t_longword *)(str + i);
+	lword = (t_lword *)(str + i);
 	return (ft_longword_search_all(lword, allmagic, to_find));
 }

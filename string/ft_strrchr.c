@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:24:34 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/29 14:25:45 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/03 17:07:40 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  *
  * @return a pointer to the last occurrence of c or NULL if c is not found
  */
-char	*ft_strrchr(t_str str, int c)
+char	*ft_strrchr(char *str, int c)
 {
 	int	i;
 	int	last_index;

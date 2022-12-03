@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:50:32 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 17:57:40 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/03 16:54:00 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ t_str	ft_tostr(int c)
 	char	*string;
 
 	string = ft_stralloc(1);
-	string[0] = c;
+	string[0] = (char)c;
 	return (string);
 }

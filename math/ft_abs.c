@@ -6,18 +6,20 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:55:08 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/29 11:32:55 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/03 16:56:08 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../libft.h"
 
 /*
  * @brief Calcualtes the absolute value of a number.
  *
- * @param a (double): the number to get the absolute value of.
+ * @param a (int): the number to get the absolute value of.
  *
- * @return (double): absolute value of [a].
+ * @return (int): absolute value of [a].
  */
-double	ft_abs(double a)
+int	ft_abs(int a)
 {
 	if (a < 0)
 		return (-a);

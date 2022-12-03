@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 09:44:20 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/29 14:19:29 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/03 16:59:49 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  */
 char	*ft_strdup(t_str str_src)
 {
-	int		str_size;
+	size_t	str_size;
 	char	*str_dest;
 
 	str_size = ft_strlen(str_src);

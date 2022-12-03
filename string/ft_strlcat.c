@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:52:11 by emcnab            #+#    #+#             */
-/*   Updated: 2022/11/20 18:06:10 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/03 17:01:19 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ size_t	ft_strlcat(char *dest, t_str src, size_t size)
 	t_str	src_cpy;
 
 	dest_cpy = ft_goto_end(dest, size);
-	dest_len = dest_cpy - dest;
+	dest_len = (size_t)(dest_cpy - dest);
 	size_cpy = size - dest_len;
 	if (size_cpy-- == 0)
 	{
@@ -62,5 +62,5 @@ size_t	ft_strlcat(char *dest, t_str src, size_t size)
 		src_cpy++;
 	}
 	*dest_cpy = '\0';
-	return (dest_len + src_cpy - src);
+	return (dest_len + (size_t)(src_cpy - src));
 }
