@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 14:26:34 by emcnab            #+#    #+#              #
-#    Updated: 2022/12/05 19:27:08 by emcnab           ###   ########.fr        #
+#    Updated: 2022/12/05 19:31:55 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -160,7 +160,7 @@ OFILES  = $(patsubst %.c, $(ODIR)%.o, $(CFILES))
 CC     = clang
 CMODE  = debug
 OPT    = -O0
-CFLAGS = -Wall -Wextra -Werror -fPIC $(OPT)
+CFLAGS = -Wall -Wextra -Werror $(OPT)
 
 # compilation modes
 # debug    : debug mode
