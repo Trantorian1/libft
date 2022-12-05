@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_longword_search.c                               :+:      :+:    :+:   */
+/*   ft_lword_search.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 16:00:08 by emcnab            #+#    #+#             */
-/*   Updated: 2022/12/03 16:47:41 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/05 18:36:50 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static t_magic	ft_magic(char to_find)
 	magic.lomagic = 0x01L;
 	magic.himagic = 0x80L;
 	magic.crmagic = (t_lword) to_find;
-	i = 0;
+	i = 1;
 	while (i < sizeof(t_lword))
 	{
 		magic.lomagic |= magic.lomagic << i * 8;
