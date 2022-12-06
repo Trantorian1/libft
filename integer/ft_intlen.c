@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 14:18:46 by emcnab            #+#    #+#             */
-/*   Updated: 2022/12/06 14:23:56 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/06 14:28:48 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ size_t	ft_intlen(int n)
 	size_t	digit_count;
 	int		n_abs;
 
+	if (n == INT_MIN)
+		n = INT_MAX;
 	n_abs = ft_abs(n);
 	digit_count = 1;
 	while (n_abs >= 10)
