@@ -6,3 +6,6 @@ libft.a
 
 # ignores test files
 libftTester/
+test.c
+a.out
+test

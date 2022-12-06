@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 14:26:34 by emcnab            #+#    #+#              #
-#    Updated: 2022/12/05 19:31:55 by emcnab           ###   ########.fr        #
+#    Updated: 2022/12/06 15:24:55 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,12 +68,13 @@ endef
 INTDIR = integer/
 define INTFILES
 	ft_itoa.c			ft_max.c			ft_min.c		ft_sign.c
+	ft_ltoa.c			ft_intlen.c			ft_longlen.c
 endef
 
 # meth functions
 MATHDIR = math/
 define MATHFILES
-	ft_abs.c			ft_pow.c
+	ft_abs.c			ft_abslong.c		ft_pow.c
 endef
 
 # string functions

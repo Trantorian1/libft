@@ -6,14 +6,17 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:41:27 by emcnab            #+#    #+#             */
-/*   Updated: 2022/12/06 14:39:39 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/06 15:28:56 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
 /*
- * @brief Converts an integer [n] into its ASCII represenation.
+ * @brief Converts an integer [n] into its ASCII representation.
+ *
+ * Handles any c implementation of the long data type, isn't only bound to
+ * 64-bit compilers.
  *
  * @param n (int): the integer to convert.
  *
@@ -25,14 +28,16 @@ char	*ft_itoa(int n)
 	size_t	n_len;
 	char	*str;
 
-	if (n == INT_MIN)
-		n = INT_MIN + 1;
-	n_abs = ft_abs(n);
-	n_len = ft_intlen(n_abs) + (n < 0) - (n == INT_MIN);
+	n_abs = ft_abs(n * (n != INT_MIN) + (INT_MIN + 1) * (n == INT_MIN));
+	n_len = ft_intlen(n_abs) + (n < 0);
 	str = ft_stralloc(n_len);
 	if (!str)
 		return (NULL);
-	str[n_len] = ft_todigit(INT_MIN % 10);
+	if (n == INT_MIN)
+	{
+		str[--n_len] = ft_todigit(-(n % 10));
+		n_abs /= 10;
+	}
 	if (n < 0)
 		str[0] = '-';
 	while (n_abs >= 10)

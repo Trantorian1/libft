@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:47:51 by emcnab            #+#    #+#             */
-/*   Updated: 2022/12/06 14:24:14 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/06 15:24:12 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ char	*ft_strjoin(t_str str_a, t_str str_b);
 char	*ft_strnjoin(size_t argc, ...);
 char	*ft_strtrim(t_str to_trim, t_str trim_set);
 char	*ft_itoa(int n);
+char	*ft_ltoa(long l);
 char	*ft_strmapi(t_str str, char (*mapping_f)(t_uint, char));
 char	**ft_split(t_str to_split, char delimiter);
 size_t	ft_strlen(t_str str);
