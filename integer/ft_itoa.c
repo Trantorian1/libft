@@ -6,31 +6,11 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:41:27 by emcnab            #+#    #+#             */
-/*   Updated: 2022/12/03 16:55:30 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/06 14:39:39 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
-
-/*
- * @brief Determine the number of digits composing [n_abs].
- *
- * @param n_abs (int): absolute value of the number to get the length of.
- *
- * @return (size_t): the number of digits in [n_abs].
- */
-static size_t	ft_num_len(int n_abs)
-{
-	size_t	digit_count;
-
-	digit_count = 1;
-	while (n_abs >= 10)
-	{
-		digit_count++;
-		n_abs /= 10;
-	}
-	return (digit_count);
-}
 
 /*
  * @brief Converts an integer [n] into its ASCII represenation.
@@ -45,13 +25,14 @@ char	*ft_itoa(int n)
 	size_t	n_len;
 	char	*str;
 
+	if (n == INT_MIN)
+		n = INT_MIN + 1;
 	n_abs = ft_abs(n);
-	n_len = ft_num_len(n_abs) + (n < 0);
-	if (n_abs < 0)
-		return (ft_strdup("-2147483648"));
+	n_len = ft_intlen(n_abs) + (n < 0) - (n == INT_MIN);
 	str = ft_stralloc(n_len);
 	if (!str)
 		return (NULL);
+	str[n_len] = ft_todigit(INT_MIN % 10);
 	if (n < 0)
 		str[0] = '-';
 	while (n_abs >= 10)

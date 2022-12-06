@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:47:51 by emcnab            #+#    #+#             */
-/*   Updated: 2022/12/05 08:49:23 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/06 14:24:14 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,12 @@ t_str	ft_tostr(int c);
 int		ft_sign(int n);
 size_t	ft_max(size_t a, size_t b);
 size_t	ft_min(size_t a, size_t b);
+size_t	ft_intlen(int n_abs);
+size_t	ft_longlen(long l);
 
 // maths
 int		ft_abs(int a);
+long	ft_abslong(long n);
 double	ft_pow(int a, int b);
 
 // string manipulation
