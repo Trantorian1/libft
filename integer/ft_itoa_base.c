@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 16:44:37 by emcnab            #+#    #+#             */
-/*   Updated: 2022/12/06 17:22:42 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/06 17:42:53 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static ssize_t	ft_validate_base(char *base)
 	len = 0;
 	while (base[len])
 	{
-		if (occurrences[base[len]] || !ft_isprint(base[len]))
+		if (occurrences[(int)base[len]] || !ft_isprint(base[len]))
 			return (0);
-		occurrences[base[len]] = 1;
+		occurrences[(int)base[len]] = 1;
 		len++;
 	}
 	if (len < 2)
@@ -80,14 +80,15 @@ char	*ft_itoa_base(long l, char *base)
 		return (NULL);
 	if (l == LONG_MIN)
 	{
-		str[--l_len] = ft_todigit(-(l % base_len));
+		str[--l_len] = base[-(l % base_len)];
 		l_abs /= base_len;
 	}
 	str[0] = '-';
-	while (l_len > (l < 0))
+	while ((size_t) l_abs >= base_len)
 	{
-		str[--l_len] = ft_todigit(l_abs % base_len);
+		str[--l_len] = base[l_abs % base_len];
 		l_abs /= base_len;
 	}
+	str[l < 0] = base[l_abs % base_len];
 	return (str);
 }
