@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:41:27 by emcnab            #+#    #+#             */
-/*   Updated: 2022/12/06 15:28:56 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/06 17:12:41 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,11 @@ char	*ft_itoa(int n)
 		str[--n_len] = ft_todigit(-(n % 10));
 		n_abs /= 10;
 	}
-	if (n < 0)
-		str[0] = '-';
-	while (n_abs >= 10)
+	str[0] = '-';
+	while (n_len > (n < 0))
 	{
 		str[--n_len] = (char)ft_todigit(n_abs % 10);
 		n_abs /= 10;
 	}
-	str[n < 0] = (char)ft_todigit(n_abs);
 	return (str);
 }
