@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 14:26:34 by emcnab            #+#    #+#              #
-#    Updated: 2022/12/06 17:36:20 by emcnab           ###   ########.fr        #
+#    Updated: 2022/12/06 18:00:31 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ INTDIR = integer/
 define INTFILES
 	ft_itoa.c			ft_max.c			ft_min.c		ft_sign.c
 	ft_ltoa.c			ft_intlen.c			ft_longlen.c	ft_itoa_base.c
+	ft_baselen.c
 endef
 
 # meth functions

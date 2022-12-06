@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_intlen.c                                        :+:      :+:    :+:   */
+/*   ft_baselen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 14:18:46 by emcnab            #+#    #+#             */
-/*   Updated: 2022/12/06 17:54:45 by emcnab           ###   ########.fr       */
+/*   Created: 2022/12/06 17:48:19 by emcnab            #+#    #+#             */
+/*   Updated: 2022/12/06 17:55:07 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-/**
- * @brief Determine the number of digits composing [n].
- *
- * @param n (int): the number to get the length of.
- *
- * @return (size_t): the number of digits in [n].
- */
-size_t	ft_intlen(int n)
+size_t	ft_baselen(long l, long base)
 {
 	size_t	digit_count;
-	int		n_abs;
+	long	l_abs;
 
-	if (n == INT_MIN)
-		n = INT_MAX;
-	n_abs = ft_abs(n);
+	if (l == LONG_MIN)
+		l = LONG_MAX;
+	l_abs = ft_abslong(l);
 	digit_count = 1;
-	while (n_abs >= 10)
+	while (l_abs >= base)
 	{
 		digit_count++;
-		n_abs /= 10;
+		l_abs /= base;
 	}
 	return (digit_count);
 }

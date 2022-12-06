@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 16:44:37 by emcnab            #+#    #+#             */
-/*   Updated: 2022/12/06 17:42:53 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/06 17:58:10 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	*ft_itoa_base(long l, char *base)
 	if (!base_len)
 		return (NULL);
 	l_abs = ft_abslong(l * (l != LONG_MIN) + (LONG_MIN + 1) * (l == LONG_MIN));
-	l_len = ft_longlen(l_abs) + (l < 0);
+	l_len = ft_baselen(l_abs, base_len) + (l < 0);
 	str = ft_stralloc(l_len);
 	if (!str)
 		return (NULL);
