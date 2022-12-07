@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 16:44:37 by emcnab            #+#    #+#             */
-/*   Updated: 2022/12/06 19:43:56 by emcnab           ###   ########.fr       */
+/*   Updated: 2022/12/07 18:12:01 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
  * @author Eliot McNab
  * @date 12/06/2022
  */
-static long	ft_validate_base(char *base)
+static size_t	ft_validate_base(char *base)
 {
-	long	len;
+	size_t	len;
 	char	occurrences[CHAR_MAX];
 
 	if (!base)
@@ -66,27 +66,21 @@ static long	ft_validate_base(char *base)
  * @author Eliot McNab
  * @date 12/06/2022
  */
-static char	*ft_to_base(long l, long l_abs, long base_len, char *base)
+static char	*ft_to_base(unsigned long l, size_t base_len, char *base)
 {
 	size_t	str_len;
 	char	*str_base;
 
-	str_len = ft_baselen(l_abs, base_len) + (l < 0);
+	str_len = ft_baselen(l, base_len) + (l < 0);
 	str_base = ft_stralloc(str_len);
 	if (!str_base)
 		return (NULL);
-	if (l == LONG_MIN)
+	while ((size_t)l >= base_len)
 	{
-		str_base[--str_len] = base[-(l % base_len)];
-		l_abs /= base_len;
+		str_base[--str_len] = base[l % base_len];
+		l /= base_len;
 	}
-	str_base[0] = '-';
-	while (l_abs >= base_len)
-	{
-		str_base[--str_len] = base[l_abs % base_len];
-		l_abs /= base_len;
-	}
-	str_base[l < 0] = base[l_abs % base_len];
+	str_base[l < 0] = base[l % base_len];
 	return (str_base);
 }
 
@@ -104,14 +98,12 @@ static char	*ft_to_base(long l, long l_abs, long base_len, char *base)
  * @author Eliot McNab
  * @date 12/06/2022
  */
-char	*ft_itoa_base(long l, char *base)
+char	*ft_itoa_base(unsigned long l, char *base)
 {
-	long	base_len;
-	long	l_abs;
+	size_t	base_len;
 
 	base_len = ft_validate_base(base);
 	if (!base_len)
 		return (NULL);
-	l_abs = ft_abslong(l * (l != LONG_MIN) + (LONG_MIN + 1) * (l == LONG_MIN));
-	return (ft_to_base(l, l_abs, base_len, base));
+	return (ft_to_base(l, base_len, base));
 }
