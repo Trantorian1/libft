@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_ultoa_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 16:44:37 by emcnab            #+#    #+#             */
-/*   Updated: 2022/12/07 18:12:01 by emcnab           ###   ########.fr       */
+/*   Created: 2022/12/08 09:12:50 by emcnab            #+#    #+#             */
+/*   Updated: 2022/12/08 09:13:31 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ static char	*ft_to_base(unsigned long l, size_t base_len, char *base)
  * @author Eliot McNab
  * @date 12/06/2022
  */
-char	*ft_itoa_base(unsigned long l, char *base)
+char	*ft_ultoa_base(unsigned long l, char *base)
 {
 	size_t	base_len;
 
