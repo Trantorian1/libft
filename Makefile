@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 14:26:34 by emcnab            #+#    #+#              #
-#    Updated: 2022/12/08 09:19:17 by emcnab           ###   ########.fr        #
+#    Updated: 2022/12/09 14:39:25 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,12 +43,8 @@ $(LBLUE)   |_____||_______|$(LGRAY)(_)$(CYAN)|________||_____||_______/|_____|  
 
 $(LGRAY) - version by Eliot McNab
 endef
-define SEPERATOR
-$(WHITE).....................................................................
-endef
 
 export HEADER
-export SEPERATOR
 export EXITS_ALREADY
 
 # ==============================================================================
@@ -193,12 +189,10 @@ all: display $(BINARY)
 # displays the header
 display:
 	@echo "$$HEADER"
-	@echo "$$SEPERATOR"
 
 # for the binary to be build, all object files must have been compiled
 $(BINARY): $(ODIRS) $(OFILES)
 	@$(AR) $(AFLAGS) $@ $(OFILES)
-	@echo "$$SEPERATOR"
 	@echo "${LGREEN} ${WHITE}${BINARY} ${LGREEN}built successfully!${LGRAY}"
 
 # creates all directories necessary to building
@@ -214,7 +208,6 @@ $(ODIR)%.o:%.c
 # removes all objects
 clean:
 	@rm -f $(OFILES)
-	@echo "$$SEPERATOR"
 	@echo "${RED} removed all object files${LGRAY}"
 
 # removes all objects and the binary
@@ -222,7 +215,6 @@ fclean: clean
 	@rm -f $(BINARY)
 	@echo "${RED}|${LGRAY}"
 	@echo "${LRED} removed ${WHITE}${BINARY}${LGRAY}"
-	@echo "$$SEPERATOR"
 
 # removes all objecst, the binary qnd rebuilds the binary
 re: fclean all
