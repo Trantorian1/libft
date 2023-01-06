@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:47:51 by emcnab            #+#    #+#             */
-/*   Updated: 2022/12/08 09:18:03 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/06 11:47:40 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <limits.h>
 # include <stdarg.h>
 # include <unistd.h>
+
+#include "math/maths.h"
+#include "errors/errors.h"
 
 # define STDOUT 1
 # define STDERR 2
@@ -112,11 +115,6 @@ size_t	ft_baselen(unsigned long l, size_t base);
 char	*ft_itoa(int n);
 char	*ft_ltoa(long l);
 char	*ft_ultoa_base(unsigned long l, char *base);
-
-// maths
-int		ft_abs(int a);
-long	ft_abslong(long n);
-double	ft_pow(int a, int b);
 
 // string manipulation
 // TODO: string functions need rethinking as to how 'const' is handled
