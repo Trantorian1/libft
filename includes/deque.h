@@ -6,14 +6,13 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 10:19:03 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 16:33:09 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/09 18:56:00 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEQUEUE_H
 # define DEQUEUE_H
 
-# include <stddef.h>
 # include <stdlib.h>
 # include "typedefs.h"
 # include "errors.h"
@@ -45,17 +44,17 @@ typedef struct s_deque
 }	t_s_deque;
 
 t_s_deque*	ft_deque_new(int *data, size_t size);
-void			*ft_deque_destroy(t_s_deque *deque);
-int				ft_deque_make_space(t_s_deque *deque);
-bool			ft_deque_should_make_space(t_s_deque *deque);
-bool			ft_deque_is_empty(t_s_deque *deque);
-int				ft_deque_add_front(t_s_deque *deque, int n);
-int				ft_deque_add_back(t_s_deque *deque, int n);
-int				ft_deque_pop_front(t_s_deque *deque);
-int				ft_deque_pop_back(t_s_deque *deque);
-int				ft_deque_poll_front(t_s_deque *deque);
-int				ft_deque_poll_back(t_s_deque *deque);
-int				ft_deque_rotate(t_s_deque *deque);
-int				ft_deque_reverse_rotate(t_s_deque *deque);
+void		*ft_deque_destroy(t_s_deque *deque);
+int			ft_deque_make_space(t_s_deque *deque);
+bool		ft_deque_should_make_space(t_s_deque *deque);
+bool		ft_deque_is_empty(t_s_deque *deque);
+int			ft_deque_add_front(t_s_deque *deque, int n);
+int			ft_deque_add_back(t_s_deque *deque, int n);
+int			ft_deque_pop_front(t_s_deque *deque);
+int			ft_deque_pop_back(t_s_deque *deque);
+int			ft_deque_poll_front(t_s_deque *deque);
+int			ft_deque_poll_back(t_s_deque *deque);
+int			ft_deque_rotate(t_s_deque *deque);
+int			ft_deque_reverse_rotate(t_s_deque *deque);
 
 #endif

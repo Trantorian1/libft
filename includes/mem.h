@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:14:35 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 16:39:48 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/09 18:12:43 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,6 @@
 # include <stdarg.h>
 # include "typedefs.h"
 # include "char.h"
-
-# ifdef _WIN64
-#  define SIZE_MAX _UI64_MAX
-# else
-#  define SIZE_MAX UINT_MAX
-# endif
 
 void	ft_bzero(void *mem, size_t n);
 void	ft_freeset(void *to_free, size_t n);
