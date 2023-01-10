@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # processes the options passed to the script
-options=$(getopt -o d:v,h -l dir:,verbose,help -- "$@")
+options=$(getopt -o f:,d:,v,h -l file:,dir:,verbose,help -- "$@")
 
 # checks for errors when processing options
 if [[ $? != 0 ]]; then
@@ -18,33 +18,50 @@ args=("$@")
 # map responsible for storing optional argument value
 declare -A map_opts
 
-# sets default values for options
-map_opts["dir"]="."
-
 # iterates over each argument to retrieve its value
 for ((i=0; i < ${#args[@]}; i++)); do
 	case "${args[$i]}" in
-		--dir|-d)		# specifies source directory
-			map_opts["dir"]=${args[$((i+1))]}
+		--file|-f)			# specifies file
+			# --file is incompatible with --dir
+			if [[ -v map_opts["dir"] ]]; then
+				echo "Error: --file cannot be used in combination with --dir flag"
+				exit 1
+			fi
+			map_opts["file"]=${args[$((i + 1))]}
 			i=$((i + 1))	# moves on to the next argument
 			;;
-		--verbose|-v)	# activates verbose output
+		--dir|-d)			# specifies source directory
+			# --dir is incompatible with --file
+			if [[ -v map_opts["file"] ]]; then
+				echo "Error: --fir cannot be used in combination with --file flag"
+				exit 1
+			fi
+			map_opts["dir"]=${args[$((i + 1))]}
+			i=$((i + 1))	# moves on to the next argument
+			;;
+		--verbose|-v)		# activates verbose output
 			map_opts["verbose"]=1
 			;;
-		--help|-h)		# displays help
+		--help|-h)			# displays help
 			# help must be the only option if used
 			if [[ ${#map_opts[@]} -gt 1 ]]; then
 				echo "Error: --help cannot be used with any other parameter"
+				exit 1;
 			fi
 			map_opts["help"]=1
 			;;
 	esac
 done
 
-IFS=$'\n'
+# sets default values for options
+if [[ ! -v map_opts["dir"] ]]; then
+	map_opts["dir"]="."
+fi
 
 # uses '\n' as field seperator so our greps 
 # are not seperated at each \t and ' '
+IFS=$'\n'
+
 help="\
 Extract_headers is a program designed to facilitate header file generation         \n\
 for 42 school projects.                                                            \n\
@@ -79,12 +96,19 @@ if [[ -v map_opts["help"] ]]; then
 fi
 
 # matches function prototypes in a file
-regex_prototype='[a-zA-Z0-9_ ]+	+\**[a-z][a-z0-9_]+\(([a-zA-Z0-9_*]* [a-zA-Z0-9_,*]*)*\)$'
+# '[a-zA-Z0-9_]+	\**[a-z][a-z0-9_]+\(([a-zA-Z0-9_*]* [a-zA-Z0-9_,*]*)* .{3}\)$'
+regex_prototype='[a-zA-Z0-9_]+	\**[a-z][a-z0-9_]+\(([a-zA-Z0-9_*]* [a-zA-Z0-9_,*\(\)]*)*.{3}?\)$'
 # matches function names in a prototype
 regex_function='[a-zA-Z0-9_]*\('
 
-# looks for c files in the source directory
-for file in $(find ${map_opts["dir"]} -name "*.c"); do
+if [[ -v map_opts["file"] ]]; then		# uses the provided file path
+	files=${map_opts["file"]}
+	echo $files
+elif [[ -v map_opts["dir"] ]]; then		# looks for c files in the source directory
+	files=$(find ${map_opts["dir"]} -name "*.c")
+fi
+
+for file in ${files[@]}; do
 	# displays file name if in verbose mode
 	if [[ -v map_opts["verbose"] ]]; then
 		echo "[ $file ]"
@@ -98,6 +122,11 @@ for file in $(find ${map_opts["dir"]} -name "*.c"); do
 	name_prot=$(echo $name_file | tr '[:lower:]' '[:upper:]' | tr '.' '_')
 	# retrieves all functon prototypes in the file
 	prototype=($(grep -v 'static' $file | grep -oE $regex_prototype))
+
+	# if no prototype was found in the current file moves on to next file
+	if [[ ! $prototype ]]; then
+		continue
+	fi
 
 	# adds header protection
 	echo "#ifndef $name_prot" > $name_file
@@ -157,6 +186,7 @@ for file in $(find ${map_opts["dir"]} -name "*.c"); do
 		if [[ $struct && ! -v map_struct[$file:$struct] ]]; then
 			# includes the header associated to that struct
 			map_struct["$file:$struct"]=1
+			import_extra=1
 			echo "# include \"$struct.h\"" >> $name_file
 			# logs info message if in verbose mode
 			if [[ -v map_opts["verbose"] ]]; then
@@ -203,7 +233,7 @@ for file in $(find ${map_opts["dir"]} -name "*.c"); do
 		fi
 
 		# if function prototype need to be aligned (justified)
-		if [[ ${map_tab_end[i]} < $tab_max ]]; then
+		if [[ ${map_tab_end[i]} -lt $tab_max ]]; then
 			# splits the return section of the function prototype
 			fun_return=${function:0:${map_tab_start[i]}}
 			# splits the name section of the function prototype
@@ -218,7 +248,7 @@ for file in $(find ${map_opts["dir"]} -name "*.c"); do
 
 			# logs info message if in verbose mode
 			if [[ $name_fun ]]; then
-				echo " Justifying $name_fun"
+				echo " Justifying $name_fun by $tab_count tabs"
 			fi
 		fi
 
