@@ -26,7 +26,7 @@ for ((i=0; i < ${#args[@]}; i++)); do
 	case "${args[$i]}" in
 		--dir|-d)		# specifies source directory
 			map_opts["dir"]=${args[$((i+1))]}
-			i=$((i+1))	# moves on to the next argument
+			i=$((i + 1))	# moves on to the next argument
 			;;
 		--verbose|-v)	# activates verbose output
 			map_opts["verbose"]=1
@@ -109,8 +109,16 @@ for file in $(find ${map_opts["dir"]} -name "*.c"); do
 	declare -A map_include
 	declare -A map_struct
 
+	# used to align function declerations
+	tab_max=0
+	declare -a map_tab_start
+	declare -a map_tab_end
+
 	# for every function prototype in the current file...
-	for function in ${prototype[@]}; do
+	for ((i=0; i < ${#prototype[@]}; i++)); do
+		# gets function prototype
+		function=${prototype[i]}
+
 		# ...if "size_t" is found...
 		if [[ ! -v map_include["size_t"] && $function == *"size_t"* ]]; then
 			# includes stddef.h
@@ -155,7 +163,28 @@ for file in $(find ${map_opts["dir"]} -name "*.c"); do
 				echo " Including $struct.h"
 			fi
 		fi
+
+		# gets function decleration tab index
+		j=0
+		while [[ ${function:j:1} != "	" ]]; do
+			j=$((j + 1))
+		done
+
+		# stores tab start
+		map_tab_start[$i]=$((j + 1))
+		# stores tab end
+		map_tab_end[$i]=$((j + 4 - (j % 4)))
+
+		# updates tab_max if new maximum is found
+		if [[ ${map_tab_end[i]} -gt tab_max ]]; then
+			tab_max=${map_tab_end[i]}
+		fi
 	done
+
+	# displays max tab index if verbose output is enabled
+	if [[ -v map_opts["verbose"] ]]; then
+		echo " max tab index: $tab_max"
+	fi
 
 	# if extra headers were imported...
 	if [[ $import_extra == 1 ]]; then
@@ -164,12 +193,40 @@ for file in $(find ${map_opts["dir"]} -name "*.c"); do
 	fi
 
 	# for every prototype in the current file...
-	for function in ${prototype[@]}; do
+	for ((i=0; i < ${#prototype[@]}; i++)); do
+		# gets function prototype
+		function=${prototype[i]}
+
+		# shortens function name for display if in verbose mode
+		if [[ -v map_opts["verbose"] ]]; then
+			name_fun=$(echo $function | grep -oE $regex_function | sed -s 's/(//')
+		fi
+
+		# if function prototype need to be aligned (justified)
+		if [[ ${map_tab_end[i]} < $tab_max ]]; then
+			# splits the return section of the function prototype
+			fun_return=${function:0:${map_tab_start[i]}}
+			# splits the name section of the function prototype
+			fun_name=${function:${map_tab_start[i]}}
+
+			# determines the number of tabs needed to align the prototype
+			tab_count=$(((tab_max - map_tab_end[i]) / 4))
+			tab_delta=$(printf "	"%.0s {1..$tab_count})
+
+			# aligns the function prototype
+			function="$fun_return$tab_delta$fun_name"
+
+			# logs info message if in verbose mode
+			if [[ $name_fun ]]; then
+				echo " Justifying $name_fun"
+			fi
+		fi
+
 		# adds prototype to the header
 		echo "$function;" >> $name_file
+
 		# logs info message if in verbose mode
-		if [[ -v map_opts["verbose"] ]]; then
-			name_fun=$(echo $function | grep -oE $regex_function | sed -s 's/(//') 
+		if [[ $name_fun ]]; then	
 			echo " Addding $name_fun to $name_file"
 		fi
 	done
