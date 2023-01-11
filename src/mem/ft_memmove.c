@@ -6,11 +6,15 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:33:14 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 16:16:04 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 17:02:25 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/mem.h"
+#include "ft_memmove.h"
+
+#include <stddef.h>
+#include <stdint.h>
+#include "ft_memcpy.h"
 
 /*
  * @brief copies n bytes from memory area src to memory area dest.
@@ -25,9 +29,9 @@
  */
 void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	if (((t_byte *)src) < ((t_byte *)dst))
+	if (((int8_t *)src) < ((int8_t *)dst))
 		while (n--)
-			((t_byte *)dst)[n] = ((t_byte *)src)[n];
+			((int8_t *)dst)[n] = ((int8_t *)src)[n];
 	else
 		ft_memcpy(dst, src, n);
 	return (dst);

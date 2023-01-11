@@ -6,11 +6,11 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:43:47 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 14:43:23 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 16:47:09 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/char.h"
+#include "ft_todigit.h"
 
 /*
  * @brief Converts any numerical character back to its int value.

@@ -6,11 +6,13 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 09:12:50 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 15:54:19 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 16:44:35 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/int.h"
+#include <stddef.h>
+#include <limits.h>
+#include <stdbool.h>
 
 /**
  * @brief Checks the validity of a base string.

@@ -6,11 +6,15 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 14:18:46 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 15:54:18 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 16:48:36 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/int.h"
+#include "ft_intlen.h"
+
+#include <stddef.h>
+#include <limits.h>
+#include "ft_abs.h"
 
 /**
  * @brief Determine the number of digits composing [n].

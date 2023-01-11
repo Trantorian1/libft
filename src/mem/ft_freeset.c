@@ -6,11 +6,15 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 17:41:38 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 16:16:04 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 17:02:25 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/mem.h"
+#include "ft_freeset.h"
+
+#include <stddef.h>
+#include <stdlib.h>
+#include "ft_bzero.h"
 
 /*
  * @brief Frees up memory alocated using malloc, calloc or realloc and sets it

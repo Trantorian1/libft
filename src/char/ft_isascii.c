@@ -6,11 +6,13 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:26:02 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 14:43:23 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 16:47:09 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/char.h"
+#include "ft_isascii.h"
+
+#include <stdbool.h>
 
 #define ASCII_START 0
 #define ASCII_STOP 127
@@ -24,8 +26,7 @@
  * @return (int): 1 if c is a 7-bit unsigned char value that fits into the 
  * ASCII set, 0 otherwise
  */
-int	ft_isascii(int c)
+bool	ft_isascii(unsigned char c)
 {
-	c = ft_tochar(c);
 	return (c >= ASCII_START && c <= ASCII_STOP);
 }

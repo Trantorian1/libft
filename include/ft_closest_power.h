@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tostr.c                                         :+:      :+:    :+:   */
+/*   ft_closest_power.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 13:50:32 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 14:43:23 by emcnab           ###   ########.fr       */
+/*   Created: 2023/01/11 16:49:21 by emcnab            #+#    #+#             */
+/*   Updated: 2023/01/11 16:49:21 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/char.h"
+#ifndef FT_CLOSEST_POWER_H
+# define FT_CLOSEST_POWER_H
 
-/*
- * @brief Converts a character to a string.
- *
- * @param c (int): the character to convert.
- *
- * @return (t_str): a string containing only the character [c].
- */
-t_str	ft_tostr(int c)
-{
-	char	*string;
+int	ft_closest_power(int n, int pow);
 
-	string = ft_stralloc(1);
-	string[0] = (char)c;
-	return (string);
-}
+#endif

@@ -6,11 +6,14 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 18:38:04 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 16:16:04 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 17:02:25 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/mem.h"
+#include "ft_bzero.h"
+
+#include <stddef.h>
+#include "ft_memset.h"
 
 /*
  * @brief erases the data in the n first bytes in memory starting at the 

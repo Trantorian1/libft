@@ -6,11 +6,14 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:56:29 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 16:16:04 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 17:02:25 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/mem.h"
+#include "ft_memset.h"
+
+#include <stddef.h>
+#include <stdint.h>
 
 /*
  * @brief fills memory with a constant byte
@@ -28,7 +31,7 @@ void	*ft_memset(void *memory, int byte, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		((t_byte *)memory)[i] = byte;
+		((int8_t *)memory)[i] = byte;
 		i++;
 	}
 	return (memory);

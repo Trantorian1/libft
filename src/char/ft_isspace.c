@@ -6,11 +6,13 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:01:58 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 14:43:23 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 16:47:09 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/char.h"
+#include "ft_isspace.h"
+
+#include <stdbool.h>
 
 #define SPACE_START '\t'
 #define SPACE_END '\r'
@@ -22,8 +24,7 @@
  * 
  * @return (int): true if [c] is a space, 0 otherwise.
  */
-int	ft_isspace(int c)
+bool	ft_isspace(unsigned char c)
 {
-	c = ft_tochar(c);
 	return ((c >= SPACE_START && c <= SPACE_END) || c == ' ');
 }

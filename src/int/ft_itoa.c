@@ -6,11 +6,12 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:41:27 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 15:54:18 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 16:42:56 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/int.h"
+#include <stddef.h>
+#include <limits.h>
 
 /*
  * @brief Converts an integer [n] into its ASCII representation.

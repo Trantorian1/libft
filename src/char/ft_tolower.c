@@ -6,11 +6,13 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 11:10:27 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 14:43:23 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 16:47:09 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/char.h"
+#include "ft_tolower.h"
+
+#include "ft_isupper.h"
 
 #define UPPER 'a' - 'A'
 
@@ -23,9 +25,8 @@
  * @return (int): lowercase equivalent of c, or c if no lowercase equivalent
  * exists or c is already lowercase
  */
-int	ft_tolower(int c)
+unsigned char	ft_tolower(unsigned char c)
 {
-	c = (unsigned char)c;
 	if (ft_isupper(c))
 		return (c + UPPER);
 	return (c);

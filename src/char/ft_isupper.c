@@ -6,11 +6,13 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:05:29 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 14:43:23 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 16:47:09 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/char.h"
+#include "ft_isupper.h"
+
+#include <stdbool.h>
 
 #define UPPER_START 'A'
 #define UPPER_STOP 'Z'
@@ -22,8 +24,7 @@
  *
  * @return (int): 1 if c is an uppercase letter, 0 otherwise
  */
-int	ft_isupper(int c)
+bool	ft_isupper(unsigned char c)
 {
-	c = ft_tochar(c);
 	return (c >= UPPER_START && c <= UPPER_STOP);
 }

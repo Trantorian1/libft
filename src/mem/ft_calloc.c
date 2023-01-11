@@ -6,11 +6,15 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 09:29:04 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 18:12:43 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 17:02:25 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/mem.h"
+#include "ft_calloc.h"
+
+#include <stddef.h>
+#include <stdlib.h>
+#include "ft_bzero.h"
 
 /*
  * @brief Allocates memory for an array of elem_count elements which each take

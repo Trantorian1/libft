@@ -6,11 +6,16 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 13:33:51 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 16:16:04 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 17:02:25 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/mem.h"
+#include "ft_memstr.h"
+
+#include <stddef.h>
+#include <stdint.h>
+#include "ft_stralloc.h"
+#include "ft_todigit.h"
 
 /*
  * @brief Creates a string representation of a portion of system memory.
@@ -21,7 +26,7 @@
  * @return (char *): string representation of the first [mem_size] bytes of
  * 	[mem].
  */
-char	*ft_memstr(t_any mem, size_t mem_size)
+char	*ft_memstr(int8_t *mem, size_t mem_size)
 {
 	char	*str_mem;
 	size_t	i;
@@ -32,7 +37,7 @@ char	*ft_memstr(t_any mem, size_t mem_size)
 		return (NULL);
 	while (i < mem_size)
 	{
-		str_mem[i] = ft_todigit(((t_byte *)mem)[i]);
+		str_mem[i] = ft_todigit(((int8_t *)mem)[i]);
 		i++;
 	}
 	return (str_mem);

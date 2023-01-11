@@ -6,11 +6,11 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:24:36 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 15:54:19 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 16:44:35 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/int.h"
+#include <stddef.h>
 
 /*
  * @brief determines the largerst of two number

@@ -6,11 +6,11 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 14:07:08 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 16:13:53 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 16:50:08 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/math.h"
+#include "ft_abslong.h"
 
 /**
  * @brief Calculates the absolute value of a long integer.

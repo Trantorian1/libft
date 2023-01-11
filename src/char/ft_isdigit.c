@@ -6,11 +6,13 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 09:54:07 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 14:43:23 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 16:47:09 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/char.h"
+#include "ft_isdigit.h"
+
+#include <stdbool.h>
 
 #define DIGIT_START '0'
 #define DIGIT_STOP '9'
@@ -22,8 +24,7 @@
  *
  * @return (int): 1 if c is a digit, 0 otherwise
  */
-int	ft_isdigit(int c)
+bool	ft_isdigit(unsigned char c)
 {
-	c = ft_tochar(c);
 	return (c >= DIGIT_START && c <= DIGIT_STOP);
 }
