@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:13:13 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 16:35:36 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 10:28:37 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@
  * 
  * Linked strings are designed to avoid the overhead of resizing strings
  * by storing consecutive strings in arrays in linkedlists. Strings are then
- * concatenated all at once when the ft_linkstr_collect(1) function is called,
+ * concatenated all at once when the ft_s_linkstr_collect(1) function is called,
  * avoiding multiple resizes.
  *
  * @param linksize (size_t): the number of strings each linkedlist node will
  * 	hold.
  *
- * @return (t_linkstr *): new linked string.
+ * @return (t_s_linkstr *): new linked string.
  */
-t_linkstr	*ft_linkstr_new(size_t linksize)
+t_s_linkstr	*ft_linkstr_new(size_t linksize)
 {
-	t_linkstr	*linkstr;
+	t_s_linkstr	*linkstr;
 
 	linkstr = malloc(sizeof(*linkstr));
 	if (!linkstr || !linksize)

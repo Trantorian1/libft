@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:19:45 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 15:50:06 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 10:38:15 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 /*
  * @brief Prepends a new node at the front of a linked list.
  *
- * @param list (t_list **): pointer to the head of the linked list.
- * @param node (t_list *): the node to preprend to [list].
+ * @param list (t_s_list **): pointer to the head of the linked list.
+ * @param node (t_s_list *): the node to preprend to [list].
  */
-void	ft_lst_add_front(t_list **list, t_list *node)
+void	ft_lst_add_front(t_s_list **list, t_s_list *node)
 {
 	if (!list)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:18:41 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 16:10:19 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 10:28:11 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 /*
  * @brief Adds a new string at the end of a a linked string.
  *
- * @param linkstr (t_linkstr *): the linked string to append [str] to.
+ * @param linkstr (t_s_linkstr *): the linked string to append [str] to.
  * @param str (char *): the string to append to [linkstr].
  */
-void	ft_linkstr_add(t_linkstr *linkstr, char *str)
+void	ft_linkstr_add(t_s_linkstr *linkstr, char *str)
 {
 	char	**strs;
 	char	**strs_new;

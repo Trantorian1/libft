@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:14:27 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 15:50:06 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 10:38:16 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
  *
  * @param content (t_any): the data initially containted in the linked list.
  *
- * @return (t_list): the head of the new linked list.
+ * @return (t_s_list): the head of the new linked list.
  */
-t_list	*ft_lst_new(t_any content)
+t_s_list	*ft_lst_new(t_any content)
 {
-	t_list	*head;
+	t_s_list	*head;
 
 	head = malloc(sizeof(*head));
 	if (!head)

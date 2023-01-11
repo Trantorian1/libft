@@ -100,10 +100,10 @@ fi
 regex_prototype='[a-zA-Z0-9_]+	\**[a-z][a-z0-9_]+\(([a-zA-Z0-9_*]* [a-zA-Z0-9_,*\(\)]*)*.{3}?\)$'
 # matches function names in a prototype
 regex_function='[a-zA-Z0-9_]*\('
+regex_struct='t_s_[a-zA-Z0-1_]*'
 
 if [[ -v map_opts["file"] ]]; then		# uses the provided file path
 	files=${map_opts["file"]}
-	echo $files
 elif [[ -v map_opts["dir"] ]]; then		# looks for c files in the source directory
 	files=$(find ${map_opts["dir"]} -name "*.c")
 fi
@@ -182,7 +182,7 @@ for file in ${files[@]}; do
 			fi
 		fi
 		# ...if a struct is found...
-		struct=$(echo $function | grep -oE 't_s_[a-zA-Z0-1_]*' | sed -s 's/t_//')
+		struct=$(echo $function | grep -oE $regex_struct | sed -s 's/t_//' | head -1)
 		if [[ $struct && ! -v map_struct[$file:$struct] ]]; then
 			# includes the header associated to that struct
 			map_struct["$file:$struct"]=1
@@ -210,6 +210,10 @@ for file in ${files[@]}; do
 			tab_max=${map_tab_end[i]}
 		fi
 	done
+
+	# unsets all include maps
+	unset map_include
+	unset map_struct
 
 	# displays max tab index if verbose output is enabled
 	if [[ -v map_opts["verbose"] ]]; then

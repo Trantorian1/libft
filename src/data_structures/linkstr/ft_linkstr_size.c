@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:19:59 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 16:35:36 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 10:28:45 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
  * @brief Determines the total size of a linked string by summing the individual
  * 	size of each string it contains.
  *
- * @param linkstr (t_linkstr *): the linked strings to determine the total size
+ * @param linkstr (t_s_linkstr *): the linked strings to determine the total size
  * 	of.
  *
  * @return (size_t): the total size of [linkstr].
  */
-size_t	ft_linkstr_size(t_linkstr *linkstr)
+size_t	ft_linkstr_size(t_s_linkstr *linkstr)
 {
-	t_list	*node_current;
+	t_s_list	*node_current;
 	char	**strs;
 	size_t	size;
 	size_t	i;

@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:21:53 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 16:35:36 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/11 10:28:29 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
  * @brief Deletes all the contents of a linked string and frees up all memory
  * 	allocated to it.
  *
- * @param linkstr (t_linkstr *): the linked string to delete.
+ * @param linkstr (t_s_linkstr *): the linked string to delete.
  * @param f_free (void (void *)): function used to free the strings in
  * 	[linkstr]. Pass NULL if the strings in [linkstr] don't need to be freed.
  *
  * @return (void *): NULL.
  */
-void	*ft_linkstr_delall(t_linkstr *linkstr, void (*f_free)(void *))
+void	*ft_linkstr_delall(t_s_linkstr *linkstr, void (*f_free)(void *))
 {
-	t_list	*node_current;
-	t_list	*node_previous;
+	t_s_list	*node_current;
+	t_s_list	*node_previous;
 	size_t	i;
 
 	if (!linkstr)
