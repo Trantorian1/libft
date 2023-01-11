@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source colors.sh
+
 # processes the options passed to the script
 options=$(getopt -o f:,d:,v,h -l file:,dir:,verbose,help -- "$@")
 
@@ -100,10 +102,10 @@ if [[ -v map_opts["help"] ]]; then
 fi
 
 # matches function prototypes in a file
-# '[a-zA-Z0-9_]+	\**[a-z][a-z0-9_]+\(([a-zA-Z0-9_*]* [a-zA-Z0-9_,*]*)* .{3}\)$'
 regex_prototype='[a-zA-Z0-9_]+	\**[a-z][a-z0-9_]+\(([a-zA-Z0-9_*]* [a-zA-Z0-9_,*\(\)]*)*.{3}?\)$'
 # matches function names in a prototype
 regex_function='[a-zA-Z0-9_]*\('
+# matches structure types in prototype
 regex_struct='t_s_[a-zA-Z0-1_]*'
 
 if [[ -v map_opts["file"] ]]; then		# uses the provided file path
@@ -112,10 +114,11 @@ elif [[ -v map_opts["dir"] ]]; then		# looks for c files in the source directory
 	files=$(find ${map_opts["dir"]} -name "*.c")
 fi
 
+# for every file...
 for file in ${files[@]}; do
 	# displays file name if in verbose mode
 	if [[ -v map_opts["verbose"] ]]; then
-		echo "[ $file ]"
+		echo -e "$BOLD$FG_WHITE$BG_GREEN[ $file ]$NORMAL"
 	fi
 
 	# keeps only the file base (without the extension)
@@ -132,10 +135,19 @@ for file in ${files[@]}; do
 		continue
 	fi
 
+	# generates banner
+	if [[ -v map_opts["verbose"] ]]; then
+		echo -e "$ITALIC Generating banner$NORMAL"
+		source create_header --verbose $name_file
+	else
+		source create_header $name_file
+	fi
+
 	# adds header protection
-	echo "#ifndef $name_prot" > $name_file
+	echo ""                    >> $name_file
+	echo "#ifndef $name_prot"  >> $name_file
 	echo "# define $name_prot" >> $name_file
-	echo "" >> $name_file
+	echo ""                    >> $name_file
 
 	# stores necessary includes
 	import_extra=0
@@ -160,7 +172,7 @@ for file in ${files[@]}; do
 			echo "# include <stddef.h>" >> $name_file
 			# logs info message if in verbose mode
 			if [[ -v map_opts["verbose"] ]]; then
-				echo " Including stddef.h"
+				echo -e "$BOLD$FG_BLUE >> Including$BOLD$FG_WHITE stddef.h$NORMAL"
 			fi
 		fi
 		# ...if "bool" is found...
@@ -171,7 +183,7 @@ for file in ${files[@]}; do
 			echo "# include <stdbool.h>" >> $name_file
 			# logs info message if in verbose mode
 			if [[ -v map_opts["verbose"] ]]; then
-				echo " Including stdbool.h"
+				echo -e "$BOLD$FG_BLUE >> Including$BOLD$FG_WHITE stdbool.h$NORMAL"
 			fi
 		fi
 		# ...if "va_list" is found...
@@ -182,7 +194,7 @@ for file in ${files[@]}; do
 			echo "# include <stdarg.h>" >> $name_file
 			# logs info message if in verbose mode
 			if [[ -v map_opts["verbose"] ]]; then
-				echo " Including stdarg.h"
+				echo -e "$BOLD$FG_BLUE >> Including$BOLD$FG_WHITE stdarg.h$NORMAL"
 			fi
 		fi
 		# ...if a struct is found...
@@ -194,7 +206,7 @@ for file in ${files[@]}; do
 			echo "# include \"$struct.h\"" >> $name_file
 			# logs info message if in verbose mode
 			if [[ -v map_opts["verbose"] ]]; then
-				echo " Including $struct.h"
+				echo -e "$BOLD$FG_BLUE >> Including$BOLD$FG_WHITE $struct.h$NORMAL"
 			fi
 		fi
 
@@ -256,20 +268,31 @@ for file in ${files[@]}; do
 
 			# logs info message if in verbose mode
 			if [[ $name_fun ]]; then
-				echo " Justifying $name_fun by $tab_count tabs"
+				echo " >> Justifying $name_fun by $tab_count tabs"
 			fi
+		fi
+
+		# logs info message if in verbose mode
+		if [[ $name_fun ]]; then	
+			echo -e "$BOLD$FG_GREEN >> Addding$NORMAL $name_fun to $BOLD$UNDERLINE$FG_WHITE$name_file$NORMAL"
 		fi
 
 		# adds prototype to the header
 		echo "$function;" >> $name_file
-
-		# logs info message if in verbose mode
-		if [[ $name_fun ]]; then	
-			echo " Addding $name_fun to $name_file"
-		fi
 	done
 
 	# closes start ifndef
 	echo "" >> $name_file
 	echo "#endif" >> $name_file
+
+	# displays norminette result if in verbose mode
+	if [[ -v map_opts["verbose"] ]]; then
+		norminette_output=$(norminette $file)
+		echo -e "$BOLD$FG_MAGENTA[ Norminette ]$NORMAL"
+		if [[ $norminette_output == *"OK"* ]]; then	
+			echo -e " $BOLD$FG_GREEN■ $norminette_output$NORMAL"
+		else
+			echo -e " $BOLD$FG_RED■ $norminette_output$NORMAL"
+		fi
+	fi
 done

@@ -1,7 +1,9 @@
 #!/bin/bash
 
+source colors.sh
+
 # processes the options passed to the script
-options=$(getopt -o -v -l verbose -- "$@")
+options=$(getopt -o v -l verbose -- "$@")
 
 # checks for errors when processing options
 if [[ $? != 0 ]]; then
@@ -21,7 +23,7 @@ declare -A map_opts
 # iterates over each argument to retrieve its value
 for ((i=0; i < ${#args[@]}; i++)); do
 	case "${args[i]}" in
-		--verbose|v)	# activates verbose output
+		--verbose|-v)	# activates verbose output
 			map_opts["verbose"]=1
 			shift
 			;;
@@ -75,7 +77,7 @@ for file in ${args[@]}; do
 
 	# logs info message if in verbose mode
 	if [[ -v map_opts["verbose"] ]]; then
-		echo "[ $file ]"
+		echo -e "$BOLD$FG_MAGENTA[ $file ]$NORMAL"
 	fi
 
 	# retrieves the parts of the banner to update
@@ -96,7 +98,7 @@ for file in ${args[@]}; do
 
 	# logs info message if in verbose mode
 	if [[ -v map_opts["verbose"] ]]; then
-		echo " Successfully inserted file name"
+		echo -e "$FG_GREEN Successfully$NORMAL inserted$BOLD$FG_WHITE file name$NORMAL"
 	fi
 
 	# replaces file author
@@ -106,7 +108,7 @@ for file in ${args[@]}; do
 
 	# logs info message if in verbose mode
 	if [[ -v map_opts["verbose"] ]]; then
-		echo " Successfully inserted file author"
+		echo -e "$FG_GREEN Successfully$NORMAL inserted$BOLD$FG_WHITE file author$NORMAL"
 	fi
 
 	# replaces file creation date
@@ -116,7 +118,7 @@ for file in ${args[@]}; do
 
 	# logs info message if in verbose mode
 	if [[ -v map_opts["verbose"] ]]; then
-		echo " Successfully inserted file creation date"
+		echo -e "$FG_GREEN Successfully$NORMAL inserted$BOLD$FG_WHITE file creation date$NORMAL"
 	fi
 
 	# replace file update time
@@ -126,8 +128,8 @@ for file in ${args[@]}; do
 
 	# logs info message if in verbose mode
 	if [[ -v map_opts["verbose"] ]]; then
-		echo " Successfully inserted file update date"
-		echo " Adding header to $file"
+		echo -e "$FG_GREEN Successfully$NORMAL inserted$BOLD$FG_WHITE file update date$NORMAL"
+		echo -e "$BOLD$FG_GREEN >> Adding$NORMAL header to $BOLD$UNDERLINE$FG_WHITE$file$NORMAL"
 	fi
 
 	# adds the header to the file
