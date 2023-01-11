@@ -29,6 +29,7 @@ for ((i=0; i < ${#args[@]}; i++)); do
 			fi
 			map_opts["file"]=${args[$((i + 1))]}
 			i=$((i + 1))	# moves on to the next argument
+			shift 2
 			;;
 		--dir|-d)			# specifies source directory
 			# --dir is incompatible with --file
@@ -38,9 +39,11 @@ for ((i=0; i < ${#args[@]}; i++)); do
 			fi
 			map_opts["dir"]=${args[$((i + 1))]}
 			i=$((i + 1))	# moves on to the next argument
+			shift 2
 			;;
 		--verbose|-v)		# activates verbose output
 			map_opts["verbose"]=1
+			shift
 			;;
 		--help|-h)			# displays help
 			# help must be the only option if used
@@ -49,6 +52,7 @@ for ((i=0; i < ${#args[@]}; i++)); do
 				exit 1;
 			fi
 			map_opts["help"]=1
+			shift
 			;;
 	esac
 done
