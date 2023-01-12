@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lst_last.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 14:19:45 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 10:38:15 by emcnab           ###   ########.fr       */
+/*   Created: 2022/11/10 14:45:14 by emcnab            #+#    #+#             */
+/*   Updated: 2023/01/12 17:35:18 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/linklst.h"
+#include "ft_lst_last.h"
 
-/*
- * @brief Prepends a new node at the front of a linked list.
- *
- * @param list (t_s_list **): pointer to the head of the linked list.
- * @param node (t_s_list *): the node to preprend to [list].
- */
-void	ft_lst_add_front(t_s_list **list, t_s_list *node)
+t_s_list	*ft_lst_last(t_s_list *head)
 {
-	if (!list)
-		return ;
-	if (node)
-		node -> next = *list;
-	*list = node;
+	t_s_list	*node;
+
+	node = head;
+	if (!head)
+		return (head);
+	while (node -> next)
+		node = node -> next;
+	return (node);
 }

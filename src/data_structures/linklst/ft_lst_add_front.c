@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lst_add_front.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 14:14:27 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 10:38:16 by emcnab           ###   ########.fr       */
+/*   Created: 2022/11/10 14:19:45 by emcnab            #+#    #+#             */
+/*   Updated: 2023/01/12 17:34:35 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/linklst.h"
+#include "ft_lst_add_front.h"
 
 /*
- * @brief Creates a new linked list.
+ * @brief Prepends a new node at the front of a linked list.
  *
- * @param content (t_any): the data initially containted in the linked list.
- *
- * @return (t_s_list): the head of the new linked list.
+ * @param list (t_s_list **): pointer to the head of the linked list.
+ * @param node (t_s_list *): the node to preprend to [list].
  */
-t_s_list	*ft_lst_new(t_any content)
+void	ft_lst_add_front(t_s_list **list, t_s_list *node)
 {
-	t_s_list	*head;
-
-	head = malloc(sizeof(*head));
-	if (!head)
-		return (NULL);
-	head -> content = content;
-	head -> next = NULL;
-	return (head);
+	if (!list)
+		return ;
+	if (node)
+		node -> next = *list;
+	*list = node;
 }

@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lst_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:17:40 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 10:38:16 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 17:36:10 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/linklst.h"
+#include "ft_lst_map.h"
+
+#include <stdio.h>
+#include "ft_lst_new.h"
+#include "ft_lst_clear.h"
 
 /*
  * @brief Maps the contents of a linked list to a new linked list.
@@ -23,7 +27,7 @@
  * @return (t_s_list *): linked list mapping of [head] or NULL if allocation
  * 	fails.
  */
-t_s_list	*ft_lst_map(t_s_list *head, t_any (*f_map)(t_any), void (*f_free)(t_any))
+t_s_list	*ft_lst_map(t_s_list *head, void *(*f_map)(void *), void (*f_free)(void *))
 {
 	t_s_list	*map;
 	t_s_list	*map_start;

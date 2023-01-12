@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_lst_iter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 14:45:14 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 10:38:15 by emcnab           ###   ########.fr       */
+/*   Created: 2022/11/10 14:28:05 by emcnab            #+#    #+#             */
+/*   Updated: 2023/01/12 17:37:07 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/linklst.h"
+#include "ft_lst_iter.h"
 
-/*
- * @brief Gets the last element in a linked list.
- *
- * @param head (t_s_list *): the start of the linked list.
- * @param (t_s_list *): the last element of the linked list.
- */
-t_s_list	*ft_lst_last(t_s_list *head)
+void	ft_lst_iter(t_s_list *head, void (*f_iter)(void *))
 {
-	t_s_list	*node;
+	t_s_list	*node_current;
 
-	node = head;
-	if (!head)
-		return (head);
-	while (node -> next)
-		node = node -> next;
-	return (node);
+	node_current = head;
+	if (!head || !f_iter)
+		return ;
+	while (node_current)
+	{
+		f_iter(node_current -> content);
+		node_current = node_current -> next;
+	}
 }

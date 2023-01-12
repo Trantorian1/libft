@@ -1,16 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_lst_clear.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:10:27 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 10:38:15 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 17:34:49 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/linklst.h"
+#include "ft_lst_clear.h"
+
+#include <stdlib.h>
+#include "ft_lst_delone.h"
 
 /*
  * @brief Frees up memory taken up by all elements in a linked list and sets 
@@ -20,7 +23,7 @@
  * @param f_free_content (void(t_any)): function used to free the content of 
  * 	individual nodes in the linked list pointed to by [head].
  */
-void	ft_lst_clear(t_s_list **head, void (*f_free_content)(t_any))
+void	ft_lst_clear(t_s_list **head, void (*f_free_content)(void *))
 {
 	t_s_list	*node_current;
 	t_s_list	*node_previous;

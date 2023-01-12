@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lst_new.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 14:33:08 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 10:31:20 by emcnab           ###   ########.fr       */
+/*   Created: 2022/11/10 14:14:27 by emcnab            #+#    #+#             */
+/*   Updated: 2023/01/12 17:37:28 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/linklst.h"
+#include "ft_lst_new.h"
+
+#include <stdlib.h>
 
 /*
- * @brief Determines the size of a linked lists.
+ * @brief Creates a new linked list.
  *
- * @param head (t_s_list *): the head of the linked list.
+ * @param content (t_any): the data initially containted in the linked list.
  *
- * @return (int): the size of the linked list.
+ * @return (t_s_list): the head of the new linked list.
  */
-int	ft_lst_size(t_s_list *head)
+t_s_list	*ft_lst_new(void *content)
 {
-	t_s_list	*node;
-	size_t	size;
+	t_s_list	*head;
 
-	node = head;
-	size = 1;
-	if (!node)
-		return (0);
-	while (node -> next)
-	{
-		node = node -> next;
-		size++;
-	}
-	return (size);
+	head = malloc(sizeof(*head));
+	if (!head)
+		return (NULL);
+	head -> content = content;
+	head -> next = NULL;
+	return (head);
 }
