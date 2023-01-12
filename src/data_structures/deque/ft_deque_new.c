@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   deque.c                                            :+:      :+:    :+:   */
+/*   ft_deque_new.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
+/*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 10:17:59 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/10 12:35:05 by emcnab           ###   ########.fr       */
+/*   Created: 2023/01/12 17:42:52 by emcnab            #+#    #+#             */
+/*   Updated: 2023/01/12 18:29:14 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/deque.h"
+#include "ft_deque_new.h"
 
-/**
- * @file deque.c
- *
- * @brief This file contains functions for creating and destroying a deque
- * (double-ended queue).
- *
- * A deque is a dynamic array that allows insertions and deletions at both ends.
- * It has a front, a back, and a size.
- *
- * The functions are:
- * - ft_deque_new(): creates and returns a new deque with the given data and
- *   size.
- * - ft_deque_destroy(): frees the memory used by the given deque.
- *
- * @author Eliot McNab
- */
+#include <stdlib.h>
+#include "ft_closest_power.h"
+#include "ft_memcpy.h"
 
 /**
  * @brief Creates and returns a new deque with the given data and size.
@@ -57,7 +44,7 @@ t_s_deque	*ft_deque_new(int *data, size_t size)
 	size_delta = (size_deque - size) / 2;
 	deque_array = malloc(size * sizeof(*deque_array));
 	if (!deque_array)
-		return (free(deque), NULL);
+		return ((void)(free(deque)), NULL);
 	ft_memcpy(deque_array + size_delta, data, size * sizeof(*deque_array));
 	deque->bottom = size / 2;
 	deque->top = deque->bottom + 1;
@@ -65,20 +52,4 @@ t_s_deque	*ft_deque_new(int *data, size_t size)
 	deque->size_actual = size;
 	deque->data = deque_array;
 	return (deque);
-}
-
-/**
- * @brief Destroys a deque and frees its memory.
- * 
- * @param deque (t_s_deque *): The deque to be destroyed.
- *
- * @return (void *): A NULL pointer.
- */
-void	*ft_deque_destroy(t_s_deque *deque)
-{
-	deque->bottom = 0;
-	deque->top = 0;
-	free(deque->data);
-	free(deque);
-	return (NULL);
 }

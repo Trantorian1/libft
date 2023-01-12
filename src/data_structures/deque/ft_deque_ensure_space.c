@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   deque_size.c                                       :+:      :+:    :+:   */
+/*   ft_deque_resize.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 13:28:28 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 15:30:55 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 17:55:46 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,30 +55,6 @@ static int	ft_deque_grow(t_s_deque *deque)
 }
 
 /**
- * @brief Ensures that there is enough space in the deque for inserting an
- * element.
- *
- * @param deque A pointer to the deque.
- *
- * @return NO_ERROR if the operation was successful, MALLOC_ERROR if a memory
- * allocation error occurred.
- *
- * The function checks if the deque needs to be resized by calling
- * ft_deque_should_make_space(). If the deque does not need to be resized, it
- * centers the elements in the deque by calling ft_deque_center(). If the
- * deque does need to be resized, it calls ft_deque_grow() to resize it.
- */
-int	ft_deque_make_space(t_s_deque *deque)
-{
-	if (deque->size_actual < deque->size_data)
-	{
-		ft_deque_center(deque);
-		return (NO_ERROR);
-	}
-	return (ft_deque_grow(deque));
-}
-
-/**
  * @brief Determines if the deque needs to be resized.
  *
  * @param deque A pointer to the deque.
@@ -89,19 +65,35 @@ int	ft_deque_make_space(t_s_deque *deque)
  * of the array. If either of these conditions is true, the deque needs to be
  * resized in order to insert an element.
  */
-bool	ft_deque_should_make_space(t_s_deque *deque)
+static bool	ft_deque_should_make_space(t_s_deque *deque)
 {
 	return (deque->bottom = 0 || deque->top >= deque->size_data - 1);
 }
 
 /**
- * @brief Determines if the deque is empty.
- *
+ * 
+ * @brief Ensures that there is enough space in the deque for inserting an
+ * element.
+ * 
  * @param deque A pointer to the deque.
+ * 
+ * @return NO_ERROR if the operation was successful, MALLOC_ERROR if a memory 
+ * allocation error occurred.
  *
- * @return true if the deque is empty, false otherwise.
+ * This function checks if the deque needs more space to
+ * store data. If it does, the function will either center the data in the 
+ * deque's current allocated space or grow the deque by allocating more memory.
+ * The function returns NO_ERROR if the deque was resized successfully,
+ * otherwise it will return an error code.
  */
-bool	ft_deque_is_empty(t_s_deque *deque)
+int	ft_deque_ensure_space(t_s_deque *deque)
 {
-	return (deque->size_actual <= 0);
+	if (!ft_deque_should_make_space(deque))
+		return ;
+	if (deque->size_actual < deque->size_data)
+	{
+		ft_deque_center(deque);
+		return (NO_ERROR);
+	}
+	return (ft_deque_grow(deque));
 }
