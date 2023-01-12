@@ -4,3 +4,6 @@
 [submodule "vendor/Unity"]
 	path = vendor/Unity
 	url = https://github.com/ThrowTheSwitch/Unity.git
+[submodule "vendor/extract_headers"]
+	path = vendor/extract_headers
+	url = https://github.com/eliot-mcnab/extract_headers.git

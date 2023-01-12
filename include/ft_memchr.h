@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
+/*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 17:36:48 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 17:36:48 by emcnab           ###   ########.fr       */
+/*   Created: 2023/01/12 12:09:06 by                   #+#    #+#             */
+/*   Updated: 2023/01/12 12:09:06 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_MEMCHR_H
 
 # include <stddef.h>
+# include <stdint.h>
 
 void	*ft_memchr(const void *src, int8_t to_find, size_t n);
 

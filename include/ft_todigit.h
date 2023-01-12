@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_todigit.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
+/*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 16:38:00 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 16:38:00 by emcnab           ###   ########.fr       */
+/*   Created: 2023/01/12 16:12:30 by                   #+#    #+#             */
+/*   Updated: 2023/01/12 16:12:30 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_TODIGIT_H
 # define FT_TODIGIT_H
 
-int	ft_todigit(int c);
+char	ft_todigit(char c);
 
 #endif

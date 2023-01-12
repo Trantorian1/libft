@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
+/*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 16:38:00 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 16:38:00 by emcnab           ###   ########.fr       */
+/*   Created: 2023/01/12 16:12:30 by                   #+#    #+#             */
+/*   Updated: 2023/01/12 16:12:30 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_TOUPPER_H
 # define FT_TOUPPER_H
 
-char	ft_toupper(unsigned char c);
+char	ft_toupper(char c);
 
 #endif

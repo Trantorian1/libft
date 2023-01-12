@@ -6,12 +6,18 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 14:05:46 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 16:44:35 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 16:14:16 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_ltoa.h"
+
 #include <stddef.h>
 #include <limits.h>
+#include "ft_abslong.h"
+#include "ft_longlen.h"
+#include "ft_stralloc.h"
+#include "ft_todigit.h"
 
 /**
  * @brief Converts a long [l] into its ASCII representation

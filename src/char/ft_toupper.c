@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 11:00:55 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 16:47:04 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 16:12:06 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
  * @return (int): uppercase equivalent of c, or c if no uppercase equivalent
  * exists
  */
-unsigned char	ft_toupper(unsigned char c)
+char	ft_toupper(char c)
 {
 	if (ft_islower(c))
 		return (c - UPPER);

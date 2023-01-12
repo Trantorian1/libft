@@ -6,9 +6,11 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:02:54 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 16:44:35 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 16:14:54 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_sign.h"
 
 /*
  * @brief Determines the sign of an integer.

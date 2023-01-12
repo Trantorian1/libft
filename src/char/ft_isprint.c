@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:39:31 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 16:47:09 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 16:12:23 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
  *
  * @return (int): 1 if c is printable, 0 otheriwise
  */
-bool	ft_isprint(unsigned char c)
+bool	ft_isprint(char c)
 {
 	return (c >= PRINT_START && c <= PRINT_STOP);
 }

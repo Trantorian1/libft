@@ -6,20 +6,18 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 09:44:20 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 15:58:36 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 15:28:34 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/str.h"
+#include "ft_strdup.h"
 
-/*
- * @brief Creates a copy of an existing string which can be freed with free(3).
- *
- * @param str_original (t_str): the string to copy.
- *
- * @return (t_str): a duplicate of str_original, allocated with malloc(3).
- */
-char	*ft_strdup(t_str str_src)
+#include <stddef.h>
+#include "ft_strlen.h"
+#include "ft_stralloc.h"
+#include "ft_memcpy.h"
+
+char	*ft_strdup(const char *str_src)
 {
 	size_t	str_size;
 	char	*str_dest;

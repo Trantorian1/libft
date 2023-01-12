@@ -6,11 +6,15 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 16:00:08 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 15:58:36 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 15:25:16 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/str.h"
+#include "ft_lword_search.h"
+#include "s_magic.h"
+
+#include <stddef.h>
+#include <stdint.h>
 
 /**
  * @brief Creates a new instance of t_magic.
@@ -22,10 +26,10 @@
  *
  * @return (t_magic): new magic instance.
  */
-static t_magic	ft_magic(char to_find)
+static t_s_magic	ft_magic(unsigned char to_find)
 {
-	t_magic	magic;
-	size_t	i;
+	t_s_magic	magic;
+	size_t		i;
 
 	magic.lomagic = 0x01L;
 	magic.himagic = 0x80L;
@@ -102,13 +106,13 @@ static t_magic	ft_magic(char to_find)
  *    we were looking for was contained in [lword].
  * result:	00000000 10000000 10000000 00000000
  * 
- * @param lwords (t_longword): the longword to search.
- * @param magic (t_magic): structure of longwords used for bitwise operations.
+ * @param lword (t_longword): the longword to search.
+ * @param magic (t_s_magic): structure of longwords used for bitwise operations.
  *
  * @returns (bool): true if [lword] MIGHT contain the byte represented by the
  *          longwords in [magic].
  */
-bool	ft_lword_check(t_lword lword, t_magic magic)
+bool	ft_lword_check(t_lword lword, t_s_magic magic)
 {
 	lword &= magic.crmagic;
 	if ((lword - magic.lomagic) & ~lword & magic.himagic)
@@ -124,22 +128,22 @@ bool	ft_lword_check(t_lword lword, t_magic magic)
  * longword in [lwords].
  *
  * @param lwords (t_longword *): array of longwords to find.
- * @param magic (t_magic): structure of longwords used to find byte [to_find].
+ * @param magic (t_s_magic): structure of longwords used to find byte [to_find].
  * @param to_find (unsigned char): the byte to find in [lwords].
  *
  * @return (t_longword *): pointer to the first longword to contain a null-byte
  *         or the byte [to_find].
  */
-t_lword	*ft_byte_search(t_lword *lwords, t_magic magic, unsigned char to_find)
+t_lphrase	ft_byte_search(t_lphrase lwords, t_s_magic magic, uint8_t to_find)
 {
 	size_t		i;
-	char		*str;
+	const char	*str;
 
 	while (true)
 	{
 		if (!ft_lword_check(*lwords++, magic))
 			continue ;
-		str = (char *)(lwords - 1);
+		str = (const char *)(lwords - 1);
 		i = 0;
 		while (i < sizeof(t_lword))
 		{
@@ -154,15 +158,15 @@ t_lword	*ft_byte_search(t_lword *lwords, t_magic magic, unsigned char to_find)
  * @brief Searches a longword representation of a string for a single byte or
  *        the end of the string.
  *
- * @param lword (t_longword *): longword representation of the string to search.
+ * @param lwords (t_longword *): longword representation of the string to search.
  * @param to_find (char): the character to find in [lword].
  *
  * @return (t_longword *): the longword in which [to_find] or then end of the
  *         string is located.
  */
-t_lword	*ft_lword_search(t_lword *lwords, unsigned char to_find)
+t_lphrase	ft_lword_search(t_lphrase lwords, uint8_t to_find)
 {
-	t_magic	magic;
+	t_s_magic	magic;
 
 	magic = ft_magic(to_find);
 	return (ft_byte_search(lwords, magic, to_find));

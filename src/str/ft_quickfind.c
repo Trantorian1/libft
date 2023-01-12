@@ -6,11 +6,17 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:47:49 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 15:58:36 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 15:28:20 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/str.h"
+#include "ft_quickfind.h"
+
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include "s_magic.h"
+#include "ft_lword_search.h"
 
 static bool	ft_isalinged(const char *str)
 {
@@ -27,8 +33,8 @@ static const char	*ft_memalign(const char *str, char to_find)
 	return (str + i);
 }
 
-// _Pragma("GCC diagnostic push")
-// _Pragma("GCC diagnostic ignored \"-Wcast-align\"")
+_Pragma("GCC diagnostic push")
+_Pragma("GCC diagnostic ignored \"-Wcast-align\"")
 
 /*
  * @brief Rapidly searches for a character [c] in a string [str].
@@ -44,7 +50,7 @@ static const char	*ft_memalign(const char *str, char to_find)
  * longwords, this increase is even more noticeable.
  *
  * @param str (char *): the string to search.
- * @param c (int): the character to find, considered as an unsigned char.
+ * @param to_find (int): the character to find, considered as an unsigned char.
  *
  * @return (char *): pointer to the first occurenceof [c] in [str], or to the
  *         terminating null-byte at the end of [str] if [c] was not found.
@@ -56,7 +62,7 @@ const char	*ft_quickfind(const char *str, char to_find)
 	str = ft_memalign(str, to_find);
 	if (!ft_isalinged(str))
 		return (str);
-	str = (char *)(ft_lword_search((t_lword *)str, to_find));
+	str = (const char *)(ft_lword_search((t_lphrase)str, (uint8_t)to_find));
 	i = 0;
 	while (i < sizeof(t_lword))
 	{
@@ -67,4 +73,4 @@ const char	*ft_quickfind(const char *str, char to_find)
 	return (str);
 }
 
-// _Pragma("GCC diagnostic pop")
+_Pragma("GCC diagnostic pop")

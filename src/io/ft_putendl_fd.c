@@ -6,11 +6,14 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:59:13 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 16:03:13 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 15:46:53 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/io.h"
+#include "ft_putendl_fd.h"
+
+#include "ft_putstr_fd.h"
+#include "ft_putchar_fd.h"
 
 /**
  * @brief Puts a string [str] onto the output pointed to by the given file 

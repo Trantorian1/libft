@@ -6,11 +6,13 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:56:12 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 16:03:13 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 16:05:26 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/io.h"
+#include "ft_putstr_fd.h"
+
+#include "ft_strlen.h"
 
 /**
  * @brief Puts a string [str] onto the output pointed to by the given file 
@@ -22,7 +24,7 @@
  * @return (ssize_t): number of bytes written, negative if a write error
  *         occurred.
  */
-ssize_t	ft_putstr_fd(char *str, int file_desc)
+ssize_t	ft_putstr_fd(const char *str, int file_desc)
 {
 	if (!str)
 		return (-1);

@@ -6,11 +6,11 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:02:56 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 15:58:36 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 14:52:15 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/str.h"
+#include "ft_strncmp.h"
 
 /*
  * @brief compares (at most) the first n bytes of the strings str_a and str_b
@@ -25,15 +25,19 @@
  * 	- > 0 if the first n bytes of str_a are after the first n bytes of str_b 
  * 		in ascii order
  */
-int	ft_strncmp(t_str str_a, t_str str_b, size_t n)
+int	ft_strncmp(const char *str_a, const char *str_b, size_t n)
 {
-	int		char_diff;
-	size_t	i;
+	size_t			i;
+	unsigned char	char_diff;
+	unsigned char	char_a;
+	unsigned char	char_b;
 
 	i = 0;
 	while (n--)
 	{
-		char_diff = (t_uchar)str_a[i] - (t_uchar)str_b[i];
+		char_a = (unsigned char)str_a[i];
+		char_b = (unsigned char)str_b[i];
+		char_diff = char_a - char_b;
 		if (!str_a[i] || !str_b[i] || char_diff)
 			return (char_diff);
 		i++;

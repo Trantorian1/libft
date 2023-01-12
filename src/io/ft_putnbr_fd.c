@@ -6,11 +6,17 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:01:30 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 16:03:13 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 16:05:55 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/io.h"
+#include "ft_putnbr_fd.h"
+
+#include <limits.h>
+#include "ft_bzero.h"
+#include "ft_putstr_fd.h"
+#include "ft_todigit.h"
+#include "ft_strrev.h"
 
 /**
  * @brief Puts a number [n] onto the output pointed to by the given file 
@@ -41,10 +47,10 @@ ssize_t	ft_putnbr_fd(int n, int file_desc)
 	}
 	while (n >= 10)
 	{
-		str_n[i++] = ft_todigit(n % 10);
+		str_n[i++] = (char)ft_todigit(n % 10);
 		n /= 10;
 	}
-	str_n[i++] = ft_todigit(n);
+	str_n[i++] = (char)ft_todigit(n);
 	if (n_cpy < 0)
 		str_n[i++] = '-';
 	return (ft_putstr_fd(ft_strrev(str_n, 0, i), file_desc));

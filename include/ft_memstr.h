@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memstr.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
+/*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 16:55:36 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 16:55:36 by emcnab           ###   ########.fr       */
+/*   Created: 2023/01/12 12:09:06 by                   #+#    #+#             */
+/*   Updated: 2023/01/12 12:09:06 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define FT_MEMSTR_H
 
 # include <stddef.h>
+# include <stdint.h>
 
-char	*ft_memstr(int8_t mem, size_t mem_size);
+char	*ft_memstr(int8_t *mem, size_t mem_size);
 
 #endif

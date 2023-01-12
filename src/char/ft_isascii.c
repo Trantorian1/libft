@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:26:02 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 16:47:09 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 16:12:23 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
  * @return (int): 1 if c is a 7-bit unsigned char value that fits into the 
  * ASCII set, 0 otherwise
  */
-bool	ft_isascii(unsigned char c)
+bool	ft_isascii(char c)
 {
 	return (c >= ASCII_START && c <= ASCII_STOP);
 }

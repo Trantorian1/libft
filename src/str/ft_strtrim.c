@@ -6,11 +6,15 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:04:15 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 15:58:37 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 14:59:43 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/str.h"
+#include "ft_strtrim.h"
+
+#include <stdbool.h>
+#include <stddef.h>
+#include "ft_stralloc.h"
 
 /*
  * @brief Determines if a character should be trimmed.
@@ -19,7 +23,7 @@
  *
  * @return (bool): true if [c] should be trimmed, false otherwise.
  */
-static bool	ft_is_trim(char c, t_str trim_set)
+static bool	ft_is_trim(char c, const char *trim_set)
 {
 	while (*trim_set)
 		if (*trim_set++ == c)
@@ -38,7 +42,7 @@ static bool	ft_is_trim(char c, t_str trim_set)
  * @return (size_t): size of [trim_str] after all trimmable charcters have been
  * 	removed.
  */
-static size_t	ft_strtrim_size(t_str trim_str, t_str trim_set)
+static size_t	ft_strtrim_size(const char *trim_str, const char *trim_set)
 {
 	size_t	trim_size;
 
@@ -64,7 +68,7 @@ static size_t	ft_strtrim_size(t_str trim_str, t_str trim_set)
  * @return (char *): Trimmed version of [to_trim], without any characters from
  * 	[trim_set] at the start or the end.
  */
-char	*ft_strtrim(t_str to_trim, t_str trim_set)
+char	*ft_strtrim(const char *to_trim, const char *trim_set)
 {
 	char	*str_trim;
 	char	*trim_cpy;

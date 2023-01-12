@@ -6,11 +6,12 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:25:43 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 15:58:37 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 14:58:13 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/str.h"
+#include "ft_strsum.h"
+
 #include <stddef.h>
 
 /*
@@ -20,7 +21,7 @@
  *
  * @return (size_t): sum of all ASCII characters in [str].
  */
-size_t	ft_strsum(t_str str)
+size_t	ft_strsum(const char *str)
 {
 	size_t	i;
 	size_t	sum;
@@ -29,7 +30,7 @@ size_t	ft_strsum(t_str str)
 	sum = 0;
 	while (str[i])
 	{
-		sum += str[i];
+		sum += (size_t)str[i];
 		i++;
 	}
 	return (sum);

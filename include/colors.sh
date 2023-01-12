@@ -1,1 +1,0 @@
-../vendor/extract_headers/colors.sh

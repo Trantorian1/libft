@@ -6,12 +6,18 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 08:41:27 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 16:42:56 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 16:10:14 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_itoa.h"
+
 #include <stddef.h>
 #include <limits.h>
+#include "ft_abs.h"
+#include "ft_intlen.h"
+#include "ft_stralloc.h"
+#include "ft_todigit.h"
 
 /*
  * @brief Converts an integer [n] into its ASCII representation.
@@ -36,7 +42,7 @@ char	*ft_itoa(int n)
 		return (NULL);
 	if (n == INT_MIN)
 	{
-		str[--n_len] = ft_todigit(-(n % 10));
+		str[--n_len] = (char)ft_todigit(-(n % 10));
 		n_abs /= 10;
 	}
 	str[0] = '-';

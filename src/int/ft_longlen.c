@@ -6,12 +6,14 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 14:20:14 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 16:44:35 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 16:13:25 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "ft_longlen.h"
+
 #include <limits.h>
+#include "ft_abslong.h"
 
 /**
  * @brief Determine the number of digits composing [l].

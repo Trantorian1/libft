@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:01:58 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 16:47:09 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 16:12:23 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
  * 
  * @return (int): true if [c] is a space, 0 otherwise.
  */
-bool	ft_isspace(unsigned char c)
+bool	ft_isspace(char c)
 {
 	return ((c >= SPACE_START && c <= SPACE_END) || c == ' ');
 }

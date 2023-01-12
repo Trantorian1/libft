@@ -6,11 +6,12 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:45:43 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 15:58:36 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 14:43:10 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/str.h"
+#include "ft_striteri.h"
+
 #include <stddef.h>
 
 /*
@@ -20,9 +21,9 @@
  * @param f (void(t_uint, char *)): the function to apply to every character in
  * 	[str].
  */
-void	ft_striteri(char *str, void (*f)(t_uint, char *))
+void	ft_striteri(char *str, void (*f)(unsigned int, char *))
 {
-	t_uint	i;
+	unsigned int	i;
 
 	i = 0;
 	if (!str || !f)

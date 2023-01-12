@@ -6,21 +6,25 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 11:30:20 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/09 15:58:36 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 14:45:02 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/str.h"
+#include "ft_strjoin.h"
+
+#include <stddef.h>
+#include "ft_strlen.h"
+#include "ft_stralloc.h"
 
 /*
  * @brief Joins two strings togther and null-terminates the result.
  *
- * @param str_a (t_str): prefixed string.
- * @param str_b (t_str): postfixed string.
+ * @param str_a (const char *): prefixed string.
+ * @param str_b (const char *): postfixed string.
  *
  * @return (char *): string joining [str_a] and [str_b].
  */
-char	*ft_strjoin(t_str str_a, t_str str_b)
+char	*ft_strjoin(const char *str_a, const char *str_b)
 {
 	size_t	len_a;
 	size_t	len_b;
