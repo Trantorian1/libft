@@ -4,9 +4,3 @@ objs/
 # ignores built library
 libft.a
 build/
-
-# ignores test files
-libftTester/
-test.c
-a.out
-test

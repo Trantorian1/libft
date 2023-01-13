@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_deque.h                                         :+:      :+:    :+:   */
+/*   ft_deque_size.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 17:38:41 by                   #+#    #+#             */
-/*   Updated: 2023/01/13 17:38:41 by                  ###   ########.fr       */
+/*   Created: 2023/01/13 19:26:58 by                   #+#    #+#             */
+/*   Updated: 2023/01/13 19:26:58 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DEQUE_H
-# define FT_DEQUE_H
+#ifndef FT_DEQUE_SIZE_H
+# define FT_DEQUE_SIZE_H
 
 # include <stddef.h>
 # include "s_deque.h"
 
-t_s_deque	*ft_deque_new(int *data, size_t size);
-void		*ft_deque_destroy(t_s_deque *deque, void (*f_free)(void *));
+size_t	ft_deque_size(t_s_deque *deque);
 
 #endif

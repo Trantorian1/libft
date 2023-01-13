@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:42:52 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/13 16:55:19 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/13 17:52:15 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,39 +33,32 @@
 t_s_deque	*ft_deque_new(int *data, size_t size)
 {
 	t_s_deque	*deque;
-	size_t		size_deque;
+	size_t		size_data;
 	size_t		size_delta;
 	int			*deque_array;
 
 	deque = malloc(sizeof(*deque));
 	if (!deque)
 		return (NULL);
-	size_deque = ft_closest_power(size, 2);
-	size_delta = (size_deque - size) / 2;
-	deque_array = malloc(size_deque * sizeof(*deque_array));
+	size_data = ft_closest_power(size, 2);
+	size_delta = (size_data - size) / 2;
+	deque_array = malloc(size_data * sizeof(*deque_array));
 	if (!deque_array)
 		return ((void)(free(deque)), NULL);
 	ft_memcpy(deque_array + size_delta, data, size * sizeof(*deque_array));
-	deque->bottom = size / 2;
-	deque->top = deque->bottom + 1;
-	deque->size_data = size_deque;
+	deque->bottom = size_delta;
+	deque->top = deque->bottom + size - 1;
+	deque->size_data = size_data;
 	deque->size_actual = size;
 	deque->data = deque_array;
 	return (deque);
 }
 
-/**
- * @brief Destroys a deque and frees its memory.
- * 
- * @param deque (t_s_deque *): The deque to be destroyed.
- *
- * @return (void *): A NULL pointer.
- */
-void	*ft_deque_destroy(t_s_deque *deque)
+void	*ft_deque_destroy(t_s_deque *deque, void (*f_free)(void *))
 {
 	deque->bottom = 0;
 	deque->top = 0;
-	free(deque->data);
+	f_free(deque->data);
 	free(deque);
 	return (NULL);
 }

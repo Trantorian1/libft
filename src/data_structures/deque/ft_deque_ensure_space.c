@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 13:28:28 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/13 15:48:48 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/13 19:16:52 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,23 @@ static void	ft_deque_center(t_s_deque *deque)
 static int	ft_deque_grow(t_s_deque *deque)
 {
 	size_t	size_new;
+	size_t	size_delta;
 	int		*new_array;
 	int		*bottom_old;
 	int		*bottom_new;
 
 	size_new = deque->size_data * 2;
+	size_delta = (size_new - deque->size_actual) / 2;
 	new_array = malloc(size_new * sizeof(*new_array));
 	if (!new_array)
 		return (MALLOC_ERROR);
-	deque->size_data = size_new;
 	bottom_old = deque->data + deque->bottom;
-	bottom_new = new_array + (size_new - deque->size_actual) / 2;
-	ft_memcpy(bottom_new, bottom_old, deque->size_actual);
+	bottom_new = new_array + size_delta;
+	ft_memcpy(bottom_new, bottom_old, deque->size_actual * sizeof(*bottom_new));
 	free(deque->data);
+	deque->bottom = size_delta;
+	deque->top = deque->bottom + deque->size_actual - 1;
+	deque->size_data = size_new;
 	deque->data = new_array;
 	return (NO_ERROR);
 }
@@ -73,7 +77,7 @@ static int	ft_deque_grow(t_s_deque *deque)
  */
 static bool	ft_deque_should_make_space(t_s_deque *deque)
 {
-	return (deque->bottom = 0 || deque->top >= deque->size_data - 1);
+	return (deque->bottom == 0 || deque->top >= deque->size_data - 1);
 }
 
 /**
@@ -95,11 +99,6 @@ static bool	ft_deque_should_make_space(t_s_deque *deque)
 int	ft_deque_ensure_space(t_s_deque *deque)
 {
 	if (!ft_deque_should_make_space(deque))
-		return (SIZE_ERROR);
-	if (deque->size_actual < deque->size_data)
-	{
-		ft_deque_center(deque);
 		return (NO_ERROR);
-	}
 	return (ft_deque_grow(deque));
 }
