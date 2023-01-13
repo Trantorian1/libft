@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_deque_resize.c                                  :+:      :+:    :+:   */
+/*   ft_deque_ensure_space.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 13:28:28 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/12 17:55:46 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/12 19:39:41 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/deque.h"
+#include "ft_deque_ensure_space.h"
+
+#include <stdlib.h>
+#include "errors.h"
+#include "ft_memcpy.h"
+#include "ft_memmove.h"
 
 static void	ft_deque_center(t_s_deque *deque)
 {

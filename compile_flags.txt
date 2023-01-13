@@ -1,3 +1,5 @@
 -I
 include/
+-I
+vendor/Unity/src/
 -Weverything
