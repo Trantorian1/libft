@@ -6,13 +6,14 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 13:28:28 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/12 19:39:41 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/13 15:48:48 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque_ensure_space.h"
 
 #include <stdlib.h>
+#include <stdbool.h>
 #include "errors.h"
 #include "ft_memcpy.h"
 #include "ft_memmove.h"
@@ -94,7 +95,7 @@ static bool	ft_deque_should_make_space(t_s_deque *deque)
 int	ft_deque_ensure_space(t_s_deque *deque)
 {
 	if (!ft_deque_should_make_space(deque))
-		return ;
+		return (SIZE_ERROR);
 	if (deque->size_actual < deque->size_data)
 	{
 		ft_deque_center(deque);

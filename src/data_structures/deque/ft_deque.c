@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_deque_new.c                                     :+:      :+:    :+:   */
+/*   ft_deque.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:42:52 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/12 18:29:14 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/13 16:55:19 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_deque_new.h"
+#include "ft_deque.h"
 
 #include <stdlib.h>
 #include "ft_closest_power.h"
@@ -42,7 +42,7 @@ t_s_deque	*ft_deque_new(int *data, size_t size)
 		return (NULL);
 	size_deque = ft_closest_power(size, 2);
 	size_delta = (size_deque - size) / 2;
-	deque_array = malloc(size * sizeof(*deque_array));
+	deque_array = malloc(size_deque * sizeof(*deque_array));
 	if (!deque_array)
 		return ((void)(free(deque)), NULL);
 	ft_memcpy(deque_array + size_delta, data, size * sizeof(*deque_array));
@@ -52,4 +52,20 @@ t_s_deque	*ft_deque_new(int *data, size_t size)
 	deque->size_actual = size;
 	deque->data = deque_array;
 	return (deque);
+}
+
+/**
+ * @brief Destroys a deque and frees its memory.
+ * 
+ * @param deque (t_s_deque *): The deque to be destroyed.
+ *
+ * @return (void *): A NULL pointer.
+ */
+void	*ft_deque_destroy(t_s_deque *deque)
+{
+	deque->bottom = 0;
+	deque->top = 0;
+	free(deque->data);
+	free(deque);
+	return (NULL);
 }

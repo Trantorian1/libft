@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_deque_destroy.c                                 :+:      :+:    :+:   */
+/*   s_magic.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 17:43:02 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/12 18:34:15 by emcnab           ###   ########.fr       */
+/*   Created: 2023/01/12 12:18:12 by emcnab            #+#    #+#             */
+/*   Updated: 2023/01/12 15:24:37 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_deque_destroy.h"
+#ifndef S_MAGIC_H
+# define S_MAGIC_H
 
-#include <stdlib.h>
-
-/**
- * @brief Destroys a deque and frees its memory.
- * 
- * @param deque (t_s_deque *): The deque to be destroyed.
- *
- * @return (void *): A NULL pointer.
- */
-void	*ft_deque_destroy(t_s_deque *deque)
+typedef struct s_magic
 {
-	deque->bottom = 0;
-	deque->top = 0;
-	free(deque->data);
-	free(deque);
-	return (NULL);
-}
+	unsigned long int	lomagic;
+	unsigned long int	himagic;
+	unsigned long int	crmagic;
+}	t_s_magic;
+
+typedef struct s_all_magic
+{
+	unsigned long int	lomagic;
+	unsigned long int	himagic;
+	unsigned long int	*crmagic;
+}	t_s_allmagic;
+
+typedef unsigned long int	t_lword;
+typedef const t_lword		*t_lphrase;
+
+#endif

@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_deque_destroy.h                                 :+:      :+:    :+:   */
+/*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  <>                                        +#+  +:+       +#+        */
+/*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 19:43:01 by                   #+#    #+#             */
-/*   Updated: 2023/01/12 19:43:01 by                  ###   ########.fr       */
+/*   Created: 2023/01/06 11:45:11 by emcnab            #+#    #+#             */
+/*   Updated: 2023/01/06 14:00:58 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DEQUE_DESTROY_H
-# define FT_DEQUE_DESTROY_H
+#ifndef ERRORS_H
+# define ERRORS_H
 
-# include "s_deque.h"
-
-void	*ft_deque_destroy(t_s_deque *deque);
+typedef enum e_errors
+{
+	NO_ERROR,
+	MALLOC_ERROR,
+	SIZE_ERROR
+}	t_e_errors;
 
 #endif

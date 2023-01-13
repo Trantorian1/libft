@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_closest_power.h                                 :+:      :+:    :+:   */
+/*   s_list.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  <>                                        +#+  +:+       +#+        */
+/*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 16:09:40 by                   #+#    #+#             */
-/*   Updated: 2023/01/13 16:09:40 by                  ###   ########.fr       */
+/*   Created: 2023/01/12 17:27:46 by emcnab            #+#    #+#             */
+/*   Updated: 2023/01/12 17:28:13 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CLOSEST_POWER_H
-# define FT_CLOSEST_POWER_H
+#ifndef S_LIST_H
+# define S_LIST_H
 
-int	ft_closest_power(int n, unsigned int pow);
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_s_list;
 
 #endif
