@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_ft_deque.c                                    :+:      :+:    :+:   */
+/*   test_ft_deque_resize.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 15:50:10 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/16 14:29:43 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/16 13:34:50 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unity.h"
 #include "ft_deque.h"
 #include "ft_deque_pop_front.h"
+#include "ft_deque_pop_front_bulk.h"
 #include "ft_deque_poll_front.h"
 #include "ft_deque_pop_back.h"
 #include "ft_deque_poll_back.h"
@@ -56,8 +57,12 @@ void	test_ft_deque_create(void)
 	TEST_ASSERT_EQUAL_INT(SIZE, g_deque->size_actual);
 }
 
-void	test_ft_deque_destroy(void)
+void	test_ft_deque_grow(void)
 {
-	TEST_ASSERT_NOT_NULL_MESSAGE(g_deque, MSG_NULL_DEQUE);
-	ft_deque_destroy(g_deque, &free);
+	int	data_bulk[] = {10, 11, 12, 13, 14, 15};
+
+	TEST_ASSERT_EQUAL_INT(16, g_deque->size_data);
+	TEST_ASSERT_EQUAL_INT(NO_ERROR, ft_deque_add_front_bulk(g_deque, data_bulk, 6));
+	TEST_ASSERT_EQUAL_INT(32, g_deque->size_data);
+	TEST_ASSERT_EQUAL_INT_ARRAY(data_bulk, ft_deque_pop_front_bulk(g_deque, 6), 6);
 }
