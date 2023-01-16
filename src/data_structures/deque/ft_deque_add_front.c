@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:41:21 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/12 18:30:27 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/16 10:00:14 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@
  */
 int	ft_deque_add_front(t_s_deque *deque, int n)
 {
-	if (ft_deque_ensure_space(deque))
-		return (MALLOC_ERROR);
+	int	error_code;
+
+	error_code = ft_deque_ensure_space(deque);
+	if (error_code)
+		return (error_code);
 	deque->data[++deque->top] = n;
 	deque->size_actual++;
 	return (NO_ERROR);

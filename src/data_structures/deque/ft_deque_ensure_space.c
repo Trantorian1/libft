@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 13:28:28 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/13 19:16:52 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/16 09:46:09 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,6 @@
 #include "errors.h"
 #include "ft_memcpy.h"
 #include "ft_memmove.h"
-
-static void	ft_deque_center(t_s_deque *deque)
-{
-	int		*bottom_old;
-	int		*bottom_new;
-
-	bottom_old = deque->data + deque->bottom;
-	bottom_new = deque->data + (deque->size_data - deque->size_actual) / 2;
-	ft_memmove(bottom_new, bottom_old, deque->size_actual);
-}
 
 /**
  * @brief Resizes the deque to twice its current size.
@@ -77,7 +67,7 @@ static int	ft_deque_grow(t_s_deque *deque)
  */
 static bool	ft_deque_should_make_space(t_s_deque *deque)
 {
-	return (deque->bottom == 0 || deque->top >= deque->size_data - 1);
+	return (deque->bottom == 0 || deque->top > deque->size_data - 1);
 }
 
 /**
