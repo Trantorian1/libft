@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_deque.h                                         :+:      :+:    :+:   */
+/*   ft_deque_ensure_space_top.h                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 15:05:03 by                   #+#    #+#             */
-/*   Updated: 2023/01/17 15:05:03 by                  ###   ########.fr       */
+/*   Created: 2023/01/17 18:39:30 by                   #+#    #+#             */
+/*   Updated: 2023/01/17 18:39:30 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DEQUE_H
-# define FT_DEQUE_H
+#ifndef FT_DEQUE_ENSURE_SPACE_TOP_H
+# define FT_DEQUE_ENSURE_SPACE_TOP_H
 
-# include <stddef.h>
 # include "s_deque.h"
 
-t_s_deque	*ft_deque_new(size_t size);
-void		*ft_deque_destroy(t_s_deque *deque, void (*f_free)(void *));
+int	ft_deque_ensure_space_top(t_s_deque *deque);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:41:21 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/16 10:00:14 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/17 18:47:32 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque_add_front.h"
 
-#include "ft_deque_ensure_space.h"
+#include "ft_deque_ensure_space_top.h"
 #include "errors.h"
 
 /**
@@ -36,7 +36,7 @@ int	ft_deque_add_front(t_s_deque *deque, int n)
 {
 	int	error_code;
 
-	error_code = ft_deque_ensure_space(deque);
+	error_code = ft_deque_ensure_space_top(deque);
 	if (error_code)
 		return (error_code);
 	deque->data[++deque->top] = n;

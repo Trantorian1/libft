@@ -6,13 +6,14 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:45:00 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/12 18:31:56 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/17 17:54:17 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque_pop_back.h"
 
 #include "ft_deque_is_empty.h"
+#include "ft_deque_ensure_fit_back.h"
 
 /**
  * @brief Retrieves and removes the element at the back of the deque.
@@ -27,8 +28,15 @@
  */
 int	ft_deque_pop_back(t_s_deque *deque)
 {
+	int	data;
+	int	error_code;
+
 	if (ft_deque_is_empty(deque))
 		return (0);
 	deque->size_actual--;
-	return (deque->data[deque->bottom++]);
+	data = deque->data[deque->bottom++];
+	error_code = ft_deque_ensure_fit_back(deque);
+	if (error_code)
+		return (error_code);
+	return (data);
 }

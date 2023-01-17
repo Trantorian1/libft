@@ -6,13 +6,14 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:44:52 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/12 18:31:37 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/17 17:53:56 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque_pop_front.h"
 
 #include "ft_deque_is_empty.h"
+#include "ft_deque_ensure_fit_front.h"
 
 /**
  * @brief Retrieves and removes the element at the front of the deque.
@@ -29,8 +30,15 @@
  */
 int	ft_deque_pop_front(t_s_deque *deque)
 {
+	int	data;
+	int	error_code;
+
 	if (ft_deque_is_empty(deque))
 		return (0);
 	deque->size_actual--;
-	return (deque->data[deque->top--]);
+	data = deque->data[deque->top--];
+	error_code = ft_deque_ensure_fit_front(deque);
+	if (error_code)
+		return (error_code);
+	return (data);
 }

@@ -6,14 +6,16 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:56:49 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/12 17:57:17 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/17 18:11:36 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef S_DEQUE_H
 # define S_DEQUE_H
 
-#include <stddef.h>
+# include <stddef.h>
+
+# define SHRINK_FACTOR 4
 
 /**
  * @brief Dequeue data structure implemented using resizable arrays with a focus

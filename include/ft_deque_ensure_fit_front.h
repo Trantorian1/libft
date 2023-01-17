@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_deque.h                                         :+:      :+:    :+:   */
+/*   ft_deque_ensure_fit_front.h                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 15:05:03 by                   #+#    #+#             */
-/*   Updated: 2023/01/17 15:05:03 by                  ###   ########.fr       */
+/*   Created: 2023/01/17 15:34:00 by                   #+#    #+#             */
+/*   Updated: 2023/01/17 15:34:00 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DEQUE_H
-# define FT_DEQUE_H
+#ifndef FT_DEQUE_ENSURE_FIT_FRONT_H
+# define FT_DEQUE_ENSURE_FIT_FRONT_H
 
-# include <stddef.h>
 # include "s_deque.h"
 
-t_s_deque	*ft_deque_new(size_t size);
-void		*ft_deque_destroy(t_s_deque *deque, void (*f_free)(void *));
+int	ft_deque_ensure_fit_front(t_s_deque *deque);
 
 #endif

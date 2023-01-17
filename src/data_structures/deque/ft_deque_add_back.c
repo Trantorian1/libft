@@ -6,13 +6,13 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:41:34 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/12 18:00:32 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/17 19:07:29 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque_add_back.h"
 
-#include "ft_deque_ensure_space.h"
+#include "ft_deque_ensure_space_back.h"
 #include "errors.h"
 
 /**
@@ -31,8 +31,11 @@
  */
 int	ft_deque_add_back(t_s_deque *deque, int n)
 {
-	if (ft_deque_ensure_space(deque))
-		return (MALLOC_ERROR);
+	int	error_code;
+
+	error_code = ft_deque_ensure_space_back(deque);
+	if (error_code)
+		return (error_code);
 	deque->data[--deque->bottom] = n;
 	deque->size_actual++;
 	return (NO_ERROR);

@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 15:50:10 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/16 13:34:50 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/17 19:33:59 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,78 @@ void	test_ft_data_create(void)
 void	test_ft_deque_create(void)
 {
 	TEST_ASSERT_NOT_NULL_MESSAGE(g_data, MSG_NULL_DEQUE);
-	g_deque = ft_deque_new(g_data, SIZE);
+	g_deque = ft_deque_new(SIZE);
+	TEST_ASSERT_EQUAL_INT(NO_ERROR, ft_deque_add_front_bulk(g_deque, g_data, SIZE));
 	TEST_ASSERT_NOT_NULL_MESSAGE(g_deque, MSG_NULL_DEQUE);
 	TEST_ASSERT_EQUAL_INT(SIZE, g_deque->size_actual);
 }
 
-void	test_ft_deque_grow(void)
+void	test_ft_deque_grow_top(void)
 {
-	int	data_bulk[] = {10, 11, 12, 13, 14, 15};
+	size_t	size_data;
+	size_t	bottom;
+	int		i;
 
+	size_data = g_deque->size_data;
+	bottom = g_deque->bottom;
+	i = ft_deque_poll_front(g_deque) + 1;
 	TEST_ASSERT_EQUAL_INT(16, g_deque->size_data);
-	TEST_ASSERT_EQUAL_INT(NO_ERROR, ft_deque_add_front_bulk(g_deque, data_bulk, 6));
+	while (g_deque->size_data == size_data)
+		TEST_ASSERT_EQUAL_INT(NO_ERROR, ft_deque_add_front(g_deque, i++));
+	TEST_ASSERT_EQUAL_INT(bottom, g_deque->bottom);
 	TEST_ASSERT_EQUAL_INT(32, g_deque->size_data);
-	TEST_ASSERT_EQUAL_INT_ARRAY(data_bulk, ft_deque_pop_front_bulk(g_deque, 6), 6);
+}
+
+void	test_ft_deque_shrink_top(void)
+{
+	int	i;
+
+	i = ft_deque_poll_front(g_deque);
+	while (g_deque->top > g_deque->size_data / SHRINK_FACTOR)
+		TEST_ASSERT_EQUAL_INT(i--, ft_deque_pop_front(g_deque));
+	TEST_ASSERT_EQUAL_INT(i--, ft_deque_pop_front(g_deque));	
+	TEST_ASSERT_EQUAL_INT(16, g_deque->size_data);
+}
+
+void	test_ft_reset(void)
+{
+	int	i;
+
+	i = ft_deque_poll_front(g_deque) + 1;
+	while (i <= SIZE)
+		TEST_ASSERT_EQUAL_INT(NO_ERROR, ft_deque_add_front(g_deque, i++));
+	TEST_ASSERT_EQUAL_INT(SIZE, ft_deque_poll_front(g_deque));
+}
+
+void	test_ft_deque_grow_bottom(void)
+{
+	size_t	size_data;
+	size_t	space_top;
+	int		i;
+
+	size_data = g_deque->size_data;
+	space_top = g_deque->size_data - g_deque->top;
+	i = ft_deque_poll_back(g_deque) - 1;
+	TEST_ASSERT_EQUAL_INT(16, g_deque->size_data);
+	while (g_deque->size_data == size_data)
+		TEST_ASSERT_EQUAL_INT(NO_ERROR, ft_deque_add_back(g_deque, i--));
+	TEST_ASSERT_EQUAL_INT(space_top, g_deque->size_data - g_deque->top);
+	TEST_ASSERT_EQUAL_INT(32, g_deque->size_data);
+}
+
+void	test_ft_deque_shrink_bottom(void)
+{
+	int	i;
+
+	i = ft_deque_poll_back(g_deque);
+	while (g_deque->size_data - g_deque->bottom > g_deque->size_data / SHRINK_FACTOR)
+		TEST_ASSERT_EQUAL_INT(i++, ft_deque_pop_back(g_deque));
+	TEST_ASSERT_EQUAL_INT(i++, ft_deque_pop_back(g_deque));	
+	TEST_ASSERT_EQUAL_INT(16, g_deque->size_data);
+}
+
+void	test_ft_deque_destroy(void)
+{
+	TEST_ASSERT_NOT_NULL_MESSAGE(g_deque, MSG_NULL_DEQUE);
+	ft_deque_destroy(g_deque, &free);
 }

@@ -35,6 +35,10 @@
 static int			*g_data = NULL;
 static t_s_deque	*g_deque = NULL;
 
+void	test_ft_data_create(void);
+void	test_ft_deque_create(void);
+void	test_ft_deque_destroy(void);
+
 void	test_ft_data_create(void)
 {
 	unsigned int	n;
@@ -51,7 +55,8 @@ void	test_ft_data_create(void)
 void	test_ft_deque_create(void)
 {
 	TEST_ASSERT_NOT_NULL_MESSAGE(g_data, MSG_NULL_DEQUE);
-	g_deque = ft_deque_new(g_data, SIZE);
+	g_deque = ft_deque_new(SIZE);
+	TEST_ASSERT_EQUAL_INT(NO_ERROR, ft_deque_add_front_bulk(g_deque, g_data, SIZE));
 	TEST_ASSERT_NOT_NULL_MESSAGE(g_deque, MSG_NULL_DEQUE);
 	TEST_ASSERT_EQUAL_INT(SIZE, g_deque->size_actual);
 }
