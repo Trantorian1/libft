@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:17:06 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/16 14:17:07 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/18 18:12:34 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,5 @@ void	test_ft_deque_add_back(void)
 void	test_ft_deque_destroy(void)
 {
 	TEST_ASSERT_NOT_NULL_MESSAGE(g_deque, MSG_NULL_DEQUE);
-	ft_deque_destroy(g_deque, &free);
+	ft_deque_destroy(g_deque);
 }

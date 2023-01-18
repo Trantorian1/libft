@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:31:18 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/16 14:52:12 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/18 18:12:53 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,5 @@ void	test_ft_deque_pop_poll_back_bulk(void)
 void	test_ft_deque_destroy(void)
 {
 	TEST_ASSERT_NOT_NULL_MESSAGE(g_deque, MSG_NULL_DEQUE);
-	ft_deque_destroy(g_deque, &free);
+	ft_deque_destroy(g_deque);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_ft_deque_pop.c                                :+:      :+:    :+:   */
+/*   test_ft_deque_pop_poll.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:23:11 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/16 14:29:01 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/18 18:12:45 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,5 @@ void	test_ft_deque_pop_poll_back(void)
 void	test_ft_deque_destroy(void)
 {
 	TEST_ASSERT_NOT_NULL_MESSAGE(g_deque, MSG_NULL_DEQUE);
-	ft_deque_destroy(g_deque, &free);
+	ft_deque_destroy(g_deque);
 }

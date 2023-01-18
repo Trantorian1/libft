@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 16:07:09 by                   #+#    #+#             */
-/*   Updated: 2023/01/18 16:07:09 by                  ###   ########.fr       */
+/*   Created: 2023/01/18 18:09:50 by                   #+#    #+#             */
+/*   Updated: 2023/01/18 18:09:50 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int			ft_deque_poll_front(t_s_deque *deque);
 int			*ft_deque_poll_back_bulk(t_s_deque *deque, size_t n);
 int			ft_deque_pop_front(t_s_deque *deque);
 t_s_deque	*ft_deque_new(size_t size);
-void		*ft_deque_destroy(t_s_deque *deque, void (*f_free)(void *));
+void		*ft_deque_destroy(t_s_deque *deque);
 int			ft_deque_ensure_space_top_bulk(t_s_deque *deque, size_t n);
 int			*ft_deque_poll_front_bulk(t_s_deque *deque, size_t n);
 int			ft_deque_ensure_space_back_bulk(t_s_deque *deque, size_t n);

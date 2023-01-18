@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 15:05:03 by                   #+#    #+#             */
-/*   Updated: 2023/01/17 15:05:03 by                  ###   ########.fr       */
+/*   Created: 2023/01/18 18:09:25 by                   #+#    #+#             */
+/*   Updated: 2023/01/18 18:09:25 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 # include "s_deque.h"
 
 t_s_deque	*ft_deque_new(size_t size);
-void		*ft_deque_destroy(t_s_deque *deque, void (*f_free)(void *));
+void		*ft_deque_destroy(t_s_deque *deque);
 
 #endif
