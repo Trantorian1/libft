@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 18:09:50 by                   #+#    #+#             */
-/*   Updated: 2023/01/18 18:24:32 by emcnab           ###   ########.fr       */
+/*   Created: 2023/01/20 14:23:57 by                   #+#    #+#             */
+/*   Updated: 2023/01/20 14:23:57 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,26 +77,26 @@ size_t		ft_baselen(unsigned long l, size_t base);
 char		*ft_itoa(int n);
 int			ft_sign(int n);
 size_t		ft_intlen(int n);
-int			ft_deque_add_front_bulk(t_s_deque *deque, int *data, size_t n);
 int			ft_deque_ensure_fit_front(t_s_deque *deque);
 int			*ft_deque_pop_front_bulk(t_s_deque *deque, size_t n);
-int			ft_deque_add_back(t_s_deque *deque, int n);
 int			ft_deque_ensure_space(t_s_deque *deque);
 int			ft_deque_reverse_rotate(t_s_deque *deque);
-int			ft_deque_add_back_bulk(t_s_deque *deque, int *data, size_t n);
+int			ft_deque_push_back(t_s_deque *deque, int n);
 int			ft_deque_poll_front(t_s_deque *deque);
 int			*ft_deque_poll_back_bulk(t_s_deque *deque, size_t n);
 int			ft_deque_pop_front(t_s_deque *deque);
 t_s_deque	*ft_deque_new(size_t size);
 void		*ft_deque_destroy(t_s_deque *deque);
 int			ft_deque_ensure_space_top_bulk(t_s_deque *deque, size_t n);
+int			ft_deque_push_back_bulk(t_s_deque *deque, int *data, size_t n);
+int			ft_deque_push_front(t_s_deque *deque, int n);
 int			*ft_deque_poll_front_bulk(t_s_deque *deque, size_t n);
 int			ft_deque_ensure_space_back_bulk(t_s_deque *deque, size_t n);
 int			ft_deque_ensure_space_back(t_s_deque *deque);
 int			ft_deque_poll_back(t_s_deque *deque);
-int			ft_deque_add_front(t_s_deque *deque, int n);
 int			ft_deque_rotate(t_s_deque *deque);
 size_t		ft_deque_size(t_s_deque *deque);
+int			ft_deque_push_front_bulk(t_s_deque *deque, int *data, size_t n);
 bool		ft_deque_is_empty(t_s_deque *deque);
 int			ft_deque_pop_back(t_s_deque *deque);
 int			*ft_deque_pop_back_bulk(t_s_deque *deque, size_t n);
