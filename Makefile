@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 14:26:34 by emcnab            #+#    #+#              #
-#    Updated: 2022/12/09 14:39:25 by emcnab           ###   ########.fr        #
+#    Updated: 2023/01/23 10:05:33 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,53 +51,50 @@ export EXITS_ALREADY
 #                                 COMPILATION
 # ==============================================================================
 
+# header directory
+HDIR = include/
+
 # character functions
-CHARDIR = character/
+CHARDIR = char/
 define CHARFILES
-	ft_isalnum.c		ft_isalpha.c		ft_isascii.c	ft_isdigit.c
-	ft_islower.c		ft_isprint.c		ft_isspace.c	ft_isupper.c
-	ft_tochar.c			ft_todigit.c		ft_tolower.c	ft_tostr.c
+	ft_isalnum.c  ft_isalpha.c  ft_isascii.c  ft_isdigit.c  ft_islower.c
+	ft_isprint.c  ft_isspace.c  ft_isupper.c  ft_todigit.c  ft_tolower.c
 	ft_toupper.c
 endef
 
 # integer functions
-INTDIR = integer/
+INTDIR = int/
 define INTFILES
-	ft_itoa.c			ft_max.c			ft_min.c		ft_sign.c
-	ft_ltoa.c			ft_intlen.c			ft_longlen.c	ft_ultoa_base.c
-	ft_baselen.c
+	ft_baselen.c  ft_intlen.c  ft_itoa.c  ft_longlen.c  ft_ltoa.c  ft_max.c
+	ft_min.c  ft_sign.c  ft_ultoa_base.c
 endef
 
 # meth functions
 MATHDIR = math/
 define MATHFILES
-	ft_abs.c			ft_abslong.c		ft_pow.c
+	ft_abs.c  ft_abslong.c  ft_closest_power.c  ft_pow.c
 endef
 
 # string functions
-STRINGDIR = string/
+STRINGDIR = str/
 define STRINGFILES
-	ft_atoi.c			ft_split.c			ft_stralloc.c	ft_strchr.c
-	ft_strchr.c			ft_strcmp.c			ft_strdup.c		ft_striteri.c
-	ft_strjoin.c		ft_strlcat.c		ft_strlcpy.c	ft_strlen.c
-	ft_strmapi.c		ft_strnjoin.c		ft_strnjoin.c	ft_strnsum.c
-	ft_strrchr.c		ft_strrev.c			ft_strsum.c		ft_strtrim.c
-	ft_substr.c			ft_quickfind.c		ft_strncmp.c	ft_strnstr.c
-	ft_quickfind_all.c	ft_lword_search.c
+	ft_atoi.c          ft_quickfind.c  ft_stralloc.c  ft_strcmp.c  ft_striteri.c
+	ft_strlen.c   ft_strncmp.c  ft_strnsum.c  ft_strrev.c  ft_strtrim.c
+	ft_lword_search.c  ft_split.c      ft_strchr.c    ft_strdup.c  ft_strjoin.c
+	ft_strmapi.c  ft_strnstr.c  ft_strrchr.c  ft_strsum.c  ft_substr.c
 endef
 
 # io functions
-IODIR = system_io/
+IODIR = io/
 define IOFILES
 	ft_putchar_fd.c		ft_putendl_fd.c		ft_putnbr_fd.c	ft_putstr_fd.c
 endef
 
 # memory functions
-MEMDIR = memory/
+MEMDIR = mem/
 define MEMFILES
-	ft_bzero.c			ft_calloc.c			ft_freeset.c	ft_memchr.c
-	ft_memcmp.c			ft_memcpy.c			ft_memmove.c	ft_memset.c
-	ft_memstr.c			ft_pack.c
+	ft_bzero.c  ft_calloc.c  ft_freeset.c  ft_memchr.c  ft_memcmp.c  ft_memcpy.c
+	ft_memmove.c  ft_memset.c  ft_memstr.c  ft_pack.c
 endef
 
 # ==============================================================================
@@ -108,42 +105,27 @@ endef
 DSDIR = data_structures/
 
 # linked list functions
-LISTDIR = linked_lists/
+LISTDIR = linklst/
 define LISTFILES
-	ft_lstadd_back.c	ft_lstadd_front.c	ft_lstclear.c	ft_lstdelone.c
-	ft_lstiter.c		ft_lstlast.c		ft_lstmap.c		ft_lstnew.c
-	ft_lstsize.c
-endef
-
-# type conversion functions
-CONVDIR = converter/
-define CONVFILES
-	ft_convcmp.c		ft_converter.c		ft_convtochar.c	ft_convtolong.c
-	ft_convtostr.c
-endef
-
-# linked strings functions
-LSTRDIR = linked_strings/
-define LSTRFILES
-	ft_linkstr_collect.c	ft_linkstr_delall.c		ft_linkstr_new.c
-	ft_linkstr_size.c		ft_linkstr_add.c
+	ft_lst_add_back.c  ft_lst_add_front.c  ft_lst_clear.c  ft_lst_delone.c
+	ft_lst_iter.c  ft_lst_last.c  ft_lst_map.c  ft_lst_new.c  ft_lst_size.c
 endef
 
 # all .c files
 define CFILES
-	$(foreach file, $(CHARFILES)  , $(CHARDIR)$(file)        )
-	$(foreach file, $(INTFILES)   , $(INTDIR)$(file)         )
-	$(foreach file, $(MATHFILES)  , $(MATHDIR)$(file)        )
-	$(foreach file, $(STRINGFILES), $(STRINGDIR)$(file)      )
-	$(foreach file, $(IOFILES)    , $(IODIR)$(file)          )
-	$(foreach file, $(MEMFILES)   , $(MEMDIR)$(file)         )
-	$(foreach file, $(LISTFILES)  , $(DSDIR)$(LISTDIR)$(file))
-	$(foreach file, $(CONVFILES)  , $(DSDIR)$(CONVDIR)$(file))
-	$(foreach file, $(LSTRFILES)  , $(DSDIR)$(LSTRDIR)$(file))
+	$(foreach file,$(CHARFILES)  ,src/$(CHARDIR)$(file)        )
+	$(foreach file,$(INTFILES)   ,src/$(INTDIR)$(file)         )
+	$(foreach file,$(MATHFILES)  ,src/$(MATHDIR)$(file)        )
+	$(foreach file,$(STRINGFILES),src/$(STRINGDIR)$(file)      )
+	$(foreach file,$(IOFILES)    ,src/$(IODIR)$(file)          )
+	$(foreach file,$(MEMFILES)   ,src/$(MEMDIR)$(file)         )
+	$(foreach file,$(LISTFILES)  ,src/$(DSDIR)$(LISTDIR)$(file))
+	$(foreach file,$(CONVFILES)  ,src/$(DSDIR)$(CONVDIR)$(file))
+	$(foreach file,$(LSTRFILES)  ,src/$(DSDIR)$(LSTRDIR)$(file))
 endef
 
 # parent directory for all object files
-ODIR = objs/
+ODIR = build/objs/
 # object files sub-directories
 ODIRS = $(ODIR)				$(ODIR)$(CHARDIR)		$(ODIR)$(INTDIR) \
 		$(ODIR)$(MATHDIR)	$(ODIR)$(STRINGDIR)		$(ODIR)$(IODIR)  \
@@ -152,7 +134,7 @@ ODIRS = $(ODIR)				$(ODIR)$(CHARDIR)		$(ODIR)$(INTDIR) \
 		$(ODIR)$(DSDIR)$(LSTRDIR)
 
 # all .o files
-OFILES  = $(patsubst %.c, $(ODIR)%.o, $(CFILES)) 
+OFILES  = $(patsubst src/%.c, $(ODIR)%.o, $(CFILES)) 
 
 # C compiler
 CC     = clang
@@ -201,8 +183,8 @@ $(BINARY): $(ODIRS) $(OFILES)
 	@echo "${LGREEN} created directory ${@}${LGRAY}"
 
 # for any object to be compiled, the associated .c file must exist
-$(ODIR)%.o:%.c
-	@$(CC) $(CFLAGS) -c -o $@ $^
+$(ODIR)%.o:src/%.c
+	@$(CC) $(CFLAGS) -c -o $@ $^ -I $(HDIR)
 	@echo "${LGRAY}${@} ${GREEN}built successfully!${LGRAY}"
 
 # removes all objects
@@ -221,8 +203,10 @@ re: fclean all
 
 # displays debug info
 debug:
+	@echo "${LBLUE} object files${LGRAY}"
 	@echo $(OFILES)
-	@echo $(subst ./objs/,,$(OFILES))
+	@echo "${LBLUE} source files${LGRAY}"
+	@echo $(CFILES)
 
 # avoids name collision with files
 .PHONY: all display clean fclean re debug
