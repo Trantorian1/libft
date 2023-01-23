@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 14:26:34 by emcnab            #+#    #+#              #
-#    Updated: 2023/01/23 10:05:33 by emcnab           ###   ########.fr        #
+#    Updated: 2023/01/23 10:22:31 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,27 +111,50 @@ define LISTFILES
 	ft_lst_iter.c  ft_lst_last.c  ft_lst_map.c  ft_lst_new.c  ft_lst_size.c
 endef
 
+# deque functions
+DEQUEDIR = deque/
+define DEQUEFILES
+	ft_deque.c							ft_deque_ensure_space.c
+	ft_deque_poll_back.c				ft_deque_pop_front_bulk.c
+	ft_deque_push_front.c				ft_deque_ensure_fit_back.c         
+	ft_deque_ensure_space_top_bulk.c	ft_deque_poll_front_bulk.c
+	ft_deque_pop_front.c				ft_deque_reverse_rotate.c
+	ft_deque_ensure_fit_front.c			ft_deque_ensure_space_top.c
+	ft_deque_poll_front.c				ft_deque_push_back_bulk.c
+	ft_deque_rotate.c					ft_deque_ensure_space_back_bulk.c
+	ft_deque_is_empty.c					ft_deque_pop_back_bulk.c
+	ft_deque_push_back.c				ft_deque_size.c
+	ft_deque_ensure_space_back.c		ft_deque_poll_back_bulk.c
+	ft_deque_pop_back.c					ft_deque_push_front_bulk.c
+	ft_deque_swap.c
+endef
+
 # all .c files
 define CFILES
-	$(foreach file,$(CHARFILES)  ,src/$(CHARDIR)$(file)        )
-	$(foreach file,$(INTFILES)   ,src/$(INTDIR)$(file)         )
-	$(foreach file,$(MATHFILES)  ,src/$(MATHDIR)$(file)        )
-	$(foreach file,$(STRINGFILES),src/$(STRINGDIR)$(file)      )
-	$(foreach file,$(IOFILES)    ,src/$(IODIR)$(file)          )
-	$(foreach file,$(MEMFILES)   ,src/$(MEMDIR)$(file)         )
-	$(foreach file,$(LISTFILES)  ,src/$(DSDIR)$(LISTDIR)$(file))
-	$(foreach file,$(CONVFILES)  ,src/$(DSDIR)$(CONVDIR)$(file))
-	$(foreach file,$(LSTRFILES)  ,src/$(DSDIR)$(LSTRDIR)$(file))
+	$(foreach file,$(CHARFILES)  ,src/$(CHARDIR)$(file)         )
+	$(foreach file,$(INTFILES)   ,src/$(INTDIR)$(file)          )
+	$(foreach file,$(MATHFILES)  ,src/$(MATHDIR)$(file)         )
+	$(foreach file,$(STRINGFILES),src/$(STRINGDIR)$(file)       )
+	$(foreach file,$(IOFILES)    ,src/$(IODIR)$(file)           )
+	$(foreach file,$(MEMFILES)   ,src/$(MEMDIR)$(file)          )
+	$(foreach file,$(LISTFILES)  ,src/$(DSDIR)$(LISTDIR)$(file) )
+	$(foreach file,$(DEQUEFILES) ,src/$(DSDIR)$(DEQUEDIR)$(file))
 endef
 
 # parent directory for all object files
 ODIR = build/objs/
 # object files sub-directories
-ODIRS = $(ODIR)				$(ODIR)$(CHARDIR)		$(ODIR)$(INTDIR) \
-		$(ODIR)$(MATHDIR)	$(ODIR)$(STRINGDIR)		$(ODIR)$(IODIR)  \
-		$(ODIR)$(MEMDIR)	$(ODIR)$(DSDIR)                          \
-		$(ODIR)$(DSDIR)$(LISTDIR)			$(ODIR)$(DSDIR)$(CONVDIR)\
-		$(ODIR)$(DSDIR)$(LSTRDIR)
+ODIRS =                        \
+	$(ODIR)                    \
+	$(ODIR)$(CHARDIR)          \
+	$(ODIR)$(INTDIR)           \
+	$(ODIR)$(MATHDIR)          \
+	$(ODIR)$(STRINGDIR)        \
+	$(ODIR)$(IODIR)            \
+	$(ODIR)$(MEMDIR)           \
+	$(ODIR)$(DSDIR)            \
+	$(ODIR)$(DSDIR)$(LISTDIR)  \
+	$(ODIR)$(DSDIR)$(DEQUEDIR) \
 
 # all .o files
 OFILES  = $(patsubst src/%.c, $(ODIR)%.o, $(CFILES)) 
