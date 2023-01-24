@@ -6,7 +6,7 @@
 #    By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 14:26:34 by emcnab            #+#    #+#              #
-#    Updated: 2023/01/23 10:22:31 by emcnab           ###   ########.fr        #
+#    Updated: 2023/01/24 11:29:39 by emcnab           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,7 +126,7 @@ define DEQUEFILES
 	ft_deque_push_back.c				ft_deque_size.c
 	ft_deque_ensure_space_back.c		ft_deque_poll_back_bulk.c
 	ft_deque_pop_back.c					ft_deque_push_front_bulk.c
-	ft_deque_swap.c
+	ft_deque_swap.c						ft_deque_mock.c
 endef
 
 # all .c files
