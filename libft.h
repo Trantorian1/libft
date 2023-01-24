@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 11:29:59 by                   #+#    #+#             */
-/*   Updated: 2023/01/24 11:29:59 by                  ###   ########.fr       */
+/*   Created: 2023/01/24 11:36:40 by                   #+#    #+#             */
+/*   Updated: 2023/01/24 11:36:40 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ char		*ft_ultoa_base(unsigned long l, char *base);
 size_t		ft_min(size_t a, size_t b);
 size_t		ft_max(size_t a, size_t b);
 size_t		ft_longlen(long l);
+int			*ft_data_mock(int min, int max);
 size_t		ft_baselen(unsigned long l, size_t base);
 char		*ft_itoa(int n);
 int			ft_sign(int n);

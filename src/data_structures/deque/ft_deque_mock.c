@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:21:21 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/24 11:29:11 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/24 11:36:29 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,8 @@
 
 #include "ft_deque.h"
 #include "ft_deque_push_front_bulk.h"
+#include "ft_data_mock.h"
 #include <stdlib.h>
-
-static int	*ft_data_mock(int min, int max)
-{
-	int	*data;
-	int	i;
-
-	data = malloc((size_t)(max - min) * sizeof(*data));
-	if (!data)
-		return (NULL);
-	i = min - 1;
-	while (++i < max)
-		data[i - min] = i;
-	return (data);
-}
 
 t_s_deque	*ft_deque_mock(int min, int max)
 {
