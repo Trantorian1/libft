@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 11:36:40 by                   #+#    #+#             */
-/*   Updated: 2023/01/24 11:36:40 by                  ###   ########.fr       */
+/*   Created: 2023/01/24 14:27:22 by                   #+#    #+#             */
+/*   Updated: 2023/01/24 14:27:22 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ size_t		ft_intlen(int n);
 int			ft_deque_ensure_fit_front(t_s_deque *deque);
 int			*ft_deque_pop_front_bulk(t_s_deque *deque, size_t n);
 t_s_deque	*ft_deque_mock(int min, int max);
+int			*ft_deque_to_array(t_s_deque *deque);
 int			ft_deque_ensure_space(t_s_deque *deque);
 int			ft_deque_reverse_rotate(t_s_deque *deque);
 int			ft_deque_push_back(t_s_deque *deque, int n);
