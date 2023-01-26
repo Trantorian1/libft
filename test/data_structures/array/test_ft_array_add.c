@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:46:44 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/25 18:21:43 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/26 12:50:11 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ft_array_destroy.h"
 #include "ft_array_add.h"
 #include "ft_closest_power_ul.h"
-#include "ft_data_mock.h"
+#include "ft_m_data.h"
 #include <stdlib.h>
 
 #define SIZE 10
@@ -61,7 +61,7 @@ void	test_ft_array_add_bulk(void)
 	index = g_array->index;
 	footprint = g_array->footprint;
 	i = index - 1;
-	data = ft_data_mock((int)index, (int)(footprint * 2));
+	data = ft_mock_data((int)index, (int)(footprint * 2));
 	TEST_ASSERT_NOT_NULL(data);
 	ft_array_add_bulk(g_array, data, footprint * 2 - index);
 	printf("ADD BULK\n");

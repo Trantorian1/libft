@@ -6,13 +6,13 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:42:17 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/25 19:09:14 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/26 13:36:22 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unity.h"
-#include "ft_array_mock.h"
-#include "ft_data_mock.h"
+#include "ft_m_array.h"
+#include "ft_m_data.h"
 #include "ft_array_destroy.h"
 #include "ft_array_insert.h"
 #include "ft_closest_power_ul.h"
@@ -25,7 +25,7 @@ static t_s_array	*g_array;
 
 void	test_ft_array_create(void)
 {
-	g_array = ft_array_mock(0, SIZE);
+	g_array = ft_mock_array(0, SIZE);
 	TEST_ASSERT_NOT_NULL(g_array);
 	TEST_ASSERT_NOT_NULL(g_array->data);
 	TEST_ASSERT_EQUAL_INT(ft_closest_power_ul(SIZE, 2), g_array->footprint);
@@ -59,7 +59,7 @@ void	test_ft_array_insert_bulk_invalid(void)
 	int	*data;
 
 	TEST_ASSERT_NOT_NULL(g_array);
-	data = ft_data_mock(0, SIZE);
+	data = ft_mock_data(0, SIZE);
 	TEST_ASSERT_NOT_NULL(data);
 	TEST_ASSERT_EQUAL_INT(
 		SIZE_ERROR, ft_array_insert_bulk(g_array, (size_t)(-1), data, SIZE));
@@ -76,7 +76,7 @@ void	test_ft_array_insert_bulk_valid(void)
 	size_t	i;
 
 	TEST_ASSERT_NOT_NULL(g_array);
-	data = ft_data_mock(0, SIZE);
+	data = ft_mock_data(0, SIZE);
 	TEST_ASSERT_NOT_NULL(data);
 	TEST_ASSERT_EQUAL_INT(
 		NO_ERROR, ft_array_insert_bulk(g_array, 0, data, SIZE));
