@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:42:52 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/18 18:09:02 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/26 19:02:57 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ t_s_deque	*ft_deque_new(size_t size)
 	return (deque);
 }
 
-void	*ft_deque_destroy(t_s_deque *deque)
+void	*ft_deque_destroy(t_s_deque *deque, void (*f_free)(void *))
 {
 	deque->bottom = 0;
 	deque->top = 0;
-	free(deque->data);
+	f_free(deque->data);
 	free(deque);
 	return (NULL);
 }

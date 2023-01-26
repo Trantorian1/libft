@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 18:55:13 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/17 19:05:27 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/26 20:03:48 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,18 @@
 static int	ft_deque_grow_back(t_s_deque *deque)
 {
 	size_t	size_new;
-	size_t	size_delta;
 	int		*new_array;
-	int		*bottom_old;
 	int		*bottom_new;
 
 	size_new = deque->size_data * 2;
 	new_array = malloc(size_new * sizeof(*new_array));
 	if (!new_array)
 		return (MALLOC_ERROR);
-	size_delta = size_new - (deque->size_data - deque->bottom);
-	bottom_old = deque->data + deque->bottom;
-	bottom_new = new_array + size_delta;
-	ft_memcpy(bottom_new, bottom_old, deque->size_actual * sizeof(new_array));
+	bottom_new = new_array + deque->size_data;
+	ft_memcpy(bottom_new, deque->data, deque->size_actual * sizeof(*new_array));
 	free(deque->data);
 	deque->data = new_array;
-	deque->bottom = size_delta;
+	deque->bottom = deque->size_data;
 	deque->top = deque->bottom + deque->size_actual - 1;
 	deque->size_data = size_new;
 	return (NO_ERROR);
