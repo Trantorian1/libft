@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:54:27 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/26 17:02:06 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/26 20:23:32 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,5 @@ void	ft_error_destroy(void)
 
 	errors = ft_error_init();
 	ft_array_any_destroy(errors, NULL);
-	ft_deque_destroy(ft_error_queu());
+	ft_deque_destroy(ft_error_queu(), &free);
 }
