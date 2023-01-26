@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:42:17 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/26 12:41:06 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/26 18:52:49 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	test_ft_array_create(void)
 void	test_ft_array_insert_invalid(void)
 {
 	TEST_ASSERT_EQUAL_INT(
-			SIZE_ERROR, ft_array_any_insert(g_array, (size_t)-1, NULL));
+		SIZE_ERROR, ft_array_any_insert(g_array, (size_t)-1, NULL));
 	TEST_ASSERT_EQUAL_INT(
-			SIZE_ERROR, ft_array_any_insert(g_array, SIZE, NULL));
+		SIZE_ERROR, ft_array_any_insert(g_array, SIZE, NULL));
 }
 
 void	test_ft_array_insert_valid(void)
@@ -48,8 +48,11 @@ void	test_ft_array_insert_valid(void)
 	mock = ft_mock_any_create(SIZE);
 	i = (size_t)(-1);
 	while (++i < SIZE)
+	{
+		free(g_array->data[i]);
 		TEST_ASSERT_EQUAL_INT(
-				NO_ERROR, ft_array_any_insert(g_array, i, mock[i]));
+			NO_ERROR, ft_array_any_insert(g_array, i, mock[i]));
+	}
 	i = (size_t)(-1);
 	printf("INSERT VALID\n");
 	while (++i < SIZE)
@@ -57,12 +60,12 @@ void	test_ft_array_insert_valid(void)
 		printf("%d\n", *(int *)g_array->data[i]);
 		TEST_ASSERT_EQUAL_INT(i, *(int *)g_array->data[i]);
 	}
-	free(mock);
+	ft_mock_any_destroy(mock, SIZE);
 }
 
 void	test_ft_array_insert_bulk_invalid(void)
 {
-	int	**mock;
+	int		**mock;
 
 	TEST_ASSERT_NOT_NULL(g_array);
 	mock = ft_mock_any_create(SIZE);
@@ -76,7 +79,7 @@ void	test_ft_array_insert_bulk_invalid(void)
 	TEST_ASSERT_EQUAL_INT(
 		SIZE_ERROR,
 		ft_array_any_insert_bulk(g_array, 1, (void **)mock, SIZE));
-	free(mock);
+	ft_mock_any_destroy(mock, SIZE);
 }
 
 void	test_ft_array_insert_bulk_valid(void)

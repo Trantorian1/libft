@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:19:09 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/26 12:09:01 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/26 18:26:35 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ t_s_array_any	*ft_mock_array_any(int min, int max)
 	if (!data)
 		return (free(array), NULL);
 	ft_array_any_add_bulk(array, data, (size_t)(max - min));
+	free(data);
 	return (array);
 }
