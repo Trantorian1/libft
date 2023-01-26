@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   e_error.h                                          :+:      :+:    :+:   */
+/*   ft_error_queu.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 09:55:04 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/26 14:36:51 by emcnab           ###   ########.fr       */
+/*   Created: 2023/01/26 16:59:27 by                   #+#    #+#             */
+/*   Updated: 2023/01/26 16:59:27 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef E_ERROR_H
-# define E_ERROR_H
+#ifndef FT_ERROR_QUEU_H
+# define FT_ERROR_QUEU_H
 
-# ifndef ERROR_LOG
-#  define ERROR_LOG 0
-# endif
+# include "s_deque.h"
 
-typedef enum e_error
-{
-	ERROR_NONE,
-	ERROR_OCCURRED,
-	E_ERROR_SIZE,
-}	t_e_error;
+t_s_deque	*ft_error_queu(void);
 
 #endif

@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   e_error.h                                          :+:      :+:    :+:   */
+/*   ft_error_handle.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 09:55:04 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/26 14:36:51 by emcnab           ###   ########.fr       */
+/*   Created: 2023/01/26 16:54:52 by                   #+#    #+#             */
+/*   Updated: 2023/01/26 16:54:52 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef E_ERROR_H
-# define E_ERROR_H
+#ifndef FT_ERROR_HANDLE_H
+# define FT_ERROR_HANDLE_H
 
-# ifndef ERROR_LOG
-#  define ERROR_LOG 0
-# endif
+# include <stdbool.h>
 
-typedef enum e_error
-{
-	ERROR_NONE,
-	ERROR_OCCURRED,
-	E_ERROR_SIZE,
-}	t_e_error;
+void	ft_error_throw_fd(int error_code, int fd);
+void	ft_error_throw(int error_code);
+void	test(void);
+bool	ft_error_occurred(void);
+bool	ft_error_catch(int error_code);
 
 #endif
