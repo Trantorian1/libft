@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_data_mock.c                                     :+:      :+:    :+:   */
+/*   ft_error_message.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 11:35:38 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/24 11:36:17 by emcnab           ###   ########.fr       */
+/*   Created: 2023/01/26 09:54:27 by emcnab            #+#    #+#             */
+/*   Updated: 2023/01/26 10:03:22 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_data_mock.h"
-
-#include <stdlib.h>
+#include "e_error.h"
+#include "ft_array_create.h"
+#include "ft_array_destroy.h"
 #include <stddef.h>
 
-int	*ft_data_mock(int min, int max)
-{
-	int	*data;
-	int	i;
+static const char	*error_msgs[E_ERROR_SIZE] = {
+	"Error: no error occurred",
+	"Error: an error occurred"
+}
 
-	data = malloc((size_t)(max - min) * sizeof(*data));
-	if (!data)
-		return (NULL);
-	i = min - 1;
-	while (++i < max)
-		data[i - min] = i;
-	return (data);
+static void	ft_error_init(void)
+{
+	static t_s_array	*error_msg = NULL;
+	size_t				i;
+
+	if (error_msg == NULL)
+		error_msg = ft_array_create(E_ERROR_SIZE);
+	i = (size_t)(-1);
+	while (++i < E_ERROR_SIZE)
+		
 }
