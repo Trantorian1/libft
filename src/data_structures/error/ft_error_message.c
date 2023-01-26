@@ -6,17 +6,21 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:54:27 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/26 14:23:17 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/26 17:02:06 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_error_message.h"
 
 #include "e_error.h"
+#include "ft_error_queu.h"
+#include "ft_deque.h"
 #include "ft_array_any_create.h"
 #include "ft_array_any_destroy.h"
 #include "ft_array_any_add.h"
 #include "ft_array_any_get.h"
+#include "ft_itoa.h"
+#include "ft_stralloc.h"
 #include <stddef.h>
 #include <stdlib.h>
 
@@ -36,18 +40,27 @@ static t_s_array_any	*ft_error_init(void)
 	return (errors);
 }
 
-void	ft_error_add(size_t error_code, const char *error_msg)
+void	ft_error_add(int error_code, const char *error_msg)
 {
 	t_s_array_any	*errors;
 
 	errors = ft_error_init();
-	ft_array_any_add_at(errors, error_msg, error_code);
+	ft_array_any_add_at(errors, error_msg, (size_t)error_code);
 }
 
-const char	*ft_error_msg(size_t error_code)
+const char	*ft_error_msg(int error_code)
 {
 	t_s_array_any	*errors;
 
 	errors = ft_error_init();
-	return (ft_array_any_get(errors, error_code));
+	return (ft_array_any_get(errors, (size_t)error_code));
+}
+
+void	ft_error_destroy(void)
+{
+	t_s_array_any	*errors;
+
+	errors = ft_error_init();
+	ft_array_any_destroy(errors, NULL);
+	ft_deque_destroy(ft_error_queu());
 }
