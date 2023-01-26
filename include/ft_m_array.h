@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_array_mock.h                                    :+:      :+:    :+:   */
+/*   ft_m_array.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 15:20:07 by                   #+#    #+#             */
-/*   Updated: 2023/01/25 15:20:07 by                  ###   ########.fr       */
+/*   Created: 2023/01/26 13:33:52 by                   #+#    #+#             */
+/*   Updated: 2023/01/26 13:33:52 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ARRAY_MOCK_H
-# define FT_ARRAY_MOCK_H
+#ifndef FT_M_ARRAY_H
+# define FT_M_ARRAY_H
 
 # include "s_array.h"
 
-t_s_array	*ft_array_mock(int min, int max);
+t_s_array	*ft_mock_array(int min, int max);
 
 #endif

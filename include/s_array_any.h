@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_deque_ensure_space_back_bulk.h                  :+:      :+:    :+:   */
+/*   s_array_any.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  <>                                        +#+  +:+       +#+        */
+/*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 11:12:22 by                   #+#    #+#             */
-/*   Updated: 2023/01/26 11:12:22 by                  ###   ########.fr       */
+/*   Created: 2023/01/26 10:06:56 by emcnab            #+#    #+#             */
+/*   Updated: 2023/01/26 10:11:25 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DEQUE_ENSURE_SPACE_BACK_BULK_H
-# define FT_DEQUE_ENSURE_SPACE_BACK_BULK_H
+#ifndef H_S_ARRAY_INT
+# define H_S_ARRAY_INT
 
 # include <stddef.h>
-# include "s_deque.h"
 
-int	ft_deque_ensure_space_back_bulk(t_s_deque *deque, size_t n);
+typedef struct s_array_any
+{
+	size_t	footprint;
+	size_t	index;
+	void	**data;
+}	t_s_array_any;
 
 #endif
