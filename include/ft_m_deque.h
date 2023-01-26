@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_deque_mock.h                                    :+:      :+:    :+:   */
+/*   ft_m_deque.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 11:12:22 by                   #+#    #+#             */
-/*   Updated: 2023/01/26 11:12:22 by                  ###   ########.fr       */
+/*   Created: 2023/01/26 20:18:11 by                   #+#    #+#             */
+/*   Updated: 2023/01/26 20:20:49 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DEQUE_MOCK_H
-# define FT_DEQUE_MOCK_H
+#ifndef FT_M_DEQUE_H
+# define FT_M_DEQUE_H
 
 # include "s_deque.h"
 
-t_s_deque	*ft_deque_mock(int min, int max);
+t_s_deque	*ft_mock_deque(int min, int max);
 
 #endif
