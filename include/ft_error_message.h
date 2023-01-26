@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_array_any_add.h                                 :+:      :+:    :+:   */
+/*   ft_error_message.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 14:18:53 by                   #+#    #+#             */
-/*   Updated: 2023/01/26 14:18:53 by                  ###   ########.fr       */
+/*   Created: 2023/01/26 14:23:07 by                   #+#    #+#             */
+/*   Updated: 2023/01/26 14:23:07 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ARRAY_ANY_ADD_H
-# define FT_ARRAY_ANY_ADD_H
+#ifndef FT_ERROR_MESSAGE_H
+# define FT_ERROR_MESSAGE_H
 
-# include "s_array_any.h"
 # include <stddef.h>
 
-void	ft_array_any_add(t_s_array_any *array, void *any);
-void	ft_array_any_add_at(t_s_array_any *array, void *any, size_t index);
-void	ft_array_any_add_bulk(t_s_array_any *array, void **data, size_t size);
+void		ft_error_add(size_t error_code, const char *error_msg);
+const char	*ft_error_msg(size_t error_code);
 
 #endif
