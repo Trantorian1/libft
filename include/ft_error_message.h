@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 15:18:34 by                   #+#    #+#             */
-/*   Updated: 2023/01/26 15:18:34 by                  ###   ########.fr       */
+/*   Created: 2023/01/28 14:32:05 by                   #+#    #+#             */
+/*   Updated: 2023/01/28 14:33:30 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 
 void		ft_error_add(int error_code, const char *error_msg);
 const char	*ft_error_msg(int error_code);
-void		ft_error_destroy(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:19:10 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/26 15:52:20 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/28 14:34:16 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,4 @@ void	test_ft_error_add(void)
 		printf("%d -> %s\n", (int)i, ft_error_msg((int)i));
 		TEST_ASSERT_EQUAL_STRING(g_msg[i - E_ERROR_SIZE], ft_error_msg((int)i));
 	}
-}
-
-void	test_ft_error_destroy(void)
-{
-	ft_error_destroy();
 }

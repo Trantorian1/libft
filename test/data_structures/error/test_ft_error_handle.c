@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 15:53:16 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/26 16:57:26 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/28 14:36:02 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,4 @@ void	test_ft_error_handle_error(void)
 	TEST_ASSERT_TRUE(ft_error_occurred());
 	TEST_ASSERT_TRUE(ft_error_catch(E_ERROR_SIZE));
 	TEST_ASSERT_FALSE(ft_error_catch(E_ERROR_SIZE + 1));
-}
-
-void	test_ft_error_destroy(void)
-{
-	ft_error_destroy();
 }

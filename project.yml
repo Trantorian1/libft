@@ -100,15 +100,6 @@
   :test: []
   :release: []
 
-:flags:
-  :test:
-    :compile:
-      :*:
-        - -g
-    :link:
-      :*:
-        - -g
-
 :plugins:
   :load_paths:
     - "#{Ceedling.load_path}"
