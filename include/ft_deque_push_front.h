@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 11:12:22 by                   #+#    #+#             */
-/*   Updated: 2023/01/26 11:12:22 by                  ###   ########.fr       */
+/*   Created: 2023/01/28 17:21:27 by                   #+#    #+#             */
+/*   Updated: 2023/01/28 17:21:40 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "s_deque.h"
 
-int	ft_deque_push_front(t_s_deque *deque, int n);
+void	ft_deque_push_front(t_s_deque *deque, int n);
 
 #endif

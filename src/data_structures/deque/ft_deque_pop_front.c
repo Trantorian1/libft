@@ -6,39 +6,60 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:44:52 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/17 17:53:56 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/28 18:38:19 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque_pop_front.h"
 
 #include "ft_deque_is_empty.h"
-#include "ft_deque_ensure_fit_front.h"
+#include "ft_memcpy.h"
+#include "ft_error_handle.h"
+#include <stdlib.h>
 
-/**
- * @brief Retrieves and removes the element at the front of the deque.
- *
- * @param deque A pointer to the deque.
- *
- * @return The element at the front of the deque, or 0 if the deque is empty.
- *
- * The function first checks if the deque is empty using the
- * ft_deque_is_empty() function, and if it is, it returns 0. Otherwise, it
- * decrements the size of the deque and returns the element at the front of
- * the deque, which is stored in the deque's data array at the top index. It
- * then decrements the top index.
- */
+static void	ft_deque_shrink_front(t_s_deque *deque)
+{
+	size_t	size_new;
+	int		*new_array;
+	int		*bottom_old;
+	int		*bottom_new;
+
+	size_new = deque->size_data / 2;
+	new_array = malloc(size_new * sizeof(*new_array));
+	if (!new_array)
+		return (ft_error_throw(ERROR_MALLOC));
+	bottom_old = deque->data + deque->bottom;
+	bottom_new = new_array + deque->bottom;
+	ft_memcpy(bottom_new, bottom_old, deque->size_actual * sizeof(*new_array));
+	free(deque->data);
+	deque->top = deque->bottom + deque->size_actual - 1;
+	deque->size_data = size_new;
+	deque->data = new_array;
+}
+
+static bool	ft_deque_should_skrink_front(t_s_deque *deque)
+{
+	return (deque->top < deque->size_data / SHRINK_FACTOR);
+}
+
+static void	ft_deque_ensure_fit_front(t_s_deque *deque)
+{
+	if (ft_deque_should_skrink_front(deque))
+		ft_deque_shrink_front(deque);
+}
+
 int	ft_deque_pop_front(t_s_deque *deque)
 {
 	int	data;
-	int	error_code;
 
+	if (!deque)
+		return (ft_error_throw(ERROR_NULL_PARAM), 0);
 	if (ft_deque_is_empty(deque))
-		return (0);
+		return (ft_error_throw(ERROR_SIZE), 0);
 	deque->size_actual--;
 	data = deque->data[deque->top--];
-	error_code = ft_deque_ensure_fit_front(deque);
-	if (error_code)
-		return (error_code);
+	ft_deque_ensure_fit_front(deque);
+	if (ft_error_occurred())
+		return (0);
 	return (data);
 }

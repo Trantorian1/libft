@@ -6,37 +6,53 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:41:34 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/20 14:17:45 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/28 18:33:09 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque_push_back.h"
 
-#include "ft_deque_ensure_space_back.h"
-#include "errors.h"
+#include "ft_memcpy.h"
+#include "ft_error_handle.h"
+#include <stdlib.h>
 
-/**
- * @brief Adds an element to the back of the deque.
- *
- * @param deque A pointer to the deque.
- * @param n The element to be added.
- *
- * @return NO_ERROR if the element was successfully added, MALLOC_ERROR if an
- * error occurred.
- *
- * The function works in a similar way to ft_deque_add_front(), except that
- * it decrements the bottom index instead of incrementing the top index, and
- * adds the element to the back of the deque by storing it in the deque's data
- * array at that index.
- */
-int	ft_deque_push_back(t_s_deque *deque, int n)
+static void	ft_deque_grow_back(t_s_deque *deque)
 {
-	int	error_code;
+	size_t	size_new;
+	int		*new_array;
+	int		*bottom_new;
 
-	error_code = ft_deque_ensure_space_back(deque);
-	if (error_code)
-		return (error_code);
+	size_new = deque->size_data * 2;
+	new_array = malloc(size_new * sizeof(*new_array));
+	if (!new_array)
+		return(ft_error_throw(ERROR_MALLOC));
+	bottom_new = new_array + deque->size_data;
+	ft_memcpy(bottom_new, deque->data, deque->size_actual * sizeof(*new_array));
+	free(deque->data);
+	deque->data = new_array;
+	deque->bottom = deque->size_data;
+	deque->top = deque->bottom + deque->size_actual - 1;
+	deque->size_data = size_new;
+}
+
+static bool	ft_deque_should_grow_back(t_s_deque *deque)
+{
+	return (deque->bottom == 0);
+}
+
+static void	ft_deque_ensure_space_back(t_s_deque *deque)
+{
+	if (ft_deque_should_grow_back(deque))
+		ft_deque_grow_back(deque);
+}
+
+void	ft_deque_push_back(t_s_deque *deque, int n)
+{
+	if (!deque)
+		return (ft_error_throw(ERROR_NULL_PARAM));
+	ft_deque_ensure_space_back(deque);
+	if (ft_error_occurred())
+		return ;
 	deque->data[--deque->bottom] = n;
 	deque->size_actual++;
-	return (NO_ERROR);
 }

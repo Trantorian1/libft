@@ -14,6 +14,8 @@
 
 #include "ft_closest_power_ul.h"
 #include "ft_memcpy.h"
+#include "ft_error_handle.h"
+#include "e_error.h"
 #include <stdlib.h>
 #include <stdbool.h>
 
@@ -28,9 +30,12 @@ static void	ft_array_resize(t_s_array *array, size_t size)
 		size_new = array->footprint * 2;
 	data_new = malloc(size_new * sizeof(*data_new));
 	if (!data_new)
-		return ;
+    {
+        ft_error_throw(ERROR_MALLOC));
+        return ;
+    }
 	ft_memcpy(data_new, array->data, array->footprint * sizeof(*data_new));
-	free (array->data);
+	free(array->data);
 	array->data = data_new;
 	array->footprint = size_new;
 }

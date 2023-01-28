@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 11:12:23 by                   #+#    #+#             */
-/*   Updated: 2023/01/26 11:12:23 by                  ###   ########.fr       */
+/*   Created: 2023/01/28 17:19:29 by                   #+#    #+#             */
+/*   Updated: 2023/01/28 17:20:21 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "s_deque.h"
 
-int	ft_deque_ensure_space_top(t_s_deque *deque);
+void	ft_deque_ensure_space_top(t_s_deque *deque);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:54:27 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/28 17:02:25 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/28 18:38:09 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static const char	*g_error_std[E_ERROR_SIZE] = {
 	"Error: no error occurred",
 	"Error: an error occurred",
 	"Error: index out of bounds",
+	"Error: invalid size",
 	"Error: parameter was NULL",
 	"Error: malloc failed"
 };
