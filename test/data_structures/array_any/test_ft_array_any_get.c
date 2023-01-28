@@ -14,6 +14,7 @@
 #include "ft_m_array_any.h"
 #include "ft_array_any_destroy.h"
 #include "ft_array_any_get.h"
+#include "ft_error_handle.h"
 #include <stdlib.h>
 
 #define SIZE 10
@@ -28,7 +29,14 @@ void	test_ft_array_create(void)
 	TEST_ASSERT_EQUAL_INT(16, g_array->footprint);
 }
 
-void	test_ft_array_get(void)
+void    test_ft_array_get_invalid(void)
+{
+    ft_array_any_get(NULL, 0);
+    TEST_ASSERT_TRUE(ft_error_catch(ERROR_NULL_PARAM));
+    TEST_ASSERT_FALSE(ft_error_occurred());
+}
+
+void	test_ft_array_get_valid(void)
 {
 	size_t	i;
 

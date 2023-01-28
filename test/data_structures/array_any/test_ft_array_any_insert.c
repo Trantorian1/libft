@@ -16,7 +16,7 @@
 #include "ft_array_any_destroy.h"
 #include "ft_array_any_insert.h"
 #include "ft_closest_power_ul.h"
-#include "errors.h"
+#include "ft_error_handle.h"
 #include <stdlib.h>
 
 #define SIZE 10
@@ -33,10 +33,10 @@ void	test_ft_array_create(void)
 
 void	test_ft_array_insert_invalid(void)
 {
-	TEST_ASSERT_EQUAL_INT(
-		SIZE_ERROR, ft_array_any_insert(g_array, (size_t)-1, NULL));
-	TEST_ASSERT_EQUAL_INT(
-		SIZE_ERROR, ft_array_any_insert(g_array, SIZE, NULL));
+    ft_array_any_insert(g_array, (size_t)-1, NULL);
+    TEST_ASSERT_TRUE(ft_error_catch(ERROR_INDEX_OUT_OF_BOUNDS));
+    ft_array_any_insert(g_array, SIZE, NULL);
+    TEST_ASSERT_TRUE(ft_error_catch(ERROR_INDEX_OUT_OF_BOUNDS));
 }
 
 void	test_ft_array_insert_valid(void)
@@ -50,8 +50,8 @@ void	test_ft_array_insert_valid(void)
 	while (++i < SIZE)
 	{
 		free(g_array->data[i]);
-		TEST_ASSERT_EQUAL_INT(
-			NO_ERROR, ft_array_any_insert(g_array, i, mock[i]));
+        ft_array_any_insert(g_array, i, mock[i]);
+        TEST_ASSERT_FALSE(ft_error_occurred());
 	}
 	i = (size_t)(-1);
 	printf("INSERT VALID\n");
@@ -70,15 +70,10 @@ void	test_ft_array_insert_bulk_invalid(void)
 	TEST_ASSERT_NOT_NULL(g_array);
 	mock = ft_mock_any_create(SIZE);
 	TEST_ASSERT_NOT_NULL(mock);
-	TEST_ASSERT_EQUAL_INT(
-		SIZE_ERROR,
-		ft_array_any_insert_bulk(g_array, (size_t)(-1), (void **)mock, SIZE));
-	TEST_ASSERT_EQUAL_INT(
-		SIZE_ERROR,
-		ft_array_any_insert_bulk(g_array, SIZE, (void **)mock, SIZE));
-	TEST_ASSERT_EQUAL_INT(
-		SIZE_ERROR,
-		ft_array_any_insert_bulk(g_array, 1, (void **)mock, SIZE));
+    ft_array_any_insert_bulk(g_array, (size_t)(-1), (void **)mock, SIZE);
+    TEST_ASSERT_TRUE(ft_error_catch(ERROR_INDEX_OUT_OF_BOUNDS));
+    ft_array_any_insert_bulk(g_array, SIZE, (void **)mock, SIZE);
+    TEST_ASSERT_TRUE(ft_error_catch(ERROR_INDEX_OUT_OF_BOUNDS));
 	ft_mock_any_destroy(mock, SIZE);
 }
 
@@ -90,8 +85,8 @@ void	test_ft_array_insert_bulk_valid(void)
 	TEST_ASSERT_NOT_NULL(g_array);
 	mock = ft_mock_any_create(SIZE);
 	TEST_ASSERT_NOT_NULL(mock);
-	TEST_ASSERT_EQUAL_INT(
-		NO_ERROR, ft_array_any_insert_bulk(g_array, 0, (void **)mock, SIZE));
+    ft_array_any_insert_bulk(g_array, 0, (void **)mock, SIZE);
+    TEST_ASSERT_TRUE(ft_error_catch(ERROR_INDEX_OUT_OF_BOUNDS));
 	i = (size_t)(-1);
 	printf("INSERT BULK VALID\n");
 	while (++i < SIZE)

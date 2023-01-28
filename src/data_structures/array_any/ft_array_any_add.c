@@ -14,6 +14,7 @@
 
 #include "ft_closest_power_ul.h"
 #include "ft_memcpy.h"
+#include "ft_error_handle.h"
 #include <stdlib.h>
 #include <stdbool.h>
 
@@ -42,6 +43,8 @@ static bool	ft_array_any_should_resize(t_s_array_any *array, size_t size)
 
 void	ft_array_any_add(t_s_array_any *array, void *any)
 {
+    if (!array || !any)
+        return (ft_error_throw(ERROR_NULL_PARAM));
 	if (ft_array_any_should_resize(array, 0))
 		ft_array_any_resize(array, 0);
 	array->data[array->index++] = any;
@@ -49,6 +52,8 @@ void	ft_array_any_add(t_s_array_any *array, void *any)
 
 void	ft_array_any_add_at(t_s_array_any *array, void *any, size_t index)
 {
+    if (!array || !any)
+        return (ft_error_throw(ERROR_NULL_PARAM));
 	if (ft_array_any_should_resize(array, index))
 		ft_array_any_resize(array, index);
 	array->data[index] = any;
@@ -57,6 +62,8 @@ void	ft_array_any_add_at(t_s_array_any *array, void *any, size_t index)
 
 void	ft_array_any_add_bulk(t_s_array_any *array, void **data, size_t size)
 {
+    if (!array || !data)
+    return (ft_error_throw(ERROR_NULL_PARAM));
 	if (ft_array_any_should_resize(array, size))
 		ft_array_any_resize(array, size);
 	ft_memcpy(array->data + array->index, data, size * sizeof(*data));

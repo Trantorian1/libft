@@ -13,6 +13,7 @@
 #ifndef FT_ERROR_HANDLE_H
 # define FT_ERROR_HANDLE_H
 
+# include "e_error.h"
 # include <stdbool.h>
 
 void	ft_error_throw_fd(int error_code, int fd);

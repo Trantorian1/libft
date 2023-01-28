@@ -12,7 +12,11 @@
 
 #include "ft_array_any_get.h"
 
+#include "ft_error_handle.h"
+
 void	*ft_array_any_get(t_s_array_any *array, size_t index)
 {
+    if (!array)
+        return (ft_error_throw(ERROR_NULL_PARAM), NULL);
 	return (array->data[index % array->index]);
 }

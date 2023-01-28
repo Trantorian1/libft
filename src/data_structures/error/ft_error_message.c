@@ -6,27 +6,26 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:54:27 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/28 14:32:47 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/28 17:02:25 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_error_message.h"
 
 #include "e_error.h"
-#include "ft_error_queu.h"
-#include "ft_deque.h"
 #include "ft_array_any_create.h"
 #include "ft_array_any_destroy.h"
 #include "ft_array_any_add.h"
 #include "ft_array_any_get.h"
-#include "ft_itoa.h"
-#include "ft_stralloc.h"
 #include <stddef.h>
 #include <stdlib.h>
 
-static const char	*error_std[E_ERROR_SIZE] = {
+static const char	*g_error_std[E_ERROR_SIZE] = {
 	"Error: no error occurred",
-	"Error: an error occurred"
+	"Error: an error occurred",
+	"Error: index out of bounds",
+	"Error: parameter was NULL",
+	"Error: malloc failed"
 };
 
 static t_s_array_any	*ft_error_init(void);
@@ -43,7 +42,7 @@ static t_s_array_any	*ft_error_init(void)
 	if (errors != NULL)
 		return (errors);
 	errors = ft_array_any_create(E_ERROR_SIZE);
-	ft_array_any_add_bulk(errors, (void **)error_std, E_ERROR_SIZE);
+	ft_array_any_add_bulk(errors, (void **)g_error_std, E_ERROR_SIZE);
 	atexit(&at_exit_free);
 	return (errors);
 }

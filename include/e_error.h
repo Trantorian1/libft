@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:55:04 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/26 14:36:51 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/28 15:03:48 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ typedef enum e_error
 {
 	ERROR_NONE,
 	ERROR_OCCURRED,
+	ERROR_INDEX_OUT_OF_BOUNDS,
+	ERROR_MALLOC,
+	ERROR_NULL_PARAM,
 	E_ERROR_SIZE,
 }	t_e_error;
 

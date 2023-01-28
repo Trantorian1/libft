@@ -16,6 +16,7 @@
 #include "ft_error_queu.h"
 #include "ft_deque_push_back.h"
 #include "ft_deque_poll_back.h"
+#include "ft_deque_pop_back.h"
 #include "ft_deque_size.h"
 #include "ft_putendl_fd.h"
 #include "e_error.h"
@@ -49,5 +50,10 @@ bool	ft_error_catch(int error_code)
 	t_s_deque	*error_queu;
 
 	error_queu = ft_error_queu();
-	return (ft_deque_poll_back(error_queu) == error_code);
+    if (ft_deque_poll_back(error_queu) == error_code)
+    {
+        ft_deque_pop_back(error_queu);
+        return (true);
+    }
+    return (true);
 }

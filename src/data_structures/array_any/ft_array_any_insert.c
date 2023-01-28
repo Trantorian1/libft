@@ -13,29 +13,25 @@
 #include "ft_array_any_insert.h"
 
 #include "ft_memcpy.h"
-#include "ft_closest_power_ul.h"
-#include "errors.h"
+#include "ft_error_handle.h"
 #include <stdbool.h>
-#include <stdlib.h>
 
 static bool	ft_array_any_in_bounds(t_s_array_any *array, size_t index)
 {
 	return (index < array->index);
 }
 
-int	ft_array_any_insert(t_s_array_any *array, size_t index, void *any)
+void    ft_array_any_insert(t_s_array_any *array, size_t index, void *any)
 {
 	if (!ft_array_any_in_bounds(array, index))
-		return (SIZE_ERROR);
+        return (ft_error_throw(ERROR_INDEX_OUT_OF_BOUNDS));
 	array->data[index] = any;
-	return (NO_ERROR);
 }
 
-int	ft_array_any_insert_bulk(t_s_array_any *array, size_t index, void **data, size_t size)
+void    ft_array_any_insert_bulk(t_s_array_any *array, size_t index, void **data, size_t size)
 {
 	if (!ft_array_any_in_bounds(array, index)
 		|| !ft_array_any_in_bounds(array, index + size - 1))
-		return (SIZE_ERROR);
+        return (ft_error_throw(ERROR_INDEX_OUT_OF_BOUNDS));
 	ft_memcpy(&array->data[index], data, size * sizeof(*data));
-	return (NO_ERROR);
 }

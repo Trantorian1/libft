@@ -16,7 +16,7 @@
 # include <stddef.h>
 # include "s_array_any.h"
 
-int	ft_array_any_insert(t_s_array_any *array, size_t index, void *any);
-int	ft_array_any_insert_bulk(t_s_array_any *array, size_t index, void **data, size_t size);
+void    ft_array_any_insert(t_s_array_any *array, size_t index, void *any);
+void    ft_array_any_insert_bulk(t_s_array_any *array, size_t index, void **data, size_t size);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:46:44 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/26 12:05:23 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/28 17:03:13 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "ft_array_any_add.h"
 #include "ft_closest_power_ul.h"
 #include "ft_m_any.h"
+#include "ft_m_data.h"
+#include "ft_error_handle.h"
 #include <stdlib.h>
 
 #define SIZE 10
@@ -30,7 +32,24 @@ void	test_ft_array_any_create(void)
 	TEST_ASSERT_EQUAL_INT(ft_closest_power_ul(SIZE, 2), g_array->footprint);
 }
 
-void	test_ft_array_any_add(void)
+void    test_ft_array_any_add_invalid(void)
+{
+    int *data;
+
+    ft_array_any_add(NULL, NULL);
+    TEST_ASSERT_TRUE(ft_error_catch(ERROR_NULL_PARAM));
+    TEST_ASSERT_FALSE(ft_error_occurred());
+    ft_array_any_add(g_array, NULL);
+    TEST_ASSERT_TRUE(ft_error_catch(ERROR_NULL_PARAM));
+    TEST_ASSERT_FALSE(ft_error_occurred());
+    data = ft_mock_data(0, 10);
+    ft_array_any_add(NULL, data);
+    TEST_ASSERT_TRUE(ft_error_catch(ERROR_NULL_PARAM));
+    TEST_ASSERT_FALSE(ft_error_occurred());
+    free(data);
+}
+
+void	test_ft_array_any_add_valid(void)
 {
 	size_t	footprint;
 	size_t	i;
@@ -49,6 +68,23 @@ void	test_ft_array_any_add(void)
 	}
 	TEST_ASSERT_EQUAL_INT(footprint, g_array->footprint);
 	free(mock);
+}
+
+void    test_ft_array_any_add_bulk_invalid(void)
+{
+    int *data;
+
+    ft_array_any_add_bulk(NULL, NULL, 0);
+    TEST_ASSERT_TRUE(ft_error_catch(ERROR_NULL_PARAM));
+    TEST_ASSERT_FALSE(ft_error_occurred());
+    ft_array_any_add_bulk(g_array, NULL, 0);
+    TEST_ASSERT_TRUE(ft_error_catch(ERROR_NULL_PARAM));
+    TEST_ASSERT_FALSE(ft_error_occurred());
+    data = ft_mock_data(0, 10);\
+    ft_array_any_add_bulk(NULL, (void **)data, 0);
+    TEST_ASSERT_TRUE(ft_error_catch(ERROR_NULL_PARAM));
+    TEST_ASSERT_FALSE(ft_error_occurred());
+    free((data));
 }
 
 void	test_ft_array_any_add_bulk(void)
