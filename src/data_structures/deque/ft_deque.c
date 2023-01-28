@@ -6,14 +6,14 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:42:52 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/28 17:11:48 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/28 19:02:56 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque.h"
 
 #include <stdlib.h>
-#include "ft_closest_power.h"
+#include "ft_closest_power_ul.h"
 #include "ft_memcpy.h"
 #include "ft_error_handle.h"
 
@@ -27,7 +27,7 @@ t_s_deque	*ft_deque_new(size_t size)
 	deque = malloc(sizeof(*deque));
 	if (!deque)
 		return (ft_error_throw(ERROR_MALLOC), NULL);
-	size_data = ft_closest_power(size, 2);
+	size_data = ft_closest_power_ul(size, 2);
 	size_delta = (size_data - size) / 2;
 	deque_array = malloc(size_data * sizeof(*deque_array));
 	if (!deque_array)

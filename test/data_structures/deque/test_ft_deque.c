@@ -6,23 +6,14 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 15:50:10 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/26 19:02:09 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/01/28 17:13:32 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unity.h"
 #include "ft_deque.h"
-#include "ft_deque_pop_front.h"
-#include "ft_deque_poll_front.h"
-#include "ft_deque_pop_back.h"
-#include "ft_deque_poll_back.h"
-#include "ft_deque_push_front.h"
 #include "ft_deque_push_front_bulk.h"
-#include "ft_deque_push_back.h"
-#include "ft_deque_push_back_bulk.h"
-#include "ft_deque_size.h"
-#include "ft_deque_is_empty.h"
-#include "errors.h"
+#include "ft_error_handle.h"
 #include <stddef.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -56,7 +47,8 @@ void	test_ft_deque_create(void)
 {
 	TEST_ASSERT_NOT_NULL_MESSAGE(g_data, MSG_NULL_DEQUE);
 	g_deque = ft_deque_new(SIZE);
-	TEST_ASSERT_EQUAL_INT(NO_ERROR, ft_deque_push_front_bulk(g_deque, g_data, SIZE));
+	ft_deque_push_front_bulk(g_deque, g_data, SIZE);
+	TEST_ASSERT_FALSE(ft_error_occurred());
 	TEST_ASSERT_NOT_NULL_MESSAGE(g_deque, MSG_NULL_DEQUE);
 	TEST_ASSERT_EQUAL_INT(SIZE, g_deque->size_actual);
 }
