@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:21:21 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/26 20:52:28 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/06 13:07:18 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include "ft_deque.h"
 #include "ft_deque_push_front_bulk.h"
+#include "ft_error_handle.h"
 #include "ft_m_data.h"
 #include <stdlib.h>
 
@@ -28,7 +29,8 @@ t_s_deque	*ft_mock_deque(int min, int max)
 	data_mock = ft_mock_data(min, max);
 	if (!data_mock)
 		return (ft_deque_destroy(deque_mock, &free));
-	if (ft_deque_push_front_bulk(deque_mock, data_mock, (size_t)(max - min)))
+	ft_deque_push_front_bulk(deque_mock, data_mock, (size_t)(max - min));
+	if (ft_error_occurred())
 		return (ft_deque_destroy(deque_mock, &free));
 	free(data_mock);
 	return (deque_mock);

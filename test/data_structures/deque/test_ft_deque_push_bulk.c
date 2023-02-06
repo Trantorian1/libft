@@ -1,15 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_ft_deque_add_bulk.c                           :+:      :+:    :+:   */
+/*   test_ft_deque_push_bulk.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:16:58 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/26 19:10:51 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/06 12:57:46 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_error_handle.h"
 #include "unity.h"
 #include "ft_deque.h"
 #include "ft_deque_pop_front.h"
@@ -53,9 +54,8 @@ void	test_ft_deque_create(void)
 {
 	TEST_ASSERT_NOT_NULL_MESSAGE(g_data, MSG_NULL_DEQUE);
 	g_deque = ft_deque_new(SIZE);
-	TEST_ASSERT_EQUAL_INT(
-		NO_ERROR,
-		ft_deque_push_front_bulk(g_deque, g_data, SIZE));
+	ft_deque_push_front_bulk(g_deque, g_data, SIZE);
+	TEST_ASSERT_FALSE(ft_error_occurred());
 	TEST_ASSERT_NOT_NULL_MESSAGE(g_deque, MSG_NULL_DEQUE);
 	TEST_ASSERT_EQUAL_INT(SIZE, g_deque->size_actual);
 }
@@ -65,9 +65,8 @@ void	test_ft_deque_add_front_bulk(void)
 	int	data_bulk[] = {10, 11, 12, 13, 14, 15};
 	int	*data;
 
-	TEST_ASSERT_EQUAL_INT(
-		NO_ERROR,
-		ft_deque_push_front_bulk(g_deque, data_bulk, 6));
+	ft_deque_push_front_bulk(g_deque, data_bulk, 6);
+	TEST_ASSERT_FALSE(ft_error_occurred());
 	data = ft_deque_pop_front_bulk(g_deque, 6);
 	TEST_ASSERT_EQUAL_INT_ARRAY(data_bulk, data, 6);
 	free(data);
@@ -78,9 +77,8 @@ void	test_ft_deque_add_back_bulk(void)
 	int	data_bulk[] = {-6, -5, -4, -3, -2, -1};
 	int	*data;
 
-	TEST_ASSERT_EQUAL_INT(
-		NO_ERROR,
-		ft_deque_push_back_bulk(g_deque, data_bulk, 6));
+	ft_deque_push_back_bulk(g_deque, data_bulk, 6);
+	TEST_ASSERT_FALSE(ft_error_occurred());
 	data = ft_deque_pop_back_bulk(g_deque, 6);
 	TEST_ASSERT_EQUAL_INT_ARRAY(data_bulk, data, 6);
 	free(data);

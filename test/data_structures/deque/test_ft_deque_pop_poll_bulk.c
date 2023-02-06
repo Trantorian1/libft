@@ -6,10 +6,11 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:31:18 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/26 19:16:58 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/06 12:54:13 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_error_handle.h"
 #include "unity.h"
 #include "ft_deque.h"
 #include "ft_deque_pop_front_bulk.h"
@@ -49,7 +50,8 @@ void	test_ft_deque_create(void)
 {
 	TEST_ASSERT_NOT_NULL_MESSAGE(g_data, MSG_NULL_DEQUE);
 	g_deque = ft_deque_new(SIZE);
-	TEST_ASSERT_EQUAL_INT(NO_ERROR, ft_deque_push_front_bulk(g_deque, g_data, SIZE));
+	ft_deque_push_front_bulk(g_deque, g_data, SIZE);
+	TEST_ASSERT_FALSE(ft_error_occurred());
 	TEST_ASSERT_NOT_NULL_MESSAGE(g_deque, MSG_NULL_DEQUE);
 	TEST_ASSERT_EQUAL_INT(SIZE, g_deque->size_actual);
 }
@@ -60,9 +62,8 @@ void	test_ft_deque_pop_poll_front_bulk(void)
 	int	*data;
 
 	TEST_ASSERT_NOT_NULL_MESSAGE(g_data, MSG_NULL_DEQUE);
-	TEST_ASSERT_EQUAL_INT(
-		NO_ERROR,
-		ft_deque_push_front_bulk(g_deque, data_bulk, 6));
+	ft_deque_push_front_bulk(g_deque, data_bulk, 6);
+	TEST_ASSERT_FALSE(ft_error_occurred());
 	data = ft_deque_poll_front_bulk(g_deque, 6);
 	TEST_ASSERT_EQUAL_INT_ARRAY(data_bulk, data, 6);
 	free(data);
@@ -77,9 +78,8 @@ void	test_ft_deque_pop_poll_back_bulk(void)
 	int	*data;
 
 	TEST_ASSERT_NOT_NULL_MESSAGE(g_data, MSG_NULL_DEQUE);
-	TEST_ASSERT_EQUAL_INT(
-		NO_ERROR,
-		ft_deque_push_back_bulk(g_deque, data_bulk, 6));
+	ft_deque_push_back_bulk(g_deque, data_bulk, 6);
+	TEST_ASSERT_FALSE(ft_error_occurred());
 	data = ft_deque_poll_back_bulk(g_deque, 6);
 	TEST_ASSERT_EQUAL_INT_ARRAY(data, data, 6);
 	free(data);
