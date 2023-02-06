@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 09:29:04 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 17:02:25 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/06 13:25:52 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * 	elem_size bytes in memory.
  *
  * @param elem_count (size_t): number of elements in the array.
- * @oaram elem_size (size_t): size, in bytes, of each element in memory.
+ * @param elem_size (size_t): size, in bytes, of each element in memory.
  *
  * @return (void *): array with memory allocated for elem_count elements.
  */

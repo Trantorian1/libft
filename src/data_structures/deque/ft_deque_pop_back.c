@@ -6,12 +6,13 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:45:00 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/06 13:05:06 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/06 13:36:57 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque_pop_back.h"
 
+#include "e_error.h"
 #include "ft_deque_is_empty.h"
 #include "ft_memcpy.h"
 #include "ft_error_handle.h"
@@ -70,8 +71,8 @@ int	ft_deque_pop_back(t_s_deque *deque)
 	if (ft_deque_is_empty(deque))
 		return (ft_error_throw(ERROR_SIZE), 0);
 	ft_deque_ensure_fit_back(deque);
-	if (ft_error_occurred())
-		return (-1);
+	if (deque->data == 0)
+		return (0);
 	deque->size_actual--;
 	data = deque->data[deque->bottom++];
 	return (data);
