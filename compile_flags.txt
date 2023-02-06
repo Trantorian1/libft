@@ -1,5 +1,5 @@
 -I
 include/
 -I
-/mnt/nfs/homes/emcnab/Documents/Code/ruby/gems/2.7.0/gems/ceedling-0.31.1/vendor/unity/src
+/tmp/ceedling/gems/ceedling-0.31.1/vendor/unity/src/
 -Weverything
