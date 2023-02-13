@@ -6,13 +6,12 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:41:21 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/28 18:31:40 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/13 13:52:57 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque_push_front.h"
 
-#include "ft_deque_ensure_space_top.h"
 #include "ft_memcpy.h"
 #include "ft_error_handle.h"
 #include <stdlib.h>
@@ -41,7 +40,7 @@ static bool	ft_deque_should_grow_top(t_s_deque *deque)
 	return (deque->top == deque->size_data - 1);
 }
 
-void	ft_deque_ensure_space_top(t_s_deque *deque)
+static void	ft_deque_ensure_space_top(t_s_deque *deque)
 {
 	if (ft_deque_should_grow_top(deque))	
 		ft_deque_grow_top(deque);
