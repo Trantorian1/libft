@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:44:52 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/28 18:38:19 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/13 11:11:13 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "ft_deque_is_empty.h"
 #include "ft_memcpy.h"
 #include "ft_error_handle.h"
+#include <stdbool.h>
 #include <stdlib.h>
 
 static void	ft_deque_shrink_front(t_s_deque *deque)
@@ -39,6 +40,8 @@ static void	ft_deque_shrink_front(t_s_deque *deque)
 
 static bool	ft_deque_should_skrink_front(t_s_deque *deque)
 {
+	if (deque->size_data <= deque->size_min)
+		return (false);
 	return (deque->top < deque->size_data / SHRINK_FACTOR);
 }
 

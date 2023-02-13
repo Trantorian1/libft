@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:42:52 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/28 19:02:56 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/13 11:09:11 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_s_deque	*ft_deque_new(size_t size)
 	deque->top = deque->bottom - 1;
 	deque->size_data = size_data;
 	deque->size_actual = 0;
+	deque->size_min = size_data;
 	deque->data = deque_array;
 	return (deque);
 }
