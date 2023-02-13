@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:59:13 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/12 15:46:53 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/06 18:16:43 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
  * @return (ssize_t): number of bytes written, negative if a write error
  *         occurred.
  */
-ssize_t	ft_putendl_fd(char *str, int file_desc)
+ssize_t	ft_putendl_fd(const char *str, int file_desc)
 {
 	ssize_t	write_count;
 

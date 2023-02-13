@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:12:21 by                   #+#    #+#             */
-/*   Updated: 2023/01/26 11:12:21 by                  ###   ########.fr       */
+/*   Updated: 2023/02/06 18:47:51 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 # include <stddef.h>
 
 void	ft_array_add(t_s_array *array, int n);
-void	ft_array_add_bulk(t_s_array *array, int *data, size_t size);
+void	ft_array_add_bulk(t_s_array *array, const int *data, size_t size);
 
 #endif

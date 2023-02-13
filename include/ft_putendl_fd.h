@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:12:24 by                   #+#    #+#             */
-/*   Updated: 2023/01/26 11:12:24 by                  ###   ########.fr       */
+/*   Updated: 2023/02/06 18:16:57 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include <stddef.h>
 # include <unistd.h>
 
-ssize_t	ft_putendl_fd(char *str, int file_desc);
+ssize_t	ft_putendl_fd(const char *str, int file_desc);
 
 #endif

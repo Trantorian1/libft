@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:42:20 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/26 15:42:45 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/06 18:24:31 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 static void	ft_array_any_resize(t_s_array_any *array, size_t size)
 {
-	size_t	size_new;
-	void	**data_new;
+	size_t		size_new;
+	const void	**data_new;
 
 	if (array->index + size >= array->footprint * 2)
 		size_new = ft_closest_power_ul(array->index + size, 2);
@@ -41,18 +41,18 @@ static bool	ft_array_any_should_resize(t_s_array_any *array, size_t size)
 	return (array->index + size >= array->footprint);
 }
 
-void	ft_array_any_add(t_s_array_any *array, void *any)
+void	ft_array_any_add(t_s_array_any *array, const void *any)
 {
-    if (!array || !any)
+	if (!array || !any)
         return (ft_error_throw(ERROR_NULL_PARAM));
 	if (ft_array_any_should_resize(array, 0))
 		ft_array_any_resize(array, 0);
 	array->data[array->index++] = any;
 }
 
-void	ft_array_any_add_at(t_s_array_any *array, void *any, size_t index)
+void	ft_array_any_add_at(t_s_array_any *array, const void *any, size_t index)
 {
-    if (!array || !any)
+	if (!array || !any)
         return (ft_error_throw(ERROR_NULL_PARAM));
 	if (ft_array_any_should_resize(array, index))
 		ft_array_any_resize(array, index);
@@ -60,10 +60,10 @@ void	ft_array_any_add_at(t_s_array_any *array, void *any, size_t index)
 	array->index = index + 1;
 }
 
-void	ft_array_any_add_bulk(t_s_array_any *array, void **data, size_t size)
+void	ft_array_any_add_bulk(t_s_array_any *array, const void **data, size_t size)
 {
-    if (!array || !data)
-    return (ft_error_throw(ERROR_NULL_PARAM));
+	if (!array || !data)
+    	return (ft_error_throw(ERROR_NULL_PARAM));
 	if (ft_array_any_should_resize(array, size))
 		ft_array_any_resize(array, size);
 	ft_memcpy(array->data + array->index, data, size * sizeof(*data));

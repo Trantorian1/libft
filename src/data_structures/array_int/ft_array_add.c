@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:42:20 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/25 18:20:34 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/06 18:47:35 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	ft_array_resize(t_s_array *array, size_t size)
 	data_new = malloc(size_new * sizeof(*data_new));
 	if (!data_new)
     {
-        ft_error_throw(ERROR_MALLOC));
+        ft_error_throw(ERROR_MALLOC);
         return ;
     }
 	ft_memcpy(data_new, array->data, array->footprint * sizeof(*data_new));
@@ -52,7 +52,7 @@ void	ft_array_add(t_s_array *array, int n)
 	array->data[array->index++] = n;
 }
 
-void	ft_array_add_bulk(t_s_array *array, int *data, size_t size)
+void	ft_array_add_bulk(t_s_array *array, const int *data, size_t size)
 {
 	if (ft_array_should_resize(array, size))
 		ft_array_resize(array, size);

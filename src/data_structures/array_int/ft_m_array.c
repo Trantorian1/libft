@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:19:09 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/26 13:34:13 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/06 18:47:11 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 t_s_array	*ft_mock_array(int min, int max)
 {
 	t_s_array	*array;
-	int			*data;
+	const int			*data;
 
 	array = ft_array_create((size_t)(max - min));
 	data = ft_mock_data(min, max);
 	if (!data)
-		return (free(array), NULL);
+		return (free((void *)array), NULL);
 	ft_array_add_bulk(array, data, (size_t)(max - min));
 	return (array);
 }

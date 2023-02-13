@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:18:53 by                   #+#    #+#             */
-/*   Updated: 2023/01/26 14:18:53 by                  ###   ########.fr       */
+/*   Updated: 2023/02/06 18:20:43 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "s_array_any.h"
 # include <stddef.h>
 
-void	ft_array_any_add(t_s_array_any *array, void *any);
-void	ft_array_any_add_at(t_s_array_any *array, void *any, size_t index);
-void	ft_array_any_add_bulk(t_s_array_any *array, void **data, size_t size);
+void	ft_array_any_add(t_s_array_any *array, const void *any);
+void	ft_array_any_add_at(t_s_array_any *array, const void *any, size_t index);
+void	ft_array_any_add_bulk(t_s_array_any *array, const void **data, size_t size);
 
 #endif

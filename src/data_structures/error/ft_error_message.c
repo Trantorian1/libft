@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 09:54:27 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/28 18:38:09 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/06 18:24:54 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static t_s_array_any	*ft_error_init(void)
 	if (errors != NULL)
 		return (errors);
 	errors = ft_array_any_create(E_ERROR_SIZE);
-	ft_array_any_add_bulk(errors, (void **)g_error_std, E_ERROR_SIZE);
+	ft_array_any_add_bulk(errors, (const void **)g_error_std, E_ERROR_SIZE);
 	atexit(&at_exit_free);
 	return (errors);
 }
