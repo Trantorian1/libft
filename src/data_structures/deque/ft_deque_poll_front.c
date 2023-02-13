@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:43:49 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/13 20:20:34 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/13 20:25:49 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include "ft_deque_is_empty.h"
 #include "ft_error_handle.h"
+#include "ft_deque_size.h"
 
 /**
  * @brief Retrieves the element at the front of the deque without removing it.
