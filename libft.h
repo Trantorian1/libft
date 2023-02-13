@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 14:27:22 by                   #+#    #+#             */
-/*   Updated: 2023/01/24 14:27:22 by                  ###   ########.fr       */
+/*   Updated: 2023/02/13 10:54:55 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,39 @@
 # include <stddef.h>
 # include <stdint.h>
 # include <stdbool.h>
-# include "s_magic.h"
-# include "s_deque.h"
-# include "s_list.h"
 # include <unistd.h>
+
+typedef struct s_magic
+{
+	unsigned long int	lomagic;
+	unsigned long int	himagic;
+	unsigned long int	crmagic;
+}	t_s_magic;
+
+typedef struct s_all_magic
+{
+	unsigned long int	lomagic;
+	unsigned long int	himagic;
+	unsigned long int	*crmagic;
+}	t_s_allmagic;
+
+typedef unsigned long int	t_lword;
+typedef const t_lword		*t_lphrase;
+
+typedef struct s_deque
+{
+	size_t	bottom;      /** Bottom Dequeue index data array                */
+	size_t	top;         /** Top Dequeue index data array                   */
+	size_t	size_data;   /** Size of the Dequeue's data array               */
+	size_t	size_actual; /** Number of elements added to the Dequeue so far */
+	int		*data;       /** Dequeue data array                             */
+}	t_s_deque;
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_s_list;
 
 int			ft_memcmp(const void *mem_a, const void *mem_b, size_t n);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
