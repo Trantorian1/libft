@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:44:52 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/13 11:11:13 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/13 22:28:40 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,6 @@ int	ft_deque_pop_front(t_s_deque *deque)
 {
 	int	data;
 
-	if (!deque)
-		return (ft_error_throw(ERROR_NULL_PARAM), 0);
-	if (ft_deque_is_empty(deque))
-		return (ft_error_throw(ERROR_SIZE), 0);
 	deque->size_actual--;
 	data = deque->data[deque->top--];
 	ft_deque_ensure_fit_front(deque);
