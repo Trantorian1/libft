@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:43:49 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/13 20:13:11 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/13 20:20:34 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@
  */
 int	ft_deque_poll_front(t_s_deque *deque)
 {
+	if (ft_deque_size(deque) == 0)
+		return (0);
 	return (deque->data[deque->top]);
 }
