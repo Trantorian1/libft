@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:41:21 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/15 20:05:46 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/15 20:13:56 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void	ft_deque_push_front(t_s_deque *deque, int n)
 	if (!deque)
 		return ;
 	if (!ft_deque_ensure_space_top(deque))
-		return ;
-	if (ft_error_occurred())
 		return ;
 	deque->data[++deque->top] = n;
 	deque->size_actual++;
