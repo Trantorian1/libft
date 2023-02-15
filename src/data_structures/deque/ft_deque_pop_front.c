@@ -65,8 +65,7 @@ int	ft_deque_pop_front(t_s_deque *deque)
 		return (0);
 	deque->size_actual--;
 	data = deque->data[deque->top--];
-	ft_deque_ensure_fit_front(deque);
-	if (ft_error_occurred())
+	if (ft_deque_ensure_fit_front(deque))
 		return (0);
 	return (data);
 }
