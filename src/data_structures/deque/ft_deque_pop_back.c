@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:45:00 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/13 11:10:21 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/15 20:00:11 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-static void	ft_deque_shrink_back(t_s_deque *deque)
+static int	ft_deque_shrink_back(t_s_deque *deque)
 {
 	size_t	size_new;
 	int		*new_array;
@@ -28,7 +28,7 @@ static void	ft_deque_shrink_back(t_s_deque *deque)
 	size_new = deque->size_data / 2;
 	new_array = malloc(size_new * sizeof(*new_array));
 	if (!new_array)
-		return (ft_error_throw(ERROR_MALLOC));
+		return (EXIT_FAILURE);
 	bottom_old = deque->data + deque->bottom;
 	ft_memcpy(new_array, bottom_old, deque->size_actual * sizeof(*new_array));
 	free(deque->data);
@@ -36,6 +36,7 @@ static void	ft_deque_shrink_back(t_s_deque *deque)
 	deque->top = deque->bottom + deque->size_actual - 1;
 	deque->size_data = size_new;
 	deque->data = new_array;
+	return (EXIT_SUCCESS);
 }
 
 static bool	ft_deque_should_shrink_back(t_s_deque *deque)
@@ -48,10 +49,11 @@ static bool	ft_deque_should_shrink_back(t_s_deque *deque)
 	return (bottom_size < deque->size_data / SHRINK_FACTOR);
 }
 
-static void	ft_deque_ensure_fit_back(t_s_deque *deque)
+static int	ft_deque_ensure_fit_back(t_s_deque *deque)
 {
 	if (ft_deque_should_shrink_back(deque))
-		ft_deque_shrink_back(deque);
+		return (ft_deque_shrink_back(deque));
+	return (EXIT_SUCCESS);
 }
 
 /**
@@ -70,11 +72,10 @@ int	ft_deque_pop_back(t_s_deque *deque)
 	int	data;
 
 	if (!deque)
-		return (ft_error_throw(ERROR_NULL_PARAM), 0);
+		return (0);
 	if (ft_deque_is_empty(deque))
-		return (ft_error_throw(ERROR_SIZE), 0);
-	ft_deque_ensure_fit_back(deque);
-	if (deque->data == 0)
+		return (0);
+	if (!ft_deque_ensure_fit_back(deque))
 		return (0);
 	deque->size_actual--;
 	data = deque->data[deque->bottom++];

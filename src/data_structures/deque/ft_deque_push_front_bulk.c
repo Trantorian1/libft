@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 09:38:03 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/28 18:32:10 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/15 20:04:50 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "ft_error_handle.h"
 #include <stdlib.h>
 
-static void	ft_deque_grow_top_bulk(t_s_deque *deque, size_t n)
+static int	ft_deque_grow_top_bulk(t_s_deque *deque, size_t n)
 {
 	size_t	size_new;
 	size_t	size_delta;
@@ -29,7 +29,7 @@ static void	ft_deque_grow_top_bulk(t_s_deque *deque, size_t n)
 	size_delta = (size_new - deque->size_actual - n) / 2;
 	new_array = malloc(size_new * sizeof(*new_array));
 	if (!new_array)
-		return (ft_error_throw(ERROR_MALLOC));
+		return (EXIT_FAILURE);
 	bottom_old = deque->data + deque->bottom;
 	bottom_new = new_array + size_delta;
 	ft_memcpy(
@@ -40,6 +40,7 @@ static void	ft_deque_grow_top_bulk(t_s_deque *deque, size_t n)
 	deque->top = deque->bottom + deque->size_actual - 1;
 	deque->size_data = size_new;
 	deque->data = new_array;
+	return (EXIT_SUCCESS);
 }
 
 static bool	ft_deque_should_make_space_top(t_s_deque *deque, size_t n)
@@ -47,18 +48,18 @@ static bool	ft_deque_should_make_space_top(t_s_deque *deque, size_t n)
 	return (deque->top + n > deque->size_data - 1);
 }
 
-static void	ft_deque_ensure_space_top_bulk(t_s_deque *deque, size_t n)
+static int	ft_deque_ensure_space_top_bulk(t_s_deque *deque, size_t n)
 {
 	if (ft_deque_should_make_space_top(deque, n))
-		ft_deque_grow_top_bulk(deque, n);
+		return (ft_deque_grow_top_bulk(deque, n));
+	return (EXIT_SUCCESS);
 }
 
 void	ft_deque_push_front_bulk(t_s_deque *deque, int *data, size_t n)
 {
-	if (!deque || ! data)
-		return (ft_error_throw(ERROR_NULL_PARAM));
-	ft_deque_ensure_space_top_bulk(deque, n);
-	if (ft_error_occurred())
+	if (!deque || !data)
+		return ;
+	if (!ft_deque_ensure_space_top_bulk(deque, n))
 		return ;
 	ft_memcpy(deque->data + deque->top + 1, data, n * sizeof(*data));
 	deque->top += n;

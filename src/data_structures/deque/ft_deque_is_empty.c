@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:48:44 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/13 20:01:03 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/15 19:56:26 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@
 bool	ft_deque_is_empty(t_s_deque *deque)
 {
 	if (!deque)
-		return (ft_error_throw(ERROR_NULL_PARAM), true);
+		return (true);
 	return (deque->size_actual <= 0);
 }

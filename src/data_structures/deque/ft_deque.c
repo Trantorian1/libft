@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:42:52 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/13 11:09:11 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/15 19:56:16 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_s_deque	*ft_deque_new(size_t size)
 void	*ft_deque_destroy(t_s_deque *deque, void (*f_free)(void *))
 {
 	if (!deque)
-		return (ft_error_throw(ERROR_NULL_PARAM), NULL);
+		return (NULL);
 	deque->bottom = 0;
 	deque->top = 0;
 	if (f_free)

@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:34:34 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/06 18:14:39 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/15 20:08:24 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	ft_deque_swap(t_s_deque *deque)
 	int	tmp;
 
 	if (!deque)
-		return (ft_error_throw(ERROR_NULL_PARAM), 0);
+		return (0);
 	if (deque->size_actual <= 1)
-		return (ft_error_throw(ERROR_SIZE), 0);
+		return (0);
 	tmp = deque->data[deque->top];
 	deque->data[deque->top] = deque->data[deque->top - 1];
 	deque->data[deque->top - 1] = tmp;

@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 14:20:19 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/28 19:00:32 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/15 20:08:37 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	*ft_deque_to_array(t_s_deque *deque)
 	int	*src;
 
 	if (!deque)
-		return (ft_error_throw(ERROR_NULL_PARAM), NULL);
+		return (NULL);
 	dst = malloc(deque->size_actual * sizeof(*dst));
 	if (!dst)
-		return (ft_error_throw(ERROR_NULL_PARAM), NULL);
+		return (NULL);
 	src = deque->data + deque->bottom;
 	ft_memcpy(dst, src, deque->size_actual * sizeof(*dst));
 	return (dst);
