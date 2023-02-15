@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:45:54 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/15 20:07:55 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/15 20:32:23 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,7 @@ void	ft_deque_rotate(t_s_deque *deque)
 	if (!deque)
 		return ;
 	if (deque->bottom <= 1 || deque->top >= deque->size_data - 2)
-	{
-		if (!ft_deque_ensure_space_back(deque))
+		if (ft_deque_ensure_space_back(deque))
 			return ;
-		if (ft_error_occurred())
-			return ;
-	}
 	deque->data[--deque->bottom] = deque->data[deque->top--];
 }

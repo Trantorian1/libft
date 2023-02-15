@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 09:38:03 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/15 20:04:50 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/15 20:32:57 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_deque_push_front_bulk(t_s_deque *deque, int *data, size_t n)
 {
 	if (!deque || !data)
 		return ;
-	if (!ft_deque_ensure_space_top_bulk(deque, n))
+	if (ft_deque_ensure_space_top_bulk(deque, n))
 		return ;
 	ft_memcpy(deque->data + deque->top + 1, data, n * sizeof(*data));
 	deque->top += n;
