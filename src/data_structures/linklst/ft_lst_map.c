@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:17:40 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/12 17:36:10 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/26 16:18:10 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@
  * @return (t_s_list *): linked list mapping of [head] or NULL if allocation
  * 	fails.
  */
-t_s_list	*ft_lst_map(t_s_list *head, void *(*f_map)(void *), void (*f_free)(void *))
+t_s_list	*ft_lst_map(
+	t_s_list *head,
+	void *(*f_map)(void *),
+	void (*f_free)(void *))
 {
 	t_s_list	*map;
 	t_s_list	*map_start;

@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:56:49 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/13 11:08:43 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/26 16:20:55 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@
  */
 typedef struct s_deque
 {
-	size_t	bottom;      /** Bottom Dequeue index data array                */
-	size_t	top;         /** Top Dequeue index data array                   */
-	size_t	size_data;   /** Size of the Dequeue's data array               */
-	size_t	size_actual; /** Number of elements added to the Dequeue so far */
+	size_t	bottom;
+	size_t	top;
+	size_t	size_data;
+	size_t	size_actual;
 	size_t	size_min;
-	int		*data;       /** Dequeue data array                             */
+	int		*data;
 }	t_s_deque;
 
 #endif

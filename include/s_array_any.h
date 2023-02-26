@@ -6,12 +6,12 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 10:06:56 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/06 18:24:19 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/26 16:22:20 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef H_S_ARRAY_INT
-# define H_S_ARRAY_INT
+#ifndef S_ARRAY_ANY_H
+# define S_ARRAY_ANY_H
 
 # include <stddef.h>
 

@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:42:20 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/06 18:47:35 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/26 16:16:40 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ static void	ft_array_resize(t_s_array *array, size_t size)
 		size_new = array->footprint * 2;
 	data_new = malloc(size_new * sizeof(*data_new));
 	if (!data_new)
-    {
-        ft_error_throw(ERROR_MALLOC);
-        return ;
-    }
+	{
+		ft_error_throw(ERROR_MALLOC);
+		return ;
+	}
 	ft_memcpy(data_new, array->data, array->footprint * sizeof(*data_new));
 	free(array->data);
 	array->data = data_new;

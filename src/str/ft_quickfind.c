@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:47:49 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/12 15:28:20 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/26 16:18:31 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ static const char	*ft_memalign(const char *str, char to_find)
 		i++;
 	return (str + i);
 }
-
-_Pragma("GCC diagnostic push")
-_Pragma("GCC diagnostic ignored \"-Wcast-align\"")
 
 /*
  * @brief Rapidly searches for a character [c] in a string [str].
@@ -72,5 +69,3 @@ const char	*ft_quickfind(const char *str, char to_find)
 	}
 	return (str);
 }
-
-_Pragma("GCC diagnostic pop")

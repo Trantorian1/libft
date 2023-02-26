@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:12:23 by                   #+#    #+#             */
-/*   Updated: 2023/01/26 11:12:23 by                  ###   ########.fr       */
+/*   Updated: 2023/02/26 16:22:44 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include "s_list.h"
 
-t_s_list	*ft_lst_map(t_s_list *head, void *(*f_map)(void *), void (*f_free)(void *));
+t_s_list	*ft_lst_map(
+				t_s_list *head,
+				void *(*f_map)(void *),
+				void (*f_free)(void *));
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:19:09 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/06 18:48:19 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/26 16:13:11 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 t_s_array_any	*ft_mock_array_any(int min, int max)
 {
 	t_s_array_any	*array;
-	const void			**data;
+	const void		**data;
 
 	array = ft_array_any_create((size_t)(max - min));
 	data = (const void **)ft_mock_any_create((size_t)(max - min));

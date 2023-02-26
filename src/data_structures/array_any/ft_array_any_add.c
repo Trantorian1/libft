@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:42:20 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/06 18:24:31 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/26 16:19:04 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static bool	ft_array_any_should_resize(t_s_array_any *array, size_t size)
 void	ft_array_any_add(t_s_array_any *array, const void *any)
 {
 	if (!array || !any)
-        return (ft_error_throw(ERROR_NULL_PARAM));
+		return ;
 	if (ft_array_any_should_resize(array, 0))
 		ft_array_any_resize(array, 0);
 	array->data[array->index++] = any;
@@ -53,17 +53,20 @@ void	ft_array_any_add(t_s_array_any *array, const void *any)
 void	ft_array_any_add_at(t_s_array_any *array, const void *any, size_t index)
 {
 	if (!array || !any)
-        return (ft_error_throw(ERROR_NULL_PARAM));
+		return ;
 	if (ft_array_any_should_resize(array, index))
 		ft_array_any_resize(array, index);
 	array->data[index] = any;
 	array->index = index + 1;
 }
 
-void	ft_array_any_add_bulk(t_s_array_any *array, const void **data, size_t size)
+void	ft_array_any_add_bulk(
+	t_s_array_any *array,
+	const void **data,
+	size_t size)
 {
 	if (!array || !data)
-    	return (ft_error_throw(ERROR_NULL_PARAM));
+		return ;
 	if (ft_array_any_should_resize(array, size))
 		ft_array_any_resize(array, size);
 	ft_memcpy(array->data + array->index, data, size * sizeof(*data));

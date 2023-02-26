@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:46:07 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/15 20:32:13 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/26 16:17:15 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static bool	ft_deque_should_grow_top(t_s_deque *deque)
 
 static int	ft_deque_ensure_space_top(t_s_deque *deque)
 {
-	if (ft_deque_should_grow_top(deque))	
+	if (ft_deque_should_grow_top(deque))
 		return (ft_deque_grow_top(deque));
 	return (EXIT_SUCCESS);
 }
