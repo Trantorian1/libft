@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:42:20 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/26 16:19:04 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/27 14:01:58 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 #include "ft_closest_power_ul.h"
 #include "ft_memcpy.h"
-#include "ft_error_handle.h"
 #include <stdlib.h>
 #include <stdbool.h>
 

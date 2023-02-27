@@ -6,14 +6,13 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:52:05 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/26 16:15:23 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/27 14:03:38 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_array_any_insert.h"
 
 #include "ft_memcpy.h"
-#include "ft_error_handle.h"
 #include <stdbool.h>
 
 static bool	ft_array_any_in_bounds(t_s_array_any *array, size_t index)
