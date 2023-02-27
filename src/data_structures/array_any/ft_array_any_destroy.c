@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:46:53 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/27 14:03:01 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/27 14:05:25 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_array_any_destroy(t_s_array_any *array, void (*f_free)(void *))
 	i = (size_t)(-1);
 	if (f_free)
 		while (++i < array->index)
-			f_free(array->data[i]);
+			f_free((void *)array->data[i]);
 	free(array->data);
 	free(array);
 	return (NULL);
