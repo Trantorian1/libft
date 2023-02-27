@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 13:59:38 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/25 17:15:20 by emcnab           ###   ########.fr       */
+/*   Created: 2023/02/27 13:58:18 by emcnab            #+#    #+#             */
+/*   Updated: 2023/02/27 13:58:25 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_s_array	*ft_array_create(size_t size)
 	size_new = ft_closest_power_ul(size, 2);
 	array->data = ft_calloc(size_new, sizeof(array->data));
 	if (!array->data)
-		return (free(array), NULL);
+		return ((void)free(array), NULL);
 	array->footprint = size_new;
 	array->index = 0;
 	return (array);
