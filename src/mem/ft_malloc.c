@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:14:59 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/27 15:17:50 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/02/27 15:58:13 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 #include "e_error.h"
 #include "s_linkmem.h"
+#include "ft_memcpy.h"
+#include "ft_min.h"
 #include <stdlib.h>
 
 static t_s_linkmem	*g_last = NULL;
@@ -29,6 +31,7 @@ void	*ft_malloc(size_t size)
 		ft_free_all();
 		exit(ERROR_MALLOC);
 	}
+	node->size = size;
 	node->prev = NULL;
 	node->next = NULL;
 	if (!g_last)
@@ -41,6 +44,22 @@ void	*ft_malloc(size_t size)
 	}
 	data = (void *)((size_t)node + sizeof(*node));
 	return (data);
+}
+
+void	*ft_realloc(void *ptr, size_t size_new)
+{
+	t_s_linkmem	*node_old;
+	void		*data_new;
+
+	if (!ptr)
+		return (NULL);
+	node_old = (t_s_linkmem *)((size_t)ptr - sizeof(*node_old));
+	if (node_old->size == size_new)
+		return (ptr);
+	data_new = ft_malloc(size_new);
+	ft_memcpy(data_new, ptr, ft_min(node_old->size, size_new));
+	ft_free(ptr);
+	return (data_new);
 }
 
 void	*ft_free(void *ptr)
@@ -74,5 +93,6 @@ void	*ft_free_all(void)
 		free(node_curr);
 		node_curr = node_prev;
 	}
+	g_last = NULL;
 	return (NULL);
 }

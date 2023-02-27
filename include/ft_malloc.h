@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 14:32:28 by                   #+#    #+#             */
-/*   Updated: 2023/02/27 14:32:28 by                  ###   ########.fr       */
+/*   Created: 2023/02/27 15:30:46 by                   #+#    #+#             */
+/*   Updated: 2023/02/27 15:30:46 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stddef.h>
 
 void	*ft_malloc(size_t size);
+void	*ft_realloc(void *ptr, size_t size_new);
 void	*ft_free(void *ptr);
 void	*ft_free_all(void);
 
