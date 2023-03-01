@@ -1,27 +1,69 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ../libft.h                                         :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:38:09 by                   #+#    #+#             */
-/*   Updated: 2023/03/01 10:38:09 by                  ###   ########.fr       */
+/*   Updated: 2023/03/01 10:41:52 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __/LIBFT_H
-# define __/LIBFT_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
 # include <stddef.h>
 # include <stdint.h>
 # include <stdbool.h>
-# include "s_magic.h"
-# include "s_array.h"
-# include "s_deque.h"
-# include "s_list.h"
-# include "s_array_any.h"
 # include <unistd.h>
+
+typedef struct s_magic
+{
+	unsigned long int	lomagic;
+	unsigned long int	himagic;
+	unsigned long int	crmagic;
+}	t_s_magic;
+
+typedef struct s_all_magic
+{
+	unsigned long int	lomagic;
+	unsigned long int	himagic;
+	unsigned long int	*crmagic;
+}	t_s_allmagic;
+
+typedef unsigned long int	t_lword;
+typedef const t_lword		*t_lphrase;
+
+typedef struct s_array
+{
+	size_t	footprint;
+	size_t	index;
+	int		*data;
+}	t_s_array;
+
+typedef struct s_array_any
+{
+	size_t		footprint;
+	size_t		index;
+	const void	**data;
+}	t_s_array_any;
+
+typedef struct s_deque
+{
+	size_t	bottom;
+	size_t	top;
+	size_t	size_data;
+	size_t	size_actual;
+	size_t	size_min;
+	int		*data;
+}	t_s_deque;
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_s_list;
 
 int				ft_memcmp(const void *mem_a, const void *mem_b, size_t n);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
