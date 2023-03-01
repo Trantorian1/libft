@@ -1,69 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ../libft.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 12:31:40 by                   #+#    #+#             */
-/*   Updated: 2023/02/13 12:34:28 by emcnab           ###   ########.fr       */
+/*   Created: 2023/03/01 10:38:09 by                   #+#    #+#             */
+/*   Updated: 2023/03/01 10:38:09 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef __/LIBFT_H
+# define __/LIBFT_H
 
 # include <stddef.h>
 # include <stdint.h>
 # include <stdbool.h>
+# include "s_magic.h"
+# include "s_array.h"
+# include "s_deque.h"
+# include "s_list.h"
+# include "s_array_any.h"
 # include <unistd.h>
-
-typedef struct s_array
-{
-	size_t	footprint;
-	size_t	index;
-	int		*data;
-}	t_s_array;
-
-typedef struct s_array_any
-{
-	size_t		footprint;
-	size_t		index;
-	const void	**data;
-}	t_s_array_any;
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_s_list;
-
-typedef struct s_deque
-{
-	size_t	bottom;      /** Bottom Dequeue index data array                */
-	size_t	top;         /** Top Dequeue index data array                   */
-	size_t	size_data;   /** Size of the Dequeue's data array               */
-	size_t	size_actual; /** Number of elements added to the Dequeue so far */
-	size_t	size_min;
-	int		*data;       /** Dequeue data array                             */
-}	t_s_deque;
-
-typedef struct s_magic
-{
-	unsigned long int	lomagic;
-	unsigned long int	himagic;
-	unsigned long int	crmagic;
-}	t_s_magic;
-
-typedef struct s_all_magic
-{
-	unsigned long int	lomagic;
-	unsigned long int	himagic;
-	unsigned long int	*crmagic;
-}	t_s_allmagic;
-
-typedef unsigned long int	t_lword;
-typedef const t_lword		*t_lphrase;
 
 int				ft_memcmp(const void *mem_a, const void *mem_b, size_t n);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
@@ -75,6 +33,10 @@ void			*ft_memset(void *memory, int byte, size_t n);
 int				**ft_mock_any_create(size_t size);
 void			*ft_mock_any_destroy(int **mock, size_t until);
 size_t			*ft_pack(size_t argc, ...);
+void			*ft_malloc(size_t size);
+void			*ft_realloc(void *ptr, size_t size_new);
+void			*ft_free(void *ptr);
+void			*ft_free_all(void);
 void			*ft_memchr(const void *src, int8_t to_find, size_t n);
 char			*ft_memstr(int8_t *mem, size_t mem_size);
 bool			ft_isalpha(char c);
@@ -126,8 +88,7 @@ int				ft_sign(int n);
 int				*ft_mock_data(int min, int max);
 size_t			ft_intlen(int n);
 t_s_array		*ft_array_create(size_t size);
-int				ft_array_insert(t_s_array *array, size_t index, int n);
-int				ft_array_insert_bulk(t_s_array *array, size_t index, int *data, size_t size);
+bool			ft_array_insert(t_s_array *array, size_t index, int n);
 void			ft_array_add(t_s_array *array, int n);
 void			ft_array_add_bulk(t_s_array *array, const int *data, size_t size);
 int				ft_array_get(t_s_array *array, size_t index);
@@ -146,7 +107,6 @@ void			*ft_deque_destroy(t_s_deque *deque, void (*f_free)(void *));
 t_s_deque		*ft_mock_deque(int min, int max);
 int				ft_deque_swap(t_s_deque *deque);
 void			ft_deque_push_back_bulk(t_s_deque *deque, int *data, size_t n);
-void			ft_deque_ensure_space_top(t_s_deque *deque);
 void			ft_deque_push_front(t_s_deque *deque, int n);
 int				*ft_deque_poll_front_bulk(t_s_deque *deque, size_t n);
 int				ft_deque_poll_back(t_s_deque *deque);
@@ -156,7 +116,6 @@ void			ft_deque_push_front_bulk(t_s_deque *deque, int *data, size_t n);
 bool			ft_deque_is_empty(t_s_deque *deque);
 int				ft_deque_pop_back(t_s_deque *deque);
 int				*ft_deque_pop_back_bulk(t_s_deque *deque, size_t n);
-t_s_list		*ft_lst_map(t_s_list *head, void *(*f_map)(void *), void (*f_free)(void *));
 void			ft_lst_iter(t_s_list *head, void (*f_iter)(void *));
 size_t			ft_lst_size(t_s_list *head);
 void			ft_lst_add_front(t_s_list **list, t_s_list *node);
@@ -170,16 +129,9 @@ void			*ft_array_any_destroy(t_s_array_any *array, void (*f_free)(void *));
 t_s_array_any	*ft_mock_array_any(int min, int max);
 void			ft_array_any_add(t_s_array_any *array, const void *any);
 void			ft_array_any_add_at(t_s_array_any *array, const void *any, size_t index);
-void			ft_array_any_add_bulk(t_s_array_any *array, const void **data, size_t size);
 void			*ft_array_any_get(t_s_array_any *array, size_t index);
+void			ft_array_any_insert(t_s_array_any *array, size_t index, void *any);
 size_t			ft_array_any_size(t_s_array_any *array);
-void			ft_error_throw_fd(int error_code, int fd);
-void			ft_error_throw(int error_code);
-bool			ft_error_occurred(void);
-bool			ft_error_catch(int error_code);
-void			ft_error_add(int error_code, const char *error_msg);
-const char		*ft_error_msg(int error_code);
-t_s_deque		*ft_error_queu(void);
 ssize_t			ft_putendl_fd(const char *str, int file_desc);
 ssize_t			ft_putstr_fd(const char *str, int file_desc);
 ssize_t			ft_putchar_fd(char c, int file_desc);
