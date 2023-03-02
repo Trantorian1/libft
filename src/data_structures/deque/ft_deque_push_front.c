@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:41:21 by emcnab            #+#    #+#             */
-/*   Updated: 2023/03/02 16:20:21 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:35:43 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "ft_malloc.h"
 #include <stdbool.h>
 
-static int	ft_deque_grow_top(t_s_deque *deque)
+static void	ft_deque_grow_top(t_s_deque *deque)
 {
 	size_t	size_new;
 	int		*new_array;
