@@ -6,13 +6,13 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:58:56 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/12 17:31:17 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:25:06 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lst_delone.h"
 
-#include <stdlib.h>
+#include "ft_malloc.h"
 
 /*
  * @brief Frees up memory taken by a node in a linked list.
@@ -26,5 +26,5 @@ void	ft_lst_delone(t_s_list *node, void (*f_free)(void *))
 		return ;
 	f_free(node -> content);
 	node -> next = NULL;
-	free(node);
+	ft_free(node);
 }

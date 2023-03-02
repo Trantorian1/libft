@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:52:05 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/27 13:59:51 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:09:21 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "ft_memcpy.h"
 #include "ft_closest_power_ul.h"
 #include <stdbool.h>
-#include <stdlib.h>
 
 static bool	ft_array_in_bounds(t_s_array *array, size_t index)
 {

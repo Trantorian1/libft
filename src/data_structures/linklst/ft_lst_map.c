@@ -6,15 +6,15 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:17:40 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/26 16:18:10 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:26:06 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lst_map.h"
 
-#include <stdio.h>
 #include "ft_lst_new.h"
 #include "ft_lst_clear.h"
+#include <stdlib.h>
 
 /*
  * @brief Maps the contents of a linked list to a new linked list.

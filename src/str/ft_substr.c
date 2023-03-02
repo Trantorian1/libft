@@ -6,14 +6,14 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 09:57:45 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/12 15:05:42 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:33:39 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_substr.h"
 
+#include "ft_malloc.h"
 #include <stddef.h>
-#include <stdlib.h>
 
 /*
  * @brief Goes to the start of the substr at index [start_index] in [str].
@@ -64,7 +64,7 @@ char	*ft_substr(const char *str, size_t start_index, size_t max_size)
 	if (!str)
 		return (NULL);
 	str_cpy = ft_substr_start(&str, start_index);
-	substr = malloc((ft_substrlen(str_cpy, max_size) + 1) * sizeof(*substr));
+	substr = ft_malloc((ft_substrlen(str_cpy, max_size) + 1) * sizeof(*substr));
 	substr_cpy = substr;
 	if (!substr)
 		return (NULL);

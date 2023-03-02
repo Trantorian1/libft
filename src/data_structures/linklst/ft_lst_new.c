@@ -6,13 +6,13 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:14:27 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/12 17:37:28 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:26:23 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lst_new.h"
 
-#include <stdlib.h>
+#include "ft_malloc.h"
 
 /*
  * @brief Creates a new linked list.
@@ -25,9 +25,7 @@ t_s_list	*ft_lst_new(void *content)
 {
 	t_s_list	*head;
 
-	head = malloc(sizeof(*head));
-	if (!head)
-		return (NULL);
+	head = ft_malloc(sizeof(*head));
 	head -> content = content;
 	head -> next = NULL;
 	return (head);

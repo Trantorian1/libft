@@ -6,14 +6,13 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:43:49 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/13 20:27:36 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:11:41 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque_poll_front.h"
 
 #include "ft_deque_is_empty.h"
-#include "ft_error_handle.h"
 #include "ft_deque_size.h"
 
 /**

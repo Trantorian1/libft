@@ -6,15 +6,15 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:16:31 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 17:02:25 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:30:15 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pack.h"
 
+#include "ft_malloc.h"
 #include <stddef.h>
 #include <stdarg.h>
-#include <stdlib.h>
 
 /*
  * @brief Packs a variable amount of arguments of any type into an array.
@@ -31,7 +31,7 @@ size_t	*ft_pack(size_t argc, ...)
 	va_list	varargs;
 
 	i = 0;
-	packed = malloc(argc * sizeof(*packed));
+	packed = ft_malloc(argc * sizeof(*packed));
 	if (!packed)
 		return (NULL);
 	__builtin_va_start(varargs, argc);

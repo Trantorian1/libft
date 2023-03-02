@@ -6,15 +6,15 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 17:41:38 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/11 17:02:25 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:28:42 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_freeset.h"
 
-#include <stddef.h>
-#include <stdlib.h>
 #include "ft_bzero.h"
+#include "ft_malloc.h"
+#include <stddef.h>
 
 /*
  * @brief Frees up memory alocated using malloc, calloc or realloc and sets it
@@ -26,5 +26,5 @@
 void	ft_freeset(void *to_free, size_t n)
 {
 	ft_bzero(to_free, n);
-	free(to_free);
+	ft_free(to_free);
 }

@@ -6,15 +6,15 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:47:43 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/12 14:22:11 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:31:34 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_split.h"
 
-#include <stddef.h>
-#include <stdlib.h>
 #include "ft_substr.h"
+#include "ft_malloc.h"
+#include <stddef.h>
 
 /*
  * @brief Determines the number of splits needed to split [to_split] at every
@@ -40,27 +40,6 @@ static size_t	ft_split_size(const char *to_split, char splitter)
 		}
 	}
 	return (split_size);
-}
-
-/*
- * @brief Frees up all memory allocated by ft_split if an allocation fails
- * 	midway along the split.
- *
- * @param split_start (char **): pointer to the start of the split.
- * @param split_current (char **): pointer to the last element to have been
- * 	allocated.
- *
- * @return (void *): NULL.
- */
-static void	*ft_split_free(char **split_start, char **split_current)
-{
-	char	**split_cpy;
-
-	split_cpy = split_start;
-	while (split_start < split_current)
-		free(*split_start++);
-	free(split_cpy);
-	return (NULL);
 }
 
 /*
@@ -106,10 +85,8 @@ char	**ft_split(const char *to_split, char splitter)
 	if (to_split == NULL)
 		to_split = "";
 	split_size = ft_split_size(to_split, splitter);
-	split = malloc((split_size + 1) * sizeof(*split));
+	split = ft_malloc((split_size + 1) * sizeof(*split));
 	split_cpy = split;
-	if (!split)
-		return (NULL);
 	*(split + split_size) = NULL;
 	while (split_size--)
 	{
@@ -118,8 +95,6 @@ char	**ft_split(const char *to_split, char splitter)
 		if (*to_split && *to_split != splitter)
 		{
 			*split = ft_split_copy(&to_split, splitter);
-			if (!split++)
-				return (ft_split_free(split_cpy, split));
 		}
 	}
 	return (split_cpy);

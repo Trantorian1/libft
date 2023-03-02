@@ -6,14 +6,13 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:43:59 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/15 19:57:08 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:11:15 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque_poll_back.h"
 
 #include "ft_deque_is_empty.h"
-#include "ft_error_handle.h"
 
 int	ft_deque_poll_back(t_s_deque *deque)
 {

@@ -6,15 +6,14 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 14:20:19 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/15 20:08:37 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:23:22 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque_to_array.h"
 
 #include "ft_memcpy.h"
-#include "ft_error_handle.h"
-#include <stdlib.h>
+#include "ft_malloc.h"
 
 int	*ft_deque_to_array(t_s_deque *deque)
 {
@@ -23,7 +22,7 @@ int	*ft_deque_to_array(t_s_deque *deque)
 
 	if (!deque)
 		return (NULL);
-	dst = malloc(deque->size_actual * sizeof(*dst));
+	dst = ft_malloc(deque->size_actual * sizeof(*dst));
 	if (!dst)
 		return (NULL);
 	src = deque->data + deque->bottom;

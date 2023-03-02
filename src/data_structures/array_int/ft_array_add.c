@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:42:20 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/27 13:58:03 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:08:31 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "ft_closest_power_ul.h"
 #include "ft_memcpy.h"
-#include <stdlib.h>
+#include "ft_malloc.h"
 #include <stdbool.h>
 
 static void	ft_array_resize(t_s_array *array, size_t size)
@@ -26,11 +26,9 @@ static void	ft_array_resize(t_s_array *array, size_t size)
 		size_new = ft_closest_power_ul(array->index + size, 2);
 	else
 		size_new = array->footprint * 2;
-	data_new = malloc(size_new * sizeof(*data_new));
-	if (!data_new)
-		return ;
+	data_new = ft_malloc(size_new * sizeof(*data_new));
 	ft_memcpy(data_new, array->data, array->footprint * sizeof(*data_new));
-	free(array->data);
+	ft_free(array->data);
 	array->data = data_new;
 	array->footprint = size_new;
 }

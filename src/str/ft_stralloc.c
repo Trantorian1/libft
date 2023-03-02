@@ -6,13 +6,13 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 12:06:09 by emcnab            #+#    #+#             */
-/*   Updated: 2023/01/12 14:23:10 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:32:01 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stralloc.h"
 
-#include <stdlib.h>
+#include "ft_malloc.h"
 
 /*
  * @brief Allocates space in memory for a mutable string of n charcters and
@@ -27,7 +27,7 @@ char	*ft_stralloc(size_t n)
 {
 	char	*string;
 
-	string = malloc((n + 1) * sizeof(*string));
+	string = ft_malloc((n + 1) * sizeof(*string));
 	if (!string)
 		return (NULL);
 	string[n] = '\0';

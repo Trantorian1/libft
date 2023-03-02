@@ -6,13 +6,11 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 17:48:44 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/15 19:56:26 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:11:01 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque_is_empty.h"
-
-#include "ft_error_handle.h"
 
 /**
  * @brief Determines if the deque is empty.

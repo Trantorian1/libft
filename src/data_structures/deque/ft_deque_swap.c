@@ -6,13 +6,11 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:34:34 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/15 20:08:24 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/02 16:23:02 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque_swap.h"
-
-#include "ft_error_handle.h"
 
 int	ft_deque_swap(t_s_deque *deque)
 {
