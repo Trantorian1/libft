@@ -5,13 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/01 10:38:09 by                   #+#    #+#             */
-/*   Updated: 2023/03/01 10:41:52 by emcnab           ###   ########.fr       */
+/*   Created: 2023/03/06 19:47:27 by                   #+#    #+#             */
+/*   Updated: 2023/03/06 19:52:29 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef __/LIBFT_H
+# define __/LIBFT_H
 
 # include <stddef.h>
 # include <stdint.h>
@@ -64,6 +64,12 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_s_list;
+
+typedef struct s_vec2d
+{
+	int32_t	x;
+	int32_t	y;
+}	t_s_vec2d;
 
 int				ft_memcmp(const void *mem_a, const void *mem_b, size_t n);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
@@ -129,6 +135,8 @@ char			*ft_itoa(int n);
 int				ft_sign(int n);
 int				*ft_mock_data(int min, int max);
 size_t			ft_intlen(int n);
+t_s_vec2D		*vec_scale_int(t_s_vec2D vec, int32_t scalar);
+t_s_vec2D		*vec2d_add(t_s_vec2D *a, t_s_vec2D *b);
 t_s_array		*ft_array_create(size_t size);
 bool			ft_array_insert(t_s_array *array, size_t index, int n);
 void			ft_array_add(t_s_array *array, int n);
