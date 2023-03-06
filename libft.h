@@ -6,12 +6,12 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 19:47:27 by                   #+#    #+#             */
-/*   Updated: 2023/03/06 20:07:44 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/06 20:20:31 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __/LIBFT_H
-# define __/LIBFT_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
 # include <stddef.h>
 # include <stdint.h>
