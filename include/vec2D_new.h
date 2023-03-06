@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_scale_int.h                                    :+:      :+:    :+:   */
+/*   vec2D_new.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/06 19:36:07 by                   #+#    #+#             */
-/*   Updated: 2023/03/06 19:36:07 by                  ###   ########.fr       */
+/*   Created: 2023/03/06 19:42:04 by                   #+#    #+#             */
+/*   Updated: 2023/03/06 19:45:55 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VEC_SCALE_INT_H
-# define VEC_SCALE_INT_H
+#ifndef VEC2D_NEW_H
+# define VEC2D_NEW_H
 
 # include <stdint.h>
-# include "s_vec_int.h"
+# include "s_vec2D.h"
 
-t_s_vec_int	*vec_scale_int(t_s_vec_int vec, int32_t scalar);
+t_s_vec2D	*vec2D_new(int32_t x, int32_t y);
 
 #endif

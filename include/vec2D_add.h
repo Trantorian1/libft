@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_add_int.c                                      :+:      :+:    :+:   */
+/*   vec2D_add.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/06 19:30:54 by emcnab            #+#    #+#             */
-/*   Updated: 2023/03/06 19:35:00 by emcnab           ###   ########.fr       */
+/*   Created: 2023/03/06 19:43:44 by                   #+#    #+#             */
+/*   Updated: 2023/03/06 19:43:44 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec_add_int.h"
-#include "vec_int_new.h"
+#ifndef VEC2D_ADD_H
+# define VEC2D_ADD_H
 
-t_s_vec_int	*vec_add_int(t_s_vec_int *a, t_s_vec_int *b)
-{
-	return (vec_int_new(a->x + b->x, a->y + b->y));
-}
+# include "s_vec.h"
+
+t_s_vec2D	*vec_add_int(t_s_vec2D *a, t_s_vec2D *b);
+
+#endif

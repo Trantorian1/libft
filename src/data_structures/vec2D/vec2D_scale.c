@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_vec_int.h                                        :+:      :+:    :+:   */
+/*   vec2D_scale.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/06 19:21:52 by emcnab            #+#    #+#             */
-/*   Updated: 2023/03/06 19:23:49 by emcnab           ###   ########.fr       */
+/*   Created: 2023/03/06 19:35:50 by emcnab            #+#    #+#             */
+/*   Updated: 2023/03/06 19:45:09 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef S_VEC_INT_H
-# define S_VEC_INT_H
+#include "vec2D_scale.h"
 
-# include <stdint.h>
+#include "vec2D_new.h"
 
-typedef struct s_vec_int
+t_s_vec2D	*vec_scale_int(t_s_vec2D vec, int32_t scalar)
 {
-	int32_t	x;
-	int32_t	y;
-}	t_s_vec_int;
-
-#endif
+	return (vec2D_new(vec.x * scalar, vec.y * scalar));
+}
