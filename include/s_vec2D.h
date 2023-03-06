@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 19:21:52 by emcnab            #+#    #+#             */
-/*   Updated: 2023/03/06 19:38:37 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/06 19:49:23 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # include <stdint.h>
 
-typedef struct s_vec2D
+typedef struct s_vec2d
 {
 	int32_t	x;
 	int32_t	y;
-}	t_s_vec2D;
+}	t_s_vec2d;
 
 #endif

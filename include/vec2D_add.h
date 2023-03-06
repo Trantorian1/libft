@@ -6,15 +6,15 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 19:43:44 by                   #+#    #+#             */
-/*   Updated: 2023/03/06 19:43:44 by                  ###   ########.fr       */
+/*   Updated: 2023/03/06 19:51:04 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VEC2D_ADD_H
 # define VEC2D_ADD_H
 
-# include "s_vec.h"
+# include "s_vec2D.h"
 
-t_s_vec2D	*vec_add_int(t_s_vec2D *a, t_s_vec2D *b);
+t_s_vec2d	*vec2d_add(t_s_vec2d *a, t_s_vec2d *b);
 
 #endif
