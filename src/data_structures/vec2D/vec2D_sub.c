@@ -6,15 +6,15 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:05:01 by emcnab            #+#    #+#             */
-/*   Updated: 2023/03/06 20:07:32 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/07 09:25:47 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec2D_sub.h"
 
+#include "vec2D_new.h"
+
 t_s_vec2d	*vec2d_sub(t_s_vec2d *a, t_s_vec2d *b)
 {
-	a->x -= b->x;
-	a->y -= b->y;
-	return (a);
+	return (vec2d_new(a->x - b->x, a->y - b->y));
 }
