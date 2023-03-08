@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 19:47:27 by                   #+#    #+#             */
-/*   Updated: 2023/03/08 16:01:39 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/08 16:20:39 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ typedef struct s_vec2d
 	int32_t	x;
 	int32_t	y;
 }	t_s_vec2d;
+
+typedef struct s_vec2d_d
+{
+	double	x;
+	double	y;
+}	t_s_vec2d_d;
 
 int				ft_memcmp(const void *mem_a, const void *mem_b, size_t n);
 void			*ft_memcpy(void *dest, const void *src, size_t n);
