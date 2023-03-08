@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 19:47:27 by                   #+#    #+#             */
-/*   Updated: 2023/03/08 11:30:44 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/08 16:01:39 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ int				ft_abs(int a);
 size_t			ft_closest_power_ul(size_t n, unsigned int pow);
 int				ft_closest_power(int n, unsigned int pow);
 int32_t			max(int32_t a, int32_t b);
+int32_t			abs(int32_t a);
 char			*ft_ltoa(long l);
 char			*ft_ultoa_base(unsigned long l, char *base);
 size_t			ft_min(size_t a, size_t b);
