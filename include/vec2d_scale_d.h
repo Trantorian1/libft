@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec2d_combine_d.h                                  :+:      :+:    :+:   */
+/*   vec2d_scale_d.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/09 11:20:45 by                   #+#    #+#             */
-/*   Updated: 2023/03/09 11:20:56 by emcnab           ###   ########.fr       */
+/*   Created: 2023/03/10 12:09:22 by                   #+#    #+#             */
+/*   Updated: 2023/03/10 12:09:39 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VEC2D_COMBINE_D_H
-# define VEC2D_COMBINE_D_H
+#ifndef VEC2D_SCALE_D_H
+# define VEC2D_SCALE_D_H
 
 # include "s_vec2d_d.h"
 
-t_s_vec2d_d	*vec2d_combine_d(t_s_vec2d_d *dest, t_s_vec2d_d source);
+t_s_vec2d_d	*vec2d_scale_d(t_s_vec2d_d *source, double scalar);
 
 #endif
