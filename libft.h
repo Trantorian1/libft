@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 19:47:27 by                   #+#    #+#             */
-/*   Updated: 2023/03/10 17:39:11 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/13 15:48:15 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,9 +150,9 @@ t_s_vec2d		*vec2d_scale_int(t_s_vec2d vec, int32_t scalar);
 t_s_vec2d		*vec2d_add(t_s_vec2d *a, t_s_vec2d *b);
 t_s_vec2d		*vec2d_sub(t_s_vec2d *a, t_s_vec2d *b);
 t_s_vec2d_d		*vec2d_new_d(double x, double y);
-t_s_vec2d_d		*vec2d_copy_d(t_s_vec2d_d *dest, t_s_vec2d_d source);
+t_s_vec2d_d		*vec2d_copy_d(t_s_vec2d_d *dest, t_s_vec2d_d *source);
 t_s_vec2d_d		*vec2d_scale_d(t_s_vec2d_d *source, double scalar);
-t_s_vec2d_d		*vec2d_add_d(t_s_vec2d_d *dest, t_s_vec2d_d source);
+t_s_vec2d_d		*vec2d_add_d(t_s_vec2d_d *dest, t_s_vec2d_d *source);
 t_s_array		*ft_array_create(size_t size);
 bool			ft_array_insert(t_s_array *array, size_t index, int n);
 void			ft_array_add(t_s_array *array, int n);

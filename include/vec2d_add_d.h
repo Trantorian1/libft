@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 12:07:53 by                   #+#    #+#             */
-/*   Updated: 2023/03/10 12:08:21 by emcnab           ###   ########.fr       */
+/*   Created: 2023/03/13 15:45:59 by                   #+#    #+#             */
+/*   Updated: 2023/03/13 15:46:20 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "s_vec2d_d.h"
 
-t_s_vec2d_d	*vec2d_add_d(t_s_vec2d_d *dest, t_s_vec2d_d source);
+t_s_vec2d_d	*vec2d_add_d(t_s_vec2d_d *dest, t_s_vec2d_d *source);
 
 #endif
