@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:11:01 by emcnab            #+#    #+#             */
-/*   Updated: 2023/03/15 14:15:50 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/15 14:48:55 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 double	vec2d_angle_d(t_s_vec2d_d *vect)
 {
-	if (vect->x >= -DBL_EPSILON && vect->x <= DBL_EPSILON)
+	if (vect->x >= 0 && vect->x <= DBL_EPSILON)
 	{
 		if (vect->y >= 0)
 			return (M_PI_2);
