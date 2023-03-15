@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 19:47:27 by                   #+#    #+#             */
-/*   Updated: 2023/03/15 13:00:00 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/15 13:33:05 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ t_s_vec2d_d		*vec2d_scale_d(t_s_vec2d_d *source, double scalar);
 t_s_vec2d_d		*vec2d_add_d(t_s_vec2d_d *dest, t_s_vec2d_d *source);
 t_s_vec2d_d		*vec2d_sub_d(t_s_vec2d_d *dest, t_s_vec2d_d *source);
 double			vec2d_norm_d(t_s_vec2d_d *vect);
+double			vec2d_angle_d(t_s_vec2d_d *vect);
 t_s_array		*ft_array_create(size_t size);
 bool			ft_array_insert(t_s_array *array, size_t index, int n);
 void			ft_array_add(t_s_array *array, int n);
