@@ -47,7 +47,7 @@ task :default => :binary
 
 # for binary to be built, object files must have been compiled
 file :binary => OBJECT_FILES do
-  sh "#{AR} #{A_FLAGS} #{BINARY} #{OBJECT_FILES}"
+  sh "#{AR} #{A_FLAGS} #{BINARY} #{OBJECT_FILES} -lm"
 end
 
 # for object files to be compilated, the corresponding c file must exist
