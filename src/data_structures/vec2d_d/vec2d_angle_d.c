@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 13:11:01 by emcnab            #+#    #+#             */
-/*   Updated: 2023/03/15 14:48:55 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/15 15:18:32 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ double	vec2d_angle_d(t_s_vec2d_d *vect)
 		else
 			return (-M_PI_2);
 	}
-	return (atan(vect->y / vect->x));
+	return (atan2(vect->y, vect->x));
 }
