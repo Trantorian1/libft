@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  <>                                        +#+  +:+       +#+        */
+/*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 19:47:27 by                   #+#    #+#             */
-/*   Updated: 2023/03/15 13:33:05 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/16 14:58:24 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void			*ft_malloc(size_t size);
 void			*ft_realloc(void *ptr, size_t size_new);
 void			*ft_free(void *ptr);
 void			*ft_free_all(void);
+void			ft_onexit(void (*f)(void));
 void			*ft_memchr(const void *src, int8_t to_find, size_t n);
 char			*ft_memstr(int8_t *mem, size_t mem_size);
 bool			ft_isalpha(char c);

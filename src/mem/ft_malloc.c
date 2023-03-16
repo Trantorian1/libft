@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:14:59 by emcnab            #+#    #+#             */
-/*   Updated: 2023/02/27 16:41:17 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/16 14:56:36 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,13 @@
 #include "s_linkmem.h"
 #include "ft_memcpy.h"
 #include "ft_min.h"
+#include "ft_lst_new.h"
+#include "ft_lst_add_front.h"
+#include "ft_lst_iter.h"
 #include <stdlib.h>
 
-static t_s_linkmem	*g_last = NULL;
+static t_s_linkmem	*g_lst_mem = NULL;
+static t_s_list		*g_lst_exit = NULL;
 
 // TODO: implement other strategies for handling allocation errors.
 /**
@@ -48,13 +52,13 @@ void	*ft_malloc(size_t size)
 	node->size = size;
 	node->prev = NULL;
 	node->next = NULL;
-	if (!g_last)
-		g_last = node;
+	if (!g_lst_mem)
+		g_lst_mem = node;
 	else
 	{
-		node->prev = g_last;
-		g_last->next = node;
-		g_last = node;
+		node->prev = g_lst_mem;
+		g_lst_mem->next = node;
+		g_lst_mem = node;
 	}
 	data = (void *)((size_t)node + sizeof(*node));
 	return (data);
@@ -113,8 +117,8 @@ void	*ft_free(void *ptr)
 		node->prev->next = node->next;
 	if (node->next)
 		node->next->prev = node->prev;
-	if (node == g_last)
-		g_last = NULL;
+	if (node == g_lst_mem)
+		g_lst_mem = NULL;
 	free(node);
 	return (NULL);
 }
@@ -126,18 +130,33 @@ void	*ft_free(void *ptr)
  */
 void	*ft_free_all(void)
 {
-	t_s_linkmem	*node_curr;
-	t_s_linkmem	*node_prev;
+	t_s_list	*node_curr_list;
+	t_s_linkmem	*node_curr_mem;
+	t_s_linkmem	*node_prev_mem;
 
-	node_curr = g_last;
-	while (node_curr)
+	node_curr_list = g_lst_exit;
+	while (node_curr_list != NULL)
 	{
-		node_prev = node_curr->prev;
-		node_curr->next = NULL;
-		node_curr->prev = NULL;
-		free(node_curr);
-		node_curr = node_prev;
+		((void (*)(void))node_curr_list->content)();
+		node_curr_list = node_curr_list->next;
 	}
-	g_last = NULL;
+	node_curr_mem = g_lst_mem;
+	while (node_curr_mem != NULL)
+	{
+		node_prev_mem = node_curr_mem->prev;
+		node_curr_mem->next = NULL;
+		node_curr_mem->prev = NULL;
+		free(node_curr_mem);
+		node_curr_mem = node_prev_mem;
+	}
+	g_lst_mem = NULL;
 	return (NULL);
+}
+
+void	ft_onexit(void (*f)(void))
+{
+	if (g_lst_mem == NULL)
+		g_lst_exit = ft_lst_new(f);
+	else
+		ft_lst_add_back(g_lst_exit, f);
 }

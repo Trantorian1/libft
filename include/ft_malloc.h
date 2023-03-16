@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 15:30:46 by                   #+#    #+#             */
-/*   Updated: 2023/02/27 15:30:46 by                  ###   ########.fr       */
+/*   Created: 2023/03/16 14:57:39 by                   #+#    #+#             */
+/*   Updated: 2023/03/16 14:57:39 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ void	*ft_malloc(size_t size);
 void	*ft_realloc(void *ptr, size_t size_new);
 void	*ft_free(void *ptr);
 void	*ft_free_all(void);
+void	ft_onexit(void (*f)(void));
 
 #endif
