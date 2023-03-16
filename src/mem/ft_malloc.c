@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:14:59 by emcnab            #+#    #+#             */
-/*   Updated: 2023/03/16 14:56:36 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/16 15:01:25 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,5 +158,5 @@ void	ft_onexit(void (*f)(void))
 	if (g_lst_mem == NULL)
 		g_lst_exit = ft_lst_new(f);
 	else
-		ft_lst_add_back(g_lst_exit, f);
+		ft_lst_add_front(&g_lst_exit, ft_lst_new(f));
 }
