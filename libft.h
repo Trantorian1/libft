@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 19:47:27 by                   #+#    #+#             */
-/*   Updated: 2023/03/16 14:58:24 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/16 17:40:28 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,10 @@ bool			ft_isspace(char c);
 bool			ft_islower(char c);
 bool			ft_isupper(char c);
 bool			ft_lword_check(t_lword lword, t_s_magic magic);
-t_lphrase		ft_byte_search(t_lphrase lwords, t_s_magic magic, uint8_t to_find);
+t_lphrase		ft_byte_search(
+					t_lphrase lwords,
+					t_s_magic magic,
+					uint8_t to_find);
 t_lphrase		ft_lword_search(t_lphrase lwords, uint8_t to_find);
 const char		*ft_strrev(char *str, size_t from, size_t until);
 const char		*ft_strnstr(const char *source, const char *substr, size_t len);
@@ -114,8 +117,13 @@ char			*ft_strtrim(const char *to_trim, const char *trim_set);
 int				ft_strcmp(const char *str_a, const char *str_b);
 int				ft_strncmp(const char *str_a, const char *str_b, size_t n);
 size_t			ft_strlen(const char *str);
-char			*ft_substr(const char *str, size_t start_index, size_t max_size);
-char			*ft_strmapi(const char *str, char (*mapping_f)(unsigned int, char));
+char			*ft_substr(
+					const char *str,
+					size_t start_index,
+					size_t max_size);
+char			*ft_strmapi(
+					const char *str,
+					char (*mapping_f)(unsigned int, char));
 char			*ft_strchr(char *str, unsigned char c);
 size_t			ft_strnsum(const char *str, size_t n);
 int				ft_atoi(const char *str_int);
@@ -160,7 +168,10 @@ double			vec2d_angle_d(t_s_vec2d_d *vect);
 t_s_array		*ft_array_create(size_t size);
 bool			ft_array_insert(t_s_array *array, size_t index, int n);
 void			ft_array_add(t_s_array *array, int n);
-void			ft_array_add_bulk(t_s_array *array, const int *data, size_t size);
+void			ft_array_add_bulk(
+					t_s_array *array,
+					const int *data,
+					size_t size);
 int				ft_array_get(t_s_array *array, size_t index);
 size_t			ft_array_size(t_s_array *array);
 void			*ft_array_destroy(t_s_array *array);
@@ -195,12 +206,20 @@ t_s_list		*ft_lst_new(void *content);
 void			ft_lst_delone(t_s_list *node, void (*f_free)(void *));
 void			ft_lst_add_back(t_s_list **head, t_s_list *node_new);
 t_s_array_any	*ft_array_any_create(size_t size);
-void			*ft_array_any_destroy(t_s_array_any *array, void (*f_free)(void *));
+void			*ft_array_any_destroy(
+					t_s_array_any *array,
+					void (*f_free)(void *));
 t_s_array_any	*ft_mock_array_any(int min, int max);
 void			ft_array_any_add(t_s_array_any *array, const void *any);
-void			ft_array_any_add_at(t_s_array_any *array, const void *any, size_t index);
+void			ft_array_any_add_at(
+					t_s_array_any *array,
+					const void *any,
+					size_t index);
 void			*ft_array_any_get(t_s_array_any *array, size_t index);
-void			ft_array_any_insert(t_s_array_any *array, size_t index, void *any);
+void			ft_array_any_insert(
+					t_s_array_any *array,
+					size_t index,
+					void *any);
 size_t			ft_array_any_size(t_s_array_any *array);
 ssize_t			ft_putendl_fd(const char *str, int file_desc);
 ssize_t			ft_putstr_fd(const char *str, int file_desc);
