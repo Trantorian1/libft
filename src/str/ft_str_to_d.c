@@ -6,7 +6,7 @@
 /*   By: eliot <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:31:17 by eliot             #+#    #+#             */
-/*   Updated: 2023/03/17 17:19:18 by eliot            ###   ########.fr       */
+/*   Updated: 2023/03/17 18:43:12 by eliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static double	get_fractional(const char *str, char **endptr)
 		value_curr = value_curr * 10.0 + value_delta;
 		index ++;
 	}
+	*endptr = (char *)(&str[index]);
 	if (value_curr > DBL_EPSILON)
 		value_curr /= pow(10.0, (double)(index - 1));
 	return (value_curr);
@@ -72,13 +73,13 @@ static double	value_increment(const char *str, char **endptr)
 	while (ft_isdigit(str[index]))
 	{
 		value_delta = ft_todigit(str[index]);
-		if (value_curr < (DBL_MIN + value_delta) / 10.0)
+		if (value_curr > (DBL_MAX - value_delta) / 10.0)
 		{
 			*endptr = (char *)(&str[index]);
 			errno = ERANGE;
 			return (value_curr);
 		}
-		value_curr = value_curr * 10.0 - value_delta;
+		value_curr = value_curr * 10.0 + value_delta;
 		index++;
 	}
 	*endptr = (char *)(&str[index]);
@@ -100,7 +101,7 @@ static double	value_decrement(const char *str, char **endptr)
 	while (ft_isdigit(str[index]))
 	{
 		value_delta = ft_todigit(str[index]);
-		if (value_curr > (DBL_MAX - value_delta) / 10.0)
+		if (value_curr < (DBL_MIN + value_delta) / 10.0)
 		{
 			*endptr = (char *)(&str[index]);
 			errno = ERANGE;
@@ -110,7 +111,7 @@ static double	value_decrement(const char *str, char **endptr)
 		index++;
 	}
 	*endptr = (char *)(&str[index]);
-	value_curr -= (1.0 - get_fractional(*endptr, endptr));
+	value_curr = value_curr - 1 + (1.0 - get_fractional(*endptr, endptr));
 	value_curr *= get_exponent(*endptr, endptr);
 	if (**endptr != '\0')
 		errno = EINVAL;
@@ -151,7 +152,7 @@ static double	get_value(const char *str, char **endptr, int8_t sign)
  *                 the first unrecognized character.
  * @return The converted double value, or 0 in case of an error.
  */
-double	ft_str_to_d(const char *_Nonnull str, char *_Nonnull *_Nullable endptr)
+double	ft_str_to_d(const char *str, char **endptr)
 {
 	int8_t	sign;
 	double	value;
@@ -168,6 +169,6 @@ double	ft_str_to_d(const char *_Nonnull str, char *_Nonnull *_Nullable endptr)
 		errno = EINVAL;
 		return (0);
 	}
-	value = get_value(str, endptr, sign);
+	value = get_value(*endptr, endptr, sign);
 	return (value);
 }

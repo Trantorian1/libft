@@ -6,13 +6,13 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:32:20 by                   #+#    #+#             */
-/*   Updated: 2023/03/17 17:19:43 by eliot            ###   ########.fr       */
+/*   Updated: 2023/03/17 17:56:06 by eliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_STR_TO_D_H
 # define FT_STR_TO_D_H
 
-double	ft_str_to_d(const char *_Nonnull str, char *_Nonnull *_Nullable endptr);
+double	ft_str_to_d(const char *str, char **endptr);
 
 #endif

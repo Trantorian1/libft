@@ -6,7 +6,7 @@
 /*   By: eliot <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:26:50 by eliot             #+#    #+#             */
-/*   Updated: 2023/03/17 17:20:04 by eliot            ###   ########.fr       */
+/*   Updated: 2023/03/17 18:40:26 by eliot            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	value_increment(const char *str, char **endptr)
 	while (ft_isdigit(str[index]))
 	{
 		value_delta = ft_todigit(str[index]);
-		if (value_curr < (INT_MIN - value_delta) / 10)
+		if (value_curr > (INT_MAX - value_delta) / 10)
 		{
 			*endptr = (char *)(&str[index]);
 			errno = ERANGE;
@@ -105,7 +105,7 @@ static int	get_value(const char *str, char **endptr, int8_t sign)
  *                 the first unrecognized character.
  * @return The converted integer value, or 0 in case of an error.
  */
-int	ft_str_to_i(const char *_Nonnull str, char *_Nonnull *_Nullable endptr)
+int	ft_str_to_i(const char *str, char **endptr)
 {
 	int8_t	sign;
 	int		value;
