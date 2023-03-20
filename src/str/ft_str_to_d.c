@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:31:17 by eliot             #+#    #+#             */
-/*   Updated: 2023/03/20 11:03:04 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/20 11:36:22 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ double	ft_str_to_d(const char *str, char **endptr)
 		return (0);
 	}
 	if (sign == POSITIVE)
-		return (value_increment(str, endptr));
+		return (value_increment(*endptr, endptr));
 	else
-		return (value_decrement(str, endptr));
+		return (value_decrement(*endptr, endptr));
 }

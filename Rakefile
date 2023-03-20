@@ -23,7 +23,7 @@ H_DIR     = "include/".freeze
 
 # variables related to object compilation
 CC        = "clang".freeze
-C_FLAGS   = "-g3 -Wall -Wextra -Werror -I #{H_DIR}".freeze
+C_FLAGS   = "-Wall -Wextra -Werror -I #{H_DIR}".freeze
 C_DIR     = "src/".freeze
 O_DIR     = "#{BUILD_DIR}objs/".freeze
 
