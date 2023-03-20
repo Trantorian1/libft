@@ -6,7 +6,7 @@
 /*   By:  <>                                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 16:02:07 by                   #+#    #+#             */
-/*   Updated: 2023/03/17 16:02:27 by eliot            ###   ########.fr       */
+/*   Updated: 2023/03/20 11:04:51 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include <stdint.h>
 
-#define POSITIVE 1
-#define NEGATIVE -1
+# define POSITIVE 1
+# define NEGATIVE -1
 
 int8_t	str_get_sign(const char *str, char **endptr);
 
