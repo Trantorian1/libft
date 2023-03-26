@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str_to_d.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eliot <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 15:31:17 by eliot             #+#    #+#             */
-/*   Updated: 2023/03/20 11:36:22 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/03/20 10:27:28 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@
 static double	get_fractional(const char *str, char **endptr)
 {
 	size_t	index;
-	int64_t	value_curr;
-	int64_t	value_delta;
-	double	value_final;
+	double	value_curr;
+	double	value_delta;
 
 	if (*str == '.')
 		index = 1;
@@ -38,18 +37,19 @@ static double	get_fractional(const char *str, char **endptr)
 	while (ft_isdigit(str[index]))
 	{
 		value_delta = ft_todigit(str[index]);
-		if ((double)value_curr > (DBL_MAX - (double)value_delta) / 10.0)
+		if (value_curr > (DBL_MAX - value_delta) / 10.0)
 		{
 			*endptr = (char *)(&str[index]);
 			errno = ERANGE;
-			return ((double)value_curr / pow(10.0, (double)(index - 1)));
+			return (value_curr / pow(10.0, (double)(index - 1)));
 		}
-		value_curr = value_curr * 10 + value_delta;
+		value_curr = value_curr * 10.0 + value_delta;
 		index ++;
 	}
 	*endptr = (char *)(&str[index]);
-	value_final = (double)value_curr / pow(10.0, (double)(index - 1));
-	return (value_final);
+	if (value_curr > DBL_EPSILON)
+		value_curr /= pow(10.0, (double)(index - 1));
+	return (value_curr);
 }
 
 static double	get_exponent(const char *str, char **endptr)
@@ -67,57 +67,63 @@ static double	value_increment(const char *str, char **endptr)
 	size_t	index;
 	int64_t	value_curr;
 	int64_t	value_delta;
-	double	value_final;
 
 	index = 0;
 	value_curr = 0;
 	while (ft_isdigit(str[index]))
 	{
 		value_delta = ft_todigit(str[index]);
-		if ((double)value_curr > (DBL_MAX - (double)value_delta) / 10.0)
+		if (value_curr > (DBL_MAX - (double)value_delta) / 10.0)
 		{
 			*endptr = (char *)(&str[index]);
 			errno = ERANGE;
-			return ((double)value_curr);
+			return (value_curr);
 		}
-		value_curr = value_curr * 10 + value_delta;
+		value_curr = value_curr * 10.0 + value_delta;
 		index++;
 	}
 	*endptr = (char *)(&str[index]);
-	value_final = (double)value_curr + get_fractional(*endptr, endptr);
-	value_final *= get_exponent(*endptr, endptr);
+	value_curr += get_fractional(*endptr, endptr);
+	value_curr *= get_exponent(*endptr, endptr);
 	if (**endptr != '\0')
 		errno = EINVAL;
-	return (value_final);
+	return (value_curr);
 }
 
 static double	value_decrement(const char *str, char **endptr)
 {
 	size_t	index;
-	int64_t	value_curr;
-	int64_t	value_delta;
-	double	value_final;
+	double	value_curr;
+	double	value_delta;
 
-	index = (size_t)(-1);
+	index = 0;
 	value_curr = 0;
-	while (ft_isdigit(str[++index]))
+	while (ft_isdigit(str[index]))
 	{
 		value_delta = ft_todigit(str[index]);
-		if ((double)value_curr > (DBL_MIN + (double)value_delta) / 10.0)
+		if (value_curr < (DBL_MIN + value_delta) / 10.0)
 		{
 			*endptr = (char *)(&str[index]);
 			errno = ERANGE;
-			return ((double)value_curr);
+			return (value_curr);
 		}
-		value_curr = value_curr * 10 - value_delta;
+		value_curr = value_curr * 10.0 - value_delta;
+		index++;
 	}
 	*endptr = (char *)(&str[index]);
-	value_final = (double)(value_curr - 1);
-	value_final += (1.0 - get_fractional(*endptr, endptr));
-	value_final *= get_exponent(*endptr, endptr);
+	value_curr = value_curr - 1 + (1.0 - get_fractional(*endptr, endptr));
+	value_curr *= get_exponent(*endptr, endptr);
 	if (**endptr != '\0')
 		errno = EINVAL;
-	return (value_final);
+	return (value_curr);
+}
+
+static double	get_value(const char *str, char **endptr, int8_t sign)
+{
+	if (sign == POSITIVE)
+		return (value_increment(str, endptr));
+	else
+		return (value_decrement(str, endptr));
 }
 
 /**
@@ -149,6 +155,7 @@ static double	value_decrement(const char *str, char **endptr)
 double	ft_str_to_d(const char *str, char **endptr)
 {
 	int8_t	sign;
+	double	value;
 
 	if (str == NULL || endptr == NULL)
 	{
@@ -162,8 +169,6 @@ double	ft_str_to_d(const char *str, char **endptr)
 		errno = EINVAL;
 		return (0);
 	}
-	if (sign == POSITIVE)
-		return (value_increment(*endptr, endptr));
-	else
-		return (value_decrement(*endptr, endptr));
+	value = get_value(*endptr, endptr, sign);
+	return (value);
 }

@@ -17,6 +17,7 @@
 #define PRINT_START 32
 #define PRINT_STOP 126
 
+
 /*
  * @brief checks for any printable character including space. This includes
  * characters between ascii codes 33 and 126 included
