@@ -118,14 +118,6 @@ static double	value_decrement(const char *str, char **endptr)
 	return (value_curr);
 }
 
-static double	get_value(const char *str, char **endptr, int8_t sign)
-{
-	if (sign == POSITIVE)
-		return (value_increment(str, endptr));
-	else
-		return (value_decrement(str, endptr));
-}
-
 /**
  * @brief Convert a string to a double, taking overflows and exponential
  *        notation into account.
@@ -155,7 +147,6 @@ static double	get_value(const char *str, char **endptr, int8_t sign)
 double	ft_str_to_d(const char *str, char **endptr)
 {
 	int8_t	sign;
-	double	value;
 
 	if (str == NULL || endptr == NULL)
 	{
@@ -169,6 +160,8 @@ double	ft_str_to_d(const char *str, char **endptr)
 		errno = EINVAL;
 		return (0);
 	}
-	value = get_value(*endptr, endptr, sign);
-	return (value);
+	if (sign == POSITIVE)
+		return (value_increment(str, endptr));
+	else
+		return (value_decrement(str, endptr));
 }
