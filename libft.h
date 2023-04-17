@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 19:47:27 by                   #+#    #+#             */
-/*   Updated: 2023/04/17 12:10:24 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/04/17 15:44:03 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,5 +229,6 @@ ssize_t			ft_putendl_fd(const char *str, int file_desc);
 ssize_t			ft_putstr_fd(const char *str, int file_desc);
 ssize_t			ft_putchar_fd(char c, int file_desc);
 ssize_t			ft_putnbr_fd(int n, int file_desc);
+ssize_t			ft_putlong_fd(long l, int file_desc);
 
 #endif
