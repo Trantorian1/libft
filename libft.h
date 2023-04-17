@@ -6,7 +6,7 @@
 /*   By: emcnab <emcnab@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 19:47:27 by                   #+#    #+#             */
-/*   Updated: 2023/04/13 17:27:44 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/04/17 12:10:24 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ char			*ft_strchr(char *str, unsigned char c);
 size_t			ft_strnsum(const char *str, size_t n);
 int				ft_atoi(const char *str_int);
 unsigned int	ft_atoui(const char *str_int);
+long			ft_atol(const char *str_int);
 int				ft_str_to_i(const char *str, char **endptr);
 double			ft_str_to_d(const char *str, char **endptr);
 char			*ft_strjoin(const char *str_a, const char *str_b);
