@@ -6,7 +6,7 @@
 /*   By: emcnab <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 12:06:03 by emcnab            #+#    #+#             */
-/*   Updated: 2023/04/22 16:11:22 by emcnab           ###   ########.fr       */
+/*   Updated: 2023/04/22 16:22:32 by emcnab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 long	ft_atol(const char *str_int)
 {
 	size_t	index;
-	int		sign;
+	long	sign;
 	long	result;
 
 	index = 0;
